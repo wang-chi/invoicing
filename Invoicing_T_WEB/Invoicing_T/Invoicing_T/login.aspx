@@ -7,8 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中科大進銷存 登入</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <style type="text/css">
-    </style>
 
 </head>
 <body>
