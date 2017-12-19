@@ -33,7 +33,6 @@ namespace Invoicing_T
                 lvmemberInfo.DataSource = null;
                 lvmemberInfo.DataSource = ds.Tables["member"];
                 lvmemberInfo.DataBind();
-                
             }
             
             #endregion

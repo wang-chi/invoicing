@@ -118,7 +118,7 @@ namespace Invoicing_T
 
         internal DataSet GetPosition(string p2)
         {
-            #region 分辨身分為房東或房客
+            #region 分辨身分是否停權
             SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlCommand cmd = new SqlCommand();
             DataSet ds = new DataSet();

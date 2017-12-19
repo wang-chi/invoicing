@@ -34,8 +34,7 @@ namespace Invoicing_T
                     pwd_check = dr["m_pwd"].ToString();//把table"allInfo"中的member_pwd欄位轉字串
                     if ((id_check == InputAccount.Text) && (pwd_check == InputPassword.Text))//如果相等跳轉業面
                     {
-                        Response.Redirect("home.aspx");
-                        /*string p2 = "Select member_position,member_guid From member Where member_id='" + id + "'";//查詢身分
+                        string p2 = "Select m_position From member Where m_id='" + id + "'";//查詢身分
 
                         DataSet ds_position = tmp.GetPosition(p2);//檢查身分
 
@@ -43,28 +42,22 @@ namespace Invoicing_T
                          {
                         foreach (DataRow dr_position in ds_position.Tables["position"].Rows)
                         {
-                        string position_check, guid_check;
-                        position_check = dr_position["member_position"].ToString();//把table"position"中的member_position欄位轉字串
-                        guid_check = dr_position["member_guid"].ToString();
-                         if (position_check == "1")
+                        string position_check;
+                        position_check = dr_position["m_position"].ToString();//把table"position"中的member_position欄位轉字串
+
+                         if (position_check == "True")
                          {
-                        Session["position"] = position_check;
-                        Session["guid"] = guid_check;
+                        //Session["position"] = position_check; //把值丟掉下一頁
                         Response.Redirect("home.aspx");
                                 }
-                                if (position_check == "0")
-                                {
-                                    Session["position"] = position_check;
-                                    Session["guid"] = guid_check;
-                                    Response.Redirect("home.aspx");
-                                }
-                                if (position_check == "2")
-                                {
-                                    Response.Redirect("home.aspx");
+
+                        if (position_check == "False")
+                         {
+                                    msg_error.Text = "帳號被停權無法啟用";
                                 }
                             }
                         }
-                        */
+                        
                     }
                     else
                     {
@@ -76,5 +69,6 @@ namespace Invoicing_T
             }
             #endregion
         }
+        
     }
 }

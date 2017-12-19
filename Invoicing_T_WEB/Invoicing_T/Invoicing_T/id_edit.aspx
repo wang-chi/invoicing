@@ -12,7 +12,7 @@
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="home.aspx">Home</a></li>
-            <li class="breadcrumb-item"><a href="home.aspx">帳號管理</a></li>
+            <li class="breadcrumb-item"><a href="id_manage.aspx">帳號管理</a></li>
             <li class="breadcrumb-item active" aria-current="page">帳號資料修改</li>
         </ol>
     </nav>
