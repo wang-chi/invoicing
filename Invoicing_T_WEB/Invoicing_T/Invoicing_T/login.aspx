@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中科大進銷存 登入</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="login.css" rel="stylesheet" />
     <style type="text/css">
     </style>
 
@@ -32,7 +31,6 @@
 
             <div class="form-action">
                 <asp:Button ID="Button1" type="submit" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click" Text="登　入" Font-Names="微軟正黑體" />
-                 <asp:Button ID="Button2" type="submit" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click" Text="登　入" Font-Names="微軟正黑體" />
             </div>
             <div id="alert_error" class="alert alert-danger" role="alert" runat="server" visible="false">
                 <asp:Label ID="msg_error" runat="server" Text="登錄失敗" Visible="False" />
