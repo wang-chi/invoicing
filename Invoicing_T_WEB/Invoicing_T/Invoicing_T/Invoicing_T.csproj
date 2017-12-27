@@ -74,7 +74,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="group_edit_new.aspx" />
     <Content Include="id_edit_new.aspx" />
+    <Content Include="login.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -123,6 +125,13 @@
     </Compile>
     <Compile Include="group_edit.aspx.designer.cs">
       <DependentUpon>group_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="group_edit_new.aspx.cs">
+      <DependentUpon>group_edit_new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="group_edit_new.aspx.designer.cs">
+      <DependentUpon>group_edit_new.aspx</DependentUpon>
     </Compile>
     <Compile Include="group_manage.aspx.cs">
       <DependentUpon>group_manage.aspx</DependentUpon>

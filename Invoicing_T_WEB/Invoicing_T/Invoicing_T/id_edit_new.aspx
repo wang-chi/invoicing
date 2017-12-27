@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     <title>新增員工</title>
 
     <style type="text/css">
@@ -22,43 +23,53 @@
 
 </head>
 <body>
+         <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="home.aspx">Home</a></li>
+            <li class="breadcrumb-item"><a href="id_manage.aspx">帳號管理</a></li>
+            <li class="breadcrumb-item active" aria-current="page">帳號資料新增</li>
+        </ol>
+    </nav>
     <form id="form1" runat="server">
         <div>
 
-             <table id="registertable">
+             <table>
                     <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label6" runat="server" Text="員工帳號"></asp:Label>
                         </td>
-                       <td style="text-align:left;">
+                       <td>
                             <asp:TextBox ID="TextBox6" runat="server" Width="150px"></asp:TextBox>
+                               <br />
+                            
+                            <asp:Label ID="Label9" runat="server" Text="帳號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                               
                             </td>
                         
                         </tr>
 
                       <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label11" runat="server" Text="員工密碼"></asp:Label>
                         </td>
-                       <td style="text-align:left;">
+                       <td>
                             <asp:TextBox ID="TextBox7" runat="server" Width="150px"></asp:TextBox>
                             </td>
                         </tr>
                  <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label12" runat="server" Text="員工狀態"></asp:Label>
                         </td>
-                         <td style="text-align:left;">
+                         <td>
                             <asp:RadioButtonList ID="RadioButtonList2" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
-                                <asp:ListItem Selected="True" Value="0">啟用　</asp:ListItem>
-                                <asp:ListItem Selected="True" Value="1">停權　</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="True">啟用　</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="False">停權　</asp:ListItem>
                             </asp:RadioButtonList>
                         </td>
                     </tr>
 
                     <tr>
-                        <td class="auto-style1" >
+                        <td  >
                             <asp:Label ID="Label1" runat="server" Text="姓　　名"></asp:Label>
                             </td>
                         <td style="text-align:left;">
@@ -68,20 +79,20 @@
 
             
                     <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label7" runat="server" Text="性　　別"></asp:Label>
                         </td>
                          <td style="text-align:left;">
                             <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
-                                <asp:ListItem Selected="True" Value="0">男　</asp:ListItem>
-                                <asp:ListItem Selected="True" Value="1">女　</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="m">男　</asp:ListItem>
+                                <asp:ListItem Selected="True" Value="f">女　</asp:ListItem>
                             </asp:RadioButtonList>
                         </td>
                     </tr>
 
             
                     <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label2" runat="server" Text="角　　色"></asp:Label>
                         </td>
                         <td style="text-align:left;">
@@ -94,26 +105,26 @@
                         </td>
                     </tr>
                     <tr>
-                        <td  class="auto-style1">
+                        <td >
                             <asp:Label ID="Label3" runat="server" Text="員工編號"></asp:Label>
                             </td>
                         <td style="text-align:left;">
-                            <asp:TextBox ID="TextBox3" runat="server" TextMode="Password" Width="150px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox3" runat="server" Width="150px"></asp:TextBox>
                         </td>
                     </tr>
            
                     <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label4" runat="server" Text="電話號碼"></asp:Label>
                         </td>
                         <td style="text-align:left;">
-                            <asp:TextBox ID="TextBox4" runat="server" TextMode="Password" Width="150px"></asp:TextBox>
+                            <asp:TextBox ID="TextBox4" runat="server" Width="150px"></asp:TextBox>
                         </td>
                     </tr>
 
            
                     <tr>
-                        <td class="auto-style1">
+                        <td>
                             <asp:Label ID="Label5" runat="server" Text="電子信箱"></asp:Label>
                             </td>
                         <td style="text-align:left;">
@@ -125,14 +136,16 @@
 
                           
                     </tr>
-                    <tr>
-                        <asp:Label ID="Label10" runat="server" Text="Label" Visible="False"></asp:Label>
-                    </tr>
-
+                        
+                    
                 </table>
+            <div>
+                 <asp:Label ID="Label10" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                </div>
 
                     <div style="margin:auto">
-                        <asp:Button ID="Button2" runat="server" Text="新     增" OnClick="Button2_Click" ValidationGroup="AllValidators" Font-Bold="False" Font-Names="微軟正黑體" Font-Size="12pt" Height="30px" Width="55px" />
+                        
+                        <asp:Button ID="Button2" runat="server" Text="新增員工" OnClick="Button2_Click" ValidationGroup="AllValidators" Font-Bold="False" Font-Names="微軟正黑體" Font-Size="12pt" Height="30px" Width="94px" />
                         </div>
 
         </div>

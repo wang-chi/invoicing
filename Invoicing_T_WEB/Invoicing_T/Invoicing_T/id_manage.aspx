@@ -19,9 +19,19 @@
 
         <div>
 
-            <asp:LinkButton ID="lbtInsert" runat="server"  PostBackUrl='<%# "id_edit.aspx?ActionState=Insert&m_id="+Eval("m_id")%>' ToolTip="新增">
-                  <asp:Label ID="Label7" runat="server" Text="新增"></asp:Label>
-                            </asp:LinkButton>
+           <!-- <asp:LinkButton ID="lbtInsert" runat="server"  PostBackUrl='<%# "id_edit_new.aspx?ActionState=Insert&m_id="+Eval("m_id")%>' ToolTip="新增">
+                  <asp:Label ID="Label7" runat="server" Text="新增"></asp:Label>  
+                            </asp:LinkButton>-->
+            <tr>
+                <td>
+
+            <asp:Button ID="Button1" runat="server" Text="新增" OnClick="Button1_Click" />
+                </td>
+                <td>
+            <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:Button ID="Button2" runat="server" Text="查詢" OnClick="Button2_Click" />
+                    </td>
 
             </div>
 

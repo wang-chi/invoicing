@@ -17,6 +17,20 @@
         </ol>
     </nav>
     <form id="form1" runat="server">
+         <div>
+
+            <tr>
+                <td>
+             <asp:Button ID="Button1" runat="server" Text="新增" OnClick="Button1_Click" />
+                     </td>
+                <td>
+            <asp:Label ID="Label3" runat="server" Text="請以群組ID查詢："></asp:Label>
+            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:Button ID="Button2" runat="server" Text="查詢" OnClick="Button2_Click" />
+                    </td>
+
+
+            </div>
 
         <div>
             <asp:ListView ID="lvCampInfo" runat="server" GroupItemCount="1"

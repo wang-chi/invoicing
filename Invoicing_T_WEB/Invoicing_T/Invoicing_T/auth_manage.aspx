@@ -26,16 +26,15 @@
                     <table class="table table-bordered table-hover">
                         <thead>
                             <tr class="success">
-                                <th width="10%">
+                                <th width="25%">
                                     <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
-                                <th width="10%">
+                                <th width="25%">
                                     <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
-                                <th width="27%">
+                                <th width="25%">
                                     <asp:Label ID="Label10" runat="server" Text="權限ID"></asp:Label></th>
-                                <th width="27%">
+                                <th width="25%">
                                     <asp:Label ID="Label14" runat="server" Text="權限名稱"></asp:Label></th>
-                                <th width="27%">
-                                    <asp:Label ID="Label27" runat="server" Text="權限有無"></asp:Label></th>
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -58,8 +57,7 @@
                         </td>
                         <td><%# Eval("a_id") %></td>
                         <td><%# Eval("a_name") %></td>
-                        <td><%# Eval("viewmode") %></td>
-
+                        
                     </tr>
                 </ItemTemplate>
             </asp:ListView>

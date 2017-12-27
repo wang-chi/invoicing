@@ -13,7 +13,8 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
+            //tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
+            tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             if (!IsPostBack)
             {
                 this.all(null, null);//查詢群組資料
@@ -23,9 +24,8 @@ namespace Invoicing_T
         protected void all(object sender, EventArgs e)
         {
             #region 查詢權限資料
-            Dictionary<string, object> tmpFilter = new Dictionary<string, object>();//建立新的字典以方便查詢
 
-            DataSet ds = tmp.Getauth(tmpFilter);
+            DataSet ds = tmp.Getauth();
             if (ds != null)
             {
                 lvauthInfo.DataSource = null;
