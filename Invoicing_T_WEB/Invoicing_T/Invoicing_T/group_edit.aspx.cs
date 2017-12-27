@@ -25,22 +25,16 @@ namespace Invoicing_T
 
                     switch (HiddenF_ActionState.Value)
                     {
-
                         case "UpDate":
                             btUpDate.Visible = true;
-
                             break;
-
                         case "Delete":
                             //btActionState.Text = "刪除房屋資料";
                             //btActionState.ToolTip = "狀態:刪除房屋資料";
                             btDelete.Visible = true;
                             TextBox1.ReadOnly = true;
-                            TextBox1.BackColor= System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
-                            bt_r_info.ReadOnly = true;
-                            bt_r_info.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
+                            TextBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
                             break;
-
                     }
                 }
 
@@ -49,7 +43,6 @@ namespace Invoicing_T
                     HiddenF_rid.Value = Request.QueryString["r_id"].ToString();//主索引
                     this.SetMaintainData(HiddenF_rid.Value);//設定要維護的資料
                 }
-
                 this.SetMaintainData(HiddenF_rid.Value);//設定要維護的資料
             }
         }
@@ -63,19 +56,15 @@ namespace Invoicing_T
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["group_info"].Rows[0];
-
                 r_id.Text = tmpDataRow["r_id"].ToString();
                 TextBox1.Text = tmpDataRow["r_name"].ToString();
-                bt_r_info.Text = tmpDataRow["r_info"].ToString();
-                
             }
-
             #endregion
         }
-        
+
         protected void bt_Click(object sender, EventArgs e)
         {
-          
+
             #region 修改/刪除群組資料
 
             Dictionary<string, object> tmpViewData = this.SetViewData();//設定畫面中的資料
@@ -91,8 +80,6 @@ namespace Invoicing_T
                     break;
             }
             Server.Transfer("group_manage.aspx", true);//導回群組管理
-
-
             #endregion
         }
 
@@ -108,8 +95,6 @@ namespace Invoicing_T
             //("資料庫欄位")
             tmpViewData.Add("r_id", r_id.Text);
             tmpViewData.Add("r_name", TextBox1.Text);
-            tmpViewData.Add("r_info", bt_r_info.Text);
-            
             return tmpViewData;
             #endregion
         }

@@ -29,10 +29,7 @@
             群組名稱：
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <br />
-            群組資訊：
-                        <asp:TextBox ID="bt_r_info" runat="server"></asp:TextBox>
-            
-            <br />
+
 
             <asp:Button ID="btUpDate" class="btn" runat="server" Text="修　　改"  OnClick="bt_Click" Visible="false" />
             

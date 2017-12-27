@@ -47,8 +47,7 @@
                                     <asp:Label ID="Label10" runat="server" Text="群組ID"></asp:Label></th>
                                 <th width="27%">
                                     <asp:Label ID="Label14" runat="server" Text="群組名稱"></asp:Label></th>
-                                <th width="27%">
-                                    <asp:Label ID="Label27" runat="server" Text="群組內容"></asp:Label></th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -71,8 +70,6 @@
                         </td>
                         <td><%# Eval("r_id") %></td>
                         <td><%# Eval("r_name") %></td>
-                        <td><%# Eval("r_info") %></td>
-
                     </tr>
                 </ItemTemplate>
             </asp:ListView>

@@ -345,7 +345,7 @@ namespace Invoicing_T
         {
             #region 執行SQL語法-顯示群組資料
 
-            String tmpSql = "Select r_id,r_name,r_info From roles" + p;
+            String tmpSql = "Select r_id, r_name From roles" + p;
 
             //SqlConnection cn = new SqlConnection(DB_Cnstr);
             var cb = new SqlConnectionStringBuilder();

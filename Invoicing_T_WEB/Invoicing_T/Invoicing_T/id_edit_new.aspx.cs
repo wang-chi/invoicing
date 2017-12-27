@@ -74,8 +74,9 @@ namespace Invoicing_T
                     // DateTime dt = DateTime.NOw; // 取得現在時間
                     //String str = dt.ToString(); // 轉成字串，例：2012/6/5 下午 04:43:57
 
-                    id_edit_new = @"Insert Into member (m_id,m_pwd,m_position,m_name,m_sex,r_id,m_number,m_email,m_phone,createdate,update_time) 
-                    Values('" + m_id + "','" + m_pwd + "','" + m_position + "','N" + m_name + "','" + m_sex + "','" + r_id +"','"+ m_number + "','"+ m_email + "','"+ m_phone + "', GETDATE(), GETDATE())";//新增
+                    
+id_edit_new = @"Insert Into member (m_id,m_pwd,m_position,m_name,m_sex,r_id,m_number,m_email,m_phone,createdate,update_time) 
+                    Values('" + m_id + "','" + m_pwd + "','" + m_position + "',N'" + m_name + "','" + m_sex + "','" + r_id +"','"+ m_number + "','"+ m_email + "','"+ m_phone + "', GETDATE(), GETDATE())";//新增
 
                     tmp.Insert(id_edit_new);//用Insert方法
 

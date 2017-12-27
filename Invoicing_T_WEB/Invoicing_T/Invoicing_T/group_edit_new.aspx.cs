@@ -15,19 +15,16 @@ namespace Invoicing_T
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
             tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         }
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             //把畫面中使用者輸入的欄位值都到各個字串中
 
             r_id = TextBox1.Text;
             r_name = TextBox2.Text;
-            r_info = TextBox3.Text;
-
+            
             string id_edit_new;
             string select_id = "Select r_id From roles ";//查詢member_id是否有重複
 
@@ -48,7 +45,7 @@ namespace Invoicing_T
                 }
 
                 //如果有任一欄位未輸入  則顯示「必填」
-                if ((string.IsNullOrWhiteSpace(TextBox1.Text)) || (string.IsNullOrWhiteSpace(TextBox2.Text)) || (string.IsNullOrWhiteSpace(TextBox3.Text)))
+                if ((string.IsNullOrWhiteSpace(TextBox1.Text)) || (string.IsNullOrWhiteSpace(TextBox2.Text)) )
                 {
                     Label2.Visible = true;
                     Label2.Text = "*必須填入資料";
@@ -58,11 +55,11 @@ namespace Invoicing_T
 
 
                 //如果必填欄位都輸入,則新增置資料庫中
-                if (((!string.IsNullOrWhiteSpace(TextBox1.Text)) && (!string.IsNullOrWhiteSpace(TextBox2.Text)) && (!string.IsNullOrWhiteSpace(TextBox3.Text))))
+                if (((!string.IsNullOrWhiteSpace(TextBox1.Text)) && (!string.IsNullOrWhiteSpace(TextBox2.Text))))
                 {
                    
-                    id_edit_new = @"Insert Into roles (r_id,r_name,r_info,createdate,update_time) 
-                    Values('" + r_id + "','" + r_name + "','" + r_info + "', GETDATE(), GETDATE())";//新增
+                    id_edit_new = @"Insert Into roles (r_id,r_name) 
+                    Values('" + r_id + "',N'" + r_name + "')";//新增
 
                     tmp.Insert(id_edit_new);//用Insert方法
 
