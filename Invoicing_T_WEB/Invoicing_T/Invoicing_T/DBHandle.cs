@@ -144,7 +144,7 @@ namespace Invoicing_T
                 cb.DataSource = "nutc106db.database.windows.net";
                 cb.UserID = "nutc03";
                 cb.Password = "NUTCia03";
-                cb.InitialCatalog = "invoicing";               
+                cb.InitialCatalog = "invoicing";
 
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
@@ -265,7 +265,7 @@ namespace Invoicing_T
 
                     dr.Fill(ds, "group_info");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
-                }              
+                }
 
             }
             catch (Exception)
@@ -371,14 +371,14 @@ namespace Invoicing_T
                     dr.Fill(ds, "roles");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
                 }
-                              
+
 
             }
             catch (Exception)
             {
                 return null;//如果錯誤  回傳null值
-           
-        }
+
+            }
 
             return ds;//回傳DataSet的表
 
@@ -389,38 +389,34 @@ namespace Invoicing_T
         {
             #region 執行SQL語法-顯示權限資料
 
-            String tmpSql = "Select * From auth";
+            String tmpSql = "SELECT * FROM auth";
 
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
-            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
             DataSet ds = new DataSet();
-
+            SqlCommand cmd = new SqlCommand();
             try
             {
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
 
-                cn.Open();//開啟資料庫
-
-                cmd.CommandText = tmpSql;
-
-                cmd.Connection = cn;//指定連線物件
-
-                SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
-
-                dr.Fill(ds, "authgroup");//在DataSet中查詢,為DataSet中的資料表重新命名
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "authgroup");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
 
             }
             catch (Exception)
             {
                 return null;//如果錯誤  回傳null值
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
-
             return ds;//回傳DataSet的表
 
             #endregion
@@ -455,7 +451,7 @@ namespace Invoicing_T
 
                     dr.Fill(ds, "member");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
-                }            
+                }
             }
             catch (Exception)
             {
@@ -474,35 +470,34 @@ namespace Invoicing_T
 
 
             string tmp = "Select * From member Where m_id=@m_id";
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
 
             try
             {
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@m_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
 
-                cn.Open();//開啟資料庫
-                cmd.CommandText = tmp;//
-                cmd.Parameters.AddWithValue("@m_id", p);//定義參數
-                cmd.Connection = cn;//指定連線物件
-
-                SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
-
-                dr.Fill(ds, "member_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    dr.Fill(ds, "member_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
 
             }
             catch (Exception)
             {
                 return null;//如果錯誤  回傳null值
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
-
             return ds;//回傳DataSet的表
 
             #endregion
@@ -514,34 +509,41 @@ namespace Invoicing_T
 
 
             string tmp = "Select * From roles Where r_id=@r_id";
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
 
             try
             {
 
-                cn.Open();//開啟資料庫
-                cmd.CommandText = tmp;//
-                cmd.Parameters.AddWithValue("@r_id", p);//定義參數
-                cmd.Connection = cn;//指定連線物件
+                
 
-                SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                
 
-                dr.Fill(ds, "group_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@r_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "group_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
 
             }
             catch (Exception)
             {
                 return null;//如果錯誤  回傳null值
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+
 
             return ds;//回傳DataSet的表
 
@@ -706,40 +708,45 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         {
             #region 執行SQL語法-修改員工資料(停權與否)
             string tmp = "Update member set m_position='" + member_position + "'  Where m_id='" + m_id + "'";//利用參數方式寫SQL語法
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
             try
             {
 
-                cn.Open();//開啟資料庫
+                
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
 
 
-                tran = cn.BeginTransaction();//建立SqlConnection交易
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
 
-                cmd.CommandText = tmp;//新增
+                    cmd.CommandText = tmp;//新增
 
-                cmd.Connection = cn;//指定連線物件
+                    cmd.Connection = cn;//指定連線物件
 
-                cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.Transaction = tran;//建立SqlConnection交易
 
 
-                cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.ExecuteNonQuery();//執行SQL語法
 
-                cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
             }
             catch (Exception)
             {
                 cmd.Transaction.Rollback();
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+            
             #endregion
         }
 
@@ -747,44 +754,50 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         {
             #region 執行SQL語法-刪除群組資料
             string tmp = @"Delete  From roles Where r_id=@r_id";//利用參數方式寫SQL語法
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
             try
             {
 
-                cn.Open();//開啟資料庫
+                
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                
+
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
 
 
-                tran = cn.BeginTransaction();//建立SqlConnection交易
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
 
-                cmd.CommandText = tmp;//新增
-                #region 定義參數
-                cmd.Parameters.AddWithValue("@r_id", tmpViewData["r_id"]);
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@r_id", tmpViewData["r_id"]);
 
-                #endregion
+                    #endregion
 
-                cmd.Connection = cn;//指定連線物件
+                    cmd.Connection = cn;//指定連線物件
 
-                cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.Transaction = tran;//建立SqlConnection交易
 
 
-                cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.ExecuteNonQuery();//執行SQL語法
 
-                cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
             }
             catch (Exception)
             {
                 cmd.Transaction.Rollback();
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+
             #endregion
         }
 
@@ -796,35 +809,40 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             String tmpSql = "Select member_guid,member_id,member_pwd,member_name,member_email From Member_Info Where 1=1  AND member_id LIKE '%" + s_id + "%' AND  member_name LIKE'%" + s_name + "%'";
 
 
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
 
             try
             {
 
-                cn.Open();//開啟資料庫
+               
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
 
-                cmd.CommandText = tmpSql;
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
 
-                cmd.Connection = cn;//指定連線物件
+                    cmd.CommandText = tmpSql;
 
-                SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    cmd.Connection = cn;//指定連線物件
 
-                dr.Fill(ds, "member_all");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "member_all");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
 
             }
             catch (Exception)
             {
                 return null;//如果錯誤  回傳null值
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+
 
             return ds;//回傳DataSet的表
 
@@ -1009,38 +1027,45 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         {
             #region 執行SQL語法-修改資料
             string tmp = "Update roles set r_name=@r_name,r_info=@r_info,update_time= GETDATE()  Where r_id=@r_id";//利用參數方式寫SQL語法
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
+            //SqlConnection cn = new SqlConnection(DB_Cnstr);
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
             try
             {
-                cn.Open();//開啟資料庫
-                tran = cn.BeginTransaction();//建立SqlConnection交易
-                cmd.CommandText = tmp;//新增
-                #region 定義參數
-                cmd.Parameters.AddWithValue("@r_id", tmpViewData["r_id"]);
-                cmd.Parameters.AddWithValue("@r_name", tmpViewData["r_name"]);
-                cmd.Parameters.AddWithValue("@r_info", tmpViewData["r_info"]);
-                #endregion
+                
 
-                cmd.Connection = cn;//指定連線物件
-                cmd.Transaction = tran;//建立SqlConnection交易
-                cmd.ExecuteNonQuery();//執行SQL語法
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
 
-                cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@r_id", tmpViewData["r_id"]);
+                    cmd.Parameters.AddWithValue("@r_name", tmpViewData["r_name"]);
+                    cmd.Parameters.AddWithValue("@r_info", tmpViewData["r_info"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
             }
             catch (Exception)
             {
                 cmd.Transaction.Rollback();
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+
             #endregion
         }
 

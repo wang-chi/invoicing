@@ -14,6 +14,8 @@
 </head>
 <body>
     <div class="loginform">
+        <span>進銷存管理系統</span>
+        <hr />
         <form id="loginform" runat="server" class="container">
             <div class="form-group row">
                 <asp:Label class="col-sm-5 col-form-label" runat="server" For="InputAccount" Text="帳　號" />

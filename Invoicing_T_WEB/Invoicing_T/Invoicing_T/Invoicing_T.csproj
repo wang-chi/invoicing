@@ -101,6 +101,8 @@
     <Content Include="id_edit.aspx" />
     <Content Include="id_manage.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="table.css" />
+    <Content Include="dashboard.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

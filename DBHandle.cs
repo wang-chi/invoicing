@@ -155,12 +155,13 @@ namespace Invoicing_T
             DataSet ds = new DataSet();
             try
             {
+                SqlCommand cmd = new SqlCommand();
                 var cb = new SqlConnectionStringBuilder();
                 cb.DataSource = "nutc106db.database.windows.net";
                 cb.UserID = "nutc03";
                 cb.Password = "NUTCia03";
                 cb.InitialCatalog = "invoicing";
-                SqlCommand cmd = new SqlCommand();
+                
 
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {

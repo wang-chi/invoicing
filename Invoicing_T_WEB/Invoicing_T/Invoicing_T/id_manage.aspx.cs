@@ -17,14 +17,14 @@ namespace Invoicing_T
             tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             if (!IsPostBack)
             {
-                this.all(null, null,"");//查詢群組資料
-               
+                this.all(null, null, "");//查詢群組資料
+
             }
         }
 
-        protected void all(object sender, EventArgs e,String p)
+        protected void all(object sender, EventArgs e, String p)
         {
-            
+
             #region 查詢帳號資料
 
             DataSet ds = tmp.Getmember(p);
@@ -34,18 +34,18 @@ namespace Invoicing_T
                 lvmemberInfo.DataSource = ds.Tables["member"];
                 lvmemberInfo.DataBind();
             }
-            
+
             #endregion
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btn_insert_member(object sender, EventArgs e)
         {
             Response.Redirect("id_edit_new.aspx");//跳轉到新增頁面
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE m_id LIKE '%" + TextBox1.Text+"%'";
+            String selection = " WHERE m_id LIKE '%" + TextBox1.Text + "%'";
             all(null, null, selection);
         }
     }

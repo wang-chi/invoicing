@@ -10,8 +10,8 @@ namespace Invoicing_T
 {
     public partial class id_edit_new : System.Web.UI.Page
     {
-        string m_id, m_pwd, m_position,m_name,m_sex,r_id,m_number,m_email,m_phone;//註冊項目
-        
+        string m_id, m_pwd, m_position, m_name, m_sex, r_id, m_number, m_email, m_phone;//註冊項目
+
 
         DBHandle tmp = new DBHandle();
 
@@ -37,8 +37,8 @@ namespace Invoicing_T
             r_id = TextBox2.Text;
             m_number = TextBox3.Text;
             m_phone = TextBox4.Text;
-            m_email= TextBox5.Text;
-            
+            m_email = TextBox5.Text;
+
             string id_edit_new;
             string select_id = "Select m_id From member ";//查詢member_id是否有重複
 
@@ -57,13 +57,13 @@ namespace Invoicing_T
                     }
 
                 }
-                
+
                 //如果有任一欄位未輸入  則顯示「必填」
                 if ((string.IsNullOrWhiteSpace(TextBox6.Text)) || (string.IsNullOrWhiteSpace(TextBox7.Text)) || (string.IsNullOrWhiteSpace(TextBox1.Text)) || (string.IsNullOrWhiteSpace(TextBox2.Text)) || (string.IsNullOrWhiteSpace(TextBox3.Text)) || (string.IsNullOrWhiteSpace(TextBox4.Text)) || (string.IsNullOrWhiteSpace(TextBox5.Text)))
                 {
                     Label10.Visible = true;
                     Label10.Text = "*必須填入資料";
-                    
+
                 }
 
 
@@ -74,9 +74,9 @@ namespace Invoicing_T
                     // DateTime dt = DateTime.NOw; // 取得現在時間
                     //String str = dt.ToString(); // 轉成字串，例：2012/6/5 下午 04:43:57
 
-                    
-id_edit_new = @"Insert Into member (m_id,m_pwd,m_position,m_name,m_sex,r_id,m_number,m_email,m_phone,createdate,update_time) 
-                    Values('" + m_id + "','" + m_pwd + "','" + m_position + "',N'" + m_name + "','" + m_sex + "','" + r_id +"','"+ m_number + "','"+ m_email + "','"+ m_phone + "', GETDATE(), GETDATE())";//新增
+
+                    id_edit_new = @"Insert Into member (m_id,m_pwd,m_position,m_name,m_sex,r_id,m_number,m_email,m_phone,createdate,update_time) 
+                    Values('" + m_id + "','" + m_pwd + "','" + m_position + "',N'" + m_name + "','" + m_sex + "','" + r_id + "','" + m_number + "','" + m_email + "','" + m_phone + "', GETDATE(), GETDATE())";//新增
 
                     tmp.Insert(id_edit_new);//用Insert方法
 
