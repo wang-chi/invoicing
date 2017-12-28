@@ -9,7 +9,6 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="dashboard.css" rel="stylesheet" />
     <link href="table.css" rel="stylesheet" />
-
 </head>
 <body>
     <header>
@@ -31,7 +30,6 @@
 
             </div>
         </nav>
-
     </header>
     <div class="container-fluid">
         <div class="row">

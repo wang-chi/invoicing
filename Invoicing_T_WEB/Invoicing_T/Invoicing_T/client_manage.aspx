@@ -13,12 +13,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="home.aspx">Dashboard</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                 </ul>
@@ -78,7 +76,7 @@
                 <form runat="server">
                     <h1>帳號查詢</h1>
                     <asp:Label ID="Label3" runat="server" Text="請以客戶ID查詢："></asp:Label>
-                    <asp:TextBox ID="InputSupplier" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="InputSearchClientID" runat="server"></asp:TextBox>
                     <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
                     <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_client" />
 

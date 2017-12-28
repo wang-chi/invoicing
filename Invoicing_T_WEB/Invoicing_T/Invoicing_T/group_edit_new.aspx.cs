@@ -17,15 +17,14 @@ namespace Invoicing_T
         {
 
         }
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btn_insert_group(object sender, EventArgs e)
         {
             //把畫面中使用者輸入的欄位值都到各個字串中
-
-            r_id = TextBox1.Text;
-            r_name = TextBox2.Text;
+            r_id = InputId.Text;
+            r_name = InputName.Text;
             
             string id_edit_new;
-            string select_id = "Select r_id From roles ";//查詢member_id是否有重複
+            string select_id = "SELECT r_id FROM roles ";//查詢member_id是否有重複
 
             DataSet ds = tmp.Getgroupid(select_id);
 
@@ -40,25 +39,21 @@ namespace Invoicing_T
                     {
                         Label12.Visible = true;
                     }
-
                 }
 
                 //如果有任一欄位未輸入  則顯示「必填」
-                if ((string.IsNullOrWhiteSpace(TextBox1.Text)) || (string.IsNullOrWhiteSpace(TextBox2.Text)) )
+                if ((string.IsNullOrWhiteSpace(InputId.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)) )
                 {
                     Label2.Visible = true;
                     Label2.Text = "*必須填入資料";
 
                 }
-
-
-
                 //如果必填欄位都輸入,則新增置資料庫中
-                if (((!string.IsNullOrWhiteSpace(TextBox1.Text)) && (!string.IsNullOrWhiteSpace(TextBox2.Text))))
+                if (((!string.IsNullOrWhiteSpace(InputId.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text))))
                 {
                    
-                    id_edit_new = @"Insert Into roles (r_id,r_name) 
-                    Values('" + r_id + "',N'" + r_name + "')";//新增
+                    id_edit_new = @"INSERT INTO roles (r_id,r_name) 
+                    VALUES('" + r_id + "',N'" + r_name + "')";//新增
 
                     tmp.Insert(id_edit_new);//用Insert方法
 

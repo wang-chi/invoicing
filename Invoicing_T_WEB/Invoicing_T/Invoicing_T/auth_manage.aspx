@@ -78,7 +78,7 @@
                 <form runat="server">
                     <h1>權限查詢</h1>
                     <asp:Label ID="Label3" runat="server" Text="請以權限ID查詢："></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="InputSearchAuthID" runat="server"></asp:TextBox>
                         <asp:Button ID="Button2" class="btn"  runat="server" Text="查詢" OnClick="btn_search" />
                        <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_auth" />
 
