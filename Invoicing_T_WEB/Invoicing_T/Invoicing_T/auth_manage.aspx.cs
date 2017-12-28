@@ -39,7 +39,7 @@ namespace Invoicing_T
 
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE a_id LIKE '%" + TextBox1.Text + "%'";
+            String selection = " WHERE a_id LIKE '%" + InputSearchAuthID.Text + "%'";
             all(null, null, selection);
         }
 
