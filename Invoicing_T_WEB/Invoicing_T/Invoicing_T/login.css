@@ -16,8 +16,7 @@
     margin:auto auto;
     background-color: rgba(255,255,255,0.7);
     border-radius:15px;
-    margin-top:23em;   
-    
+    margin-top:20em;   
     padding:15px;
 }
 
@@ -28,4 +27,9 @@ div.form-action {
 
 .col-form-label {
     text-align:right;
+}
+
+hr {
+    border-top-width: 3px;
+    border-top-color: #a1a1a1;
 }

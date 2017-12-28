@@ -13,30 +13,38 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
             if (!IsPostBack)
             {
-                this.all(null, null);//查詢群組資料
-               
+                this.all(null, null, "");//查詢群組資料
+
             }
         }
 
-        protected void all(object sender, EventArgs e)
+        protected void all(object sender, EventArgs e, String p)
         {
-            
-            #region 查詢帳號資料
-            Dictionary<string, object> tmpFilter = new Dictionary<string, object>();//建立新的字典以方便查詢
 
-            DataSet ds = tmp.Getmember(tmpFilter);
+            #region 查詢帳號資料
+
+            DataSet ds = tmp.Getmember(p);
             if (ds != null)
             {
                 lvmemberInfo.DataSource = null;
                 lvmemberInfo.DataSource = ds.Tables["member"];
                 lvmemberInfo.DataBind();
             }
-            
+
             #endregion
         }
-        
+
+        protected void btn_insert_member(object sender, EventArgs e)
+        {
+            Response.Redirect("id_edit_new.aspx");//跳轉到新增頁面
+        }
+
+        protected void btn_search(object sender, EventArgs e)
+        {
+            String selection = " WHERE m_id LIKE '%" + InputMemberID.Text + "%'";
+            all(null, null, selection);
+        }
     }
 }

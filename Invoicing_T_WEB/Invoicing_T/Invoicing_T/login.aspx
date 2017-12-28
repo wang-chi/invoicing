@@ -7,11 +7,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中科大進銷存 登入</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
+
     <link href="login.css" rel="stylesheet" />
+
 
 </head>
 <body>
     <div class="loginform">
+        <span>進銷存管理系統</span>
+        <hr />
         <form id="loginform" runat="server" class="container">
             <div class="form-group row">
                 <asp:Label class="col-sm-5 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
