@@ -15,7 +15,6 @@ namespace Invoicing_T
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         }
         protected void Button1_Click(object sender, EventArgs e)

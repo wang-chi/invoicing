@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="supplier_manage.aspx.cs" Inherits="Invoicing_T.supplier_mange" %>
 
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,14 +10,12 @@
     <link href="table.css" rel="stylesheet" />
 </head>
 <body>
-<header>
+    <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">Dashboard</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
                 </ul>
@@ -29,9 +25,7 @@
                 </form>
             </div>
         </nav>
-
     </header>
-
     <div class="container-fluid">
         <div class="row">
             <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
@@ -50,83 +44,88 @@
                     </li>
                 </ul>
 
-                <ul class="nav nav-pills flex-column">
+                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">基本資料管理</a>
+                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  active" href="supplier_mange.aspx">廠商管理<span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="supplier_mange.aspx">廠商管理<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">客戶管理</a>
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
                     </li>
                 </ul>
 
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品管理</a>
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品類別管理</a>
+                        <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">進貨管理</a>
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
                     </li>
                 </ul>
             </nav>
-
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <form runat="server">
-                    <h1>帳號查詢</h1>
-                    <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button2" class="btn"  runat="server" Text="查詢" OnClick="btn_search" />
-                       <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="Button1_Click" />
+                    <h1>廠商查詢</h1>
+                    <asp:Label ID="Label3" runat="server" Text="請以廠商ID查詢："></asp:Label>
+                    <asp:TextBox ID="InputSupplier" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
+                    <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_supplier" />
 
                     <h1>總覽</h1>
                     <div>
-                         <asp:ListView ID="lvauthInfo" runat="server" GroupItemCount="1"
-                GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
-                <LayoutTemplate>
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                            <tr class="success">
-                                <th width="25%">
-                                    <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
-                                <th width="25%">
-                                    <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
-                                <th width="25%">
-                                    <asp:Label ID="Label10" runat="server" Text="權限ID"></asp:Label></th>
-                                <th width="25%">
-                                    <asp:Label ID="Label14" runat="server" Text="權限名稱"></asp:Label></th>
-                               
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
-                        </tbody>
-                    </table>    
-                </LayoutTemplate>
-                <ItemTemplate>
-                    <tr>
+                        <asp:ListView ID="IvSupplierInfo" runat="server" GroupItemCount="1"
+                            GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
+                            <LayoutTemplate>
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="success">
+                                            <th width="10%">
+                                                <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
+                                            <th width="10%">
+                                                <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
+                                            <th width="16%">
+                                                <asp:Label ID="Label10" runat="server" Text="廠商ID"></asp:Label></th>
+                                            <th width="16%">
+                                                <asp:Label ID="Label14" runat="server" Text="廠商名稱"></asp:Label></th>
+                                            <th width="16%">
+                                                <asp:Label ID="Label4" runat="server" Text="廠商電話"></asp:Label></th>
+                                            <th width="16%">
+                                                <asp:Label ID="Label5" runat="server" Text="廠商郵件"></asp:Label></th>
+                                            <th width="16%">
+                                                <asp:Label ID="Label6" runat="server" Text="廠商地址"></asp:Label></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
+                                    </tbody>
+                                </table>
+                            </LayoutTemplate>
+                            <ItemTemplate>
+                                <tr>
+                                    <td>
+                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
+                                            <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
+                                        </asp:LinkButton>
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
+                                            <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
+                                        </asp:LinkButton>
+                                    </td>
+                                    <td><%# Eval("s_id") %></td>
+                                    <td><%# Eval("s_name") %></td>
+                                    <td><%# Eval("s_phone") %></td>
+                                    <td><%# Eval("s_email") %></td>
+                                    <td><%# Eval("s_address") %></td>
 
-                        <td>
-                            <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "auth_edit.aspx?ActionState=UpDate&r_id="+Eval("a_id")%>' ToolTip="修改">
-                                <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
-                            </asp:LinkButton>
-                        </td>
-                        <td>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "auth_edit.aspx?ActionState=Delete&r_id="+Eval("a_id")%>' ToolTip="刪除">
-                                <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
-                            </asp:LinkButton>
-                        </td>
-                        <td><%# Eval("a_id") %></td>
-                        <td><%# Eval("a_name") %></td>
-                        
-                    </tr>
-                </ItemTemplate>
-            </asp:ListView>
-
+                                </tr>
+                            </ItemTemplate>
+                        </asp:ListView>
                     </div>
                 </form>
             </main>

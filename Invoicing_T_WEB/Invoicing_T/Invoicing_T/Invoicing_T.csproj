@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="client_manage.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -101,6 +102,8 @@
     <Content Include="id_edit.aspx" />
     <Content Include="id_manage.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="supplier_edit_new.aspx" />
+    <Content Include="supplier_manage.aspx" />
     <Content Include="table.css" />
     <Content Include="dashboard.css" />
     <Content Include="Web.config" />
@@ -119,6 +122,13 @@
     </Compile>
     <Compile Include="auth_manage.aspx.designer.cs">
       <DependentUpon>auth_manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="client_manage.aspx.cs">
+      <DependentUpon>client_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="client_manage.aspx.designer.cs">
+      <DependentUpon>client_manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBHandle.cs" />
     <Compile Include="group_edit.aspx.cs">
@@ -178,6 +188,20 @@
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="supplier_edit_new.aspx.cs">
+      <DependentUpon>supplier_edit_new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supplier_edit_new.aspx.designer.cs">
+      <DependentUpon>supplier_edit_new.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supplier_manage.aspx.cs">
+      <DependentUpon>supplier_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supplier_manage.aspx.designer.cs">
+      <DependentUpon>supplier_manage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

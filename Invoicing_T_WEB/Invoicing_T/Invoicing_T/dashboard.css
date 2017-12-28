@@ -62,3 +62,8 @@ h1 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
+
+/*font*/
+a, p, h1, h2, h3, h4, tr, td, th,ul,li,ol,label,span {
+    font-family:'Microsoft JhengHei UI';
+}

@@ -13,8 +13,6 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
-            tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             if (!IsPostBack)
             {
                 this.all(null, null, "");//查詢群組資料
@@ -45,7 +43,7 @@ namespace Invoicing_T
 
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE m_id LIKE '%" + TextBox1.Text + "%'";
+            String selection = " WHERE m_id LIKE '%" + InputMemberID.Text + "%'";
             all(null, null, selection);
         }
     }

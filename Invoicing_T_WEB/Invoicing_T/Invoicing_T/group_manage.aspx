@@ -53,7 +53,7 @@
                         <a class="nav-link" href="#">基本資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">客戶管理</a>
@@ -92,7 +92,7 @@
                                             <th width="10%">
                                                 <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
                                             <th width="10%">
-                                                <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
+                                                <asp:Label ID="Label1" runat="server" Text="刪除"></asp:Label></th>
                                             <th width="27%">
                                                 <asp:Label ID="Label10" runat="server" Text="群組ID"></asp:Label></th>
                                             <th width="27%">

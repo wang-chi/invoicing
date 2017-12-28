@@ -42,42 +42,42 @@
                         <a class="nav-link" href="id_manage.aspx">帳號管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="group_manage.aspx">角色管理<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="group_manage.aspx">角色管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="auth_manage.aspx">權限管理</a>
-                    </li>
-                </ul>
-
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">基本資料管理</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">客戶管理</a>
+                        <a class="nav-link active" href="auth_manage.aspx">權限管理<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
 
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品管理</a>
+                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品類別管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">進貨管理</a>
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
+                    </li>
+                </ul>
+
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
                     </li>
                 </ul>
             </nav>
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <form runat="server">
-                    <h1>帳號查詢</h1>
-                    <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
+                    <h1>權限查詢</h1>
+                    <asp:Label ID="Label3" runat="server" Text="請以權限ID查詢："></asp:Label>
                         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
                         <asp:Button ID="Button2" class="btn"  runat="server" Text="查詢" OnClick="btn_search" />
                        <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_auth" />
@@ -93,7 +93,7 @@
                                 <th width="25%">
                                     <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
                                 <th width="25%">
-                                    <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
+                                    <asp:Label ID="Label1" runat="server" Text="刪除"></asp:Label></th>
                                 <th width="25%">
                                     <asp:Label ID="Label10" runat="server" Text="權限ID"></asp:Label></th>
                                 <th width="25%">

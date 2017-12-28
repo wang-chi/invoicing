@@ -53,29 +53,29 @@
             </li>
           </ul>
 
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">基本資料管理</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">廠商管理</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">客戶管理</a>
-            </li>
-          </ul>
+           <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="client_manage.aspx">客戶管理<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
 
-          <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">商品管理</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">商品類別管理</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">進貨管理</a>
-            </li>
-          </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
+                    </li>
+                </ul>
         </nav>
 
         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">

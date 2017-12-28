@@ -14,8 +14,6 @@ namespace Invoicing_T
         String member_tmp_p;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
-            tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia03};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             //String this_position = Session["m_id"].ToString();
             if (!IsPostBack)
             {
@@ -47,9 +45,6 @@ namespace Invoicing_T
                 m_number.Text = tmpDataRow["m_number"].ToString();
                 m_phone.Text = tmpDataRow["m_phone"].ToString();
                 m_email.Text = tmpDataRow["m_email"].ToString();
-
-           
-
             }
             
             if(m_position.Text== "True")
@@ -67,8 +62,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        protected void bt_position_Click(object sender, EventArgs e)
-        {
+        protected void btn_position_check(object sender, EventArgs e) {
             if (m_position.Text == "啟用中")
             {
                 member_tmp_p = "False";
@@ -78,9 +72,11 @@ namespace Invoicing_T
             {
                 member_tmp_p = "True";
             }
-            tmp.UpDatememberData(member_tmp_p,m_id.Text);
+            tmp.UpDatememberData(member_tmp_p, m_id.Text);
 
             Server.Transfer("id_manage.aspx", true);//導回查詢頁
         }
+
+   
     }
 }

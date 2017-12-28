@@ -11,8 +11,6 @@
     <link href="table.css" rel="stylesheet" />
 </head>
 <body>
-
-
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">Dashboard</a>
@@ -83,11 +81,11 @@
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <form runat="server">
                     <h1>帳號查詢</h1>
-                        <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button2" class="btn"  runat="server" Text="查詢" OnClick="btn_search" />
-                       <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_member" />
-                 
+                    <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
+                    <asp:TextBox ID="InputMemberID" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
+                    <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_member" />
+
                     <h1>總覽</h1>
                     <div>
                         <asp:ListView ID="lvmemberInfo" runat="server" GroupItemCount="1" GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
@@ -130,13 +128,12 @@
 
                                     <td><%# Eval("m_position") %></td>
                                     <td><%# Eval("m_name") %></td>
-
                                     <td><%# Eval("r_id") %></td>
                                     <td><%# Eval("m_number") %></td>
                                     <!-- <td><%# Eval("m_phone") %></td>
-                        <td><%# Eval("m_email") %></td>
-                       <td><%# Eval("createdate") %></td>
-                        <td><%# Eval("update_time") %></td>-->
+                                        <td><%# Eval("m_email") %></td>
+                                       <td><%# Eval("createdate") %></td>
+                                        <td><%# Eval("update_time") %></td>-->
 
                                 </tr>
                             </ItemTemplate>
