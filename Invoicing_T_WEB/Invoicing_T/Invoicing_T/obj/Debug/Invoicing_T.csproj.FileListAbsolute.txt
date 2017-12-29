@@ -23,3 +23,4 @@ D:/Invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.pdb
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.csproj.CoreCompileInputs.cache
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.dll
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.pdb
+/Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.csprojResolveAssemblyReference.cache
