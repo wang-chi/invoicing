@@ -31,7 +31,7 @@ namespace Invoicing_T
 
             #region 查詢帳號資料
             
-            DataSet ds1 = tmp.Getmember_info(p);//取得營地資料
+            DataSet ds1 = tmp.GetMemberInfo(p);//取得營地資料
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["member_info"].Rows[0];
@@ -51,12 +51,14 @@ namespace Invoicing_T
             {
                 m_position.Text = "啟用中";
                 bt_position.Text = "停權";
+                bt_position.CssClass = "btn btn-danger";
             }
 
             if (m_position.Text == "False")
             {
                 m_position.Text = "停權中";
                 bt_position.Text = "啟用";
+                bt_position.CssClass = "btn btn-success";
             }
 
             #endregion
@@ -72,7 +74,7 @@ namespace Invoicing_T
             {
                 member_tmp_p = "True";
             }
-            tmp.UpDatememberData(member_tmp_p, m_id.Text);
+            tmp.UpdateMemberData(member_tmp_p, m_id.Text);
 
             Server.Transfer("id_manage.aspx", true);//導回查詢頁
         }

@@ -23,7 +23,7 @@ namespace Invoicing_T
         {
             #region 查詢權限資料
 
-            DataSet ds = tmp.Getauth(p);
+            DataSet ds = tmp.GetAuth(p);
             if (ds != null)
             {
                 lvauthInfo.DataSource = null;

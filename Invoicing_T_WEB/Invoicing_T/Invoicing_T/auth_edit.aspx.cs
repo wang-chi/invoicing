@@ -25,8 +25,6 @@ namespace Invoicing_T
                             btUpDate.Visible = true;
                             break;
                         case "Delete":
-                            //btActionState.Text = "刪除房屋資料";
-                            //btActionState.ToolTip = "狀態:刪除房屋資料";
                             btDelete.Visible = true;
                             auth_name_input.ReadOnly = true;
                             auth_name_input.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
@@ -48,7 +46,7 @@ namespace Invoicing_T
 
             #region 查詢群組資料
 
-            DataSet ds1 = tmp.Getauth_info(p);//取得營地資料
+            DataSet ds1 = tmp.GetAuthInfo(p);
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["auth_info"].Rows[0];
@@ -69,10 +67,10 @@ namespace Invoicing_T
             switch (tmpID)//使用者按下哪一個按鈕
             {
                 case "btUpDate":
-                    tmp.UpDateauth(tmpViewData);
+                    tmp.UpdateAuth(tmpViewData);
                     break;
                 case "btDelete":
-                    tmp.Deleteauth(tmpViewData);
+                    tmp.DeleteAuth(tmpViewData);
                     break;
             }
             Server.Transfer("auth_manage.aspx", true);//導回群組管理

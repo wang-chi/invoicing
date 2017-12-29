@@ -1,26 +1,4 @@
-<<<<<<< HEAD
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_edit.aspx.cs" Inherits="Invoicing_T.auth_edit" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
-        </ol>
-    </nav>
-    <form id="form1" runat="server">
-        
-    </form>
-</body>
-</html>
-=======
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_edit.aspx.cs" Inherits="Invoicing_T.auth_edit" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_edit.aspx.cs" Inherits="Invoicing_T.auth_edit" %>
 
 <!DOCTYPE html>
 
@@ -67,9 +45,7 @@
                             <a class="nav-link " href="home.aspx">Overview </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="id_manage.aspx">帳號管理
-                                <span class="sr-only">(current)</span>
-                            </a>
+                            <a class="nav-link active" href="id_manage.aspx">帳號管理<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="group_manage.aspx">角色管理</a>
@@ -81,7 +57,7 @@
 
                     <ul class="nav nav-pills flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                            <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
@@ -106,28 +82,25 @@
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                     <h1>權限資料修改</h1>
-                    <div>
-                        <form id="form1" runat="server">
 
+                        <form id="form1" runat="server">
                             <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
                             <asp:HiddenField ID="HiddenF_rid" runat="server" />
-
-
                             <div class="form-group">
-                                權限ID：
+                                <label>權限ID：</label>
                                 <asp:Label ID="a_id" runat="server" Text='<%# Eval("a_id") %>' />
                             </div>
-                            權限名稱：
-                            <asp:TextBox ID="auth_name_input" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <asp:Button ID="btUpDate" class="btn btn-danger" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
-                        <asp:Button ID="btDelete" class="btn btn-danger" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
-                    </div>
+                            <div class="form-group">
+                                <label>權限名稱：</label>
+                                <asp:TextBox ID="auth_name_input" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:Button ID="btUpDate" class="btn btn-danger" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
+                                <asp:Button ID="btDelete" class="btn btn-danger" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
+                            </div>
+                        </form>
 
-                    </form>
-
-            </div>
+                
 
             </main>
         </div>
@@ -136,4 +109,3 @@
     </body>
 
     </html>
->>>>>>> a7bb961776122ecb2c3f70bd146c558aaff5bc52

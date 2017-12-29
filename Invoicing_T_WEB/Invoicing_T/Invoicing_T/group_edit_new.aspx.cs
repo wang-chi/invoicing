@@ -26,7 +26,7 @@ namespace Invoicing_T
             string id_edit_new;
             string select_id = "SELECT r_id FROM roles ";//查詢member_id是否有重複
 
-            DataSet ds = tmp.Getgroupid(select_id);
+            DataSet ds = tmp.GetGroupId(select_id);
 
             if (ds != null)
             {

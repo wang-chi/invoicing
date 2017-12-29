@@ -24,14 +24,14 @@ namespace Invoicing_T
         protected void all(object sender, EventArgs e,String p)
         {
             #region 查詢群組資料
-            DataSet ds = tmp.Getgroup(p);
+            DataSet ds = tmp.GetGroup(p);
             if (ds != null)
             {
                 lvCampInfo.DataSource = null;
                 lvCampInfo.DataSource = ds.Tables["roles"];
                 lvCampInfo.DataBind();
             }          
-                        #endregion
+            #endregion
         }
 
         protected void btn_insert_group(object sender, EventArgs e)

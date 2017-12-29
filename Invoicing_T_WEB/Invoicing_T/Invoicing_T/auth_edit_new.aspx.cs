@@ -27,7 +27,7 @@ namespace Invoicing_T
             string auth_edit_new;
             string select_id = "SELECT a_id FROM auth ";//查詢member_id是否有重複
 
-            DataSet ds = tmp.Getauthid(select_id);
+            DataSet ds = tmp.GetAuthId(select_id);
 
             if (ds != null)
             {

@@ -52,7 +52,7 @@
 
                  <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
@@ -107,8 +107,7 @@
                                 員工電話：<asp:Label ID="m_phone" runat="server" Text='<%# Eval("m_phone") %>' />
                             </div>
                             <div class="form-group">
-                                用戶信箱：
-            <asp:Label ID="m_email" runat="server" Text='<%# Eval("m_email") %>' />
+                                用戶信箱：<asp:Label ID="m_email" runat="server" Text='<%# Eval("m_email") %>' />
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="bt_position" class="btn" runat="server" Text="更改狀態為" OnClick="btn_position_check" />

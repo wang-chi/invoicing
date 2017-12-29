@@ -122,7 +122,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        public DataSet Getgroupid(string p)
+        public DataSet GetGroupId(string p)
         {
             #region 檢測群組帳號是否重複
             SqlCommand cmd = new SqlCommand();
@@ -152,7 +152,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        public DataSet Getauthid(string p)
+        public DataSet GetAuthId(string p)
         {
             #region 檢測權限帳號是否重複
             SqlCommand cmd = new SqlCommand();
@@ -360,7 +360,7 @@ namespace Invoicing_T
             #endregion
         }*/
 
-        internal DataSet Getgroup(String p)
+        internal DataSet GetGroup(String p)
         {
             #region 執行SQL語法-顯示群組資料
             String tmpSql = "SELECT r_id, r_name FROM roles" + p;
@@ -397,7 +397,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getauth(String p)
+        internal DataSet GetAuth(String p)
         {
             #region 執行SQL語法-顯示權限資料
 
@@ -465,7 +465,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getmember_info(string p)
+        internal DataSet GetMemberInfo(string p)
         {
             #region 查詢member資料
             string tmp = "SELECT * FROM member WHERE m_id=@m_id";
@@ -497,7 +497,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getcompany_info()
+        internal DataSet GetCompanyInfo()
         {
             #region 查詢company資料
             string tmp = "SELECT * FROM company";
@@ -528,7 +528,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getgroup_info(string p)
+        internal DataSet GetGroupInfo(string p)
         {
             #region 查詢group資料
             string tmp = "SELECT * FROM roles WHERE r_id=@r_id";
@@ -563,7 +563,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getauth_info(string p)
+        internal DataSet GetAuthInfo(string p)
         {
             #region 查詢auth資料
             string tmp = "SELECT * FROM auth WHERE a_id=@a_id";
@@ -632,7 +632,7 @@ namespace Invoicing_T
         internal DataSet GetClient()
         {
             #region 執行SQL語法-顯示帳號資料
-            String tmpSql = "SELECT * FROM supplier";
+            String tmpSql = "SELECT * FROM client";
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -645,7 +645,7 @@ namespace Invoicing_T
                     cmd.CommandText = tmpSql;
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
-                    dr.Fill(ds, "supplier");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    dr.Fill(ds, "client");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
                 }
             }
@@ -660,7 +660,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet GetSupplier_info(string p)
+        internal DataSet GetSupplierInfo(string p)
         {
             #region 查詢member資料
 
@@ -843,7 +843,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void UpDatememberData(String member_position, String m_id)
+        internal void UpdateMemberData(String member_position, String m_id)
         {
             #region 執行SQL語法-修改員工資料(停權與否)
             string tmp = "Update member set m_position='" + member_position + "'  WHERE m_id='" + m_id + "'";//利用參數方式寫SQL語法
@@ -882,7 +882,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void Deletegroup(Dictionary<string, object> tmpViewData)
+        internal void DeleteGroup(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-刪除群組資料
             string tmp = @"Delete  FROM roles WHERE r_id=@r_id";//利用參數方式寫SQL語法
@@ -918,7 +918,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void Deleteauth(Dictionary<string, object> tmpViewData)
+        internal void DeleteAuth(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-刪除權限資料
             string tmp = @"Delete  FROM auth WHERE a_id=@a_id";//利用參數方式寫SQL語法
@@ -1115,7 +1115,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
         
-        internal void UpDategroup(Dictionary<string, object> tmpViewData)
+        internal void UpdateGroup(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-修改群組資料
             // string tmp = "Update roles set r_name=@r_name,r_info=@r_info,update_time= GETDATE()  WHERE r_id=@r_id";//利用參數方式寫SQL語法
@@ -1154,7 +1154,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void UpDateauth(Dictionary<string, object> tmpViewData)
+        internal void UpdateAuth(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-修改權限資料
             string tmp = "Update auth set a_name=@a_name  WHERE a_id=@a_id";//利用參數方式寫SQL語法
@@ -1192,7 +1192,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void UpDatecompany(Dictionary<string, object> tmpViewData)
+        internal void UpdateCompany(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-修改公司資料
 

@@ -46,7 +46,7 @@
 
                  <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="supplier_mange.aspx">廠商管理<span class="sr-only">(current)</span></a>

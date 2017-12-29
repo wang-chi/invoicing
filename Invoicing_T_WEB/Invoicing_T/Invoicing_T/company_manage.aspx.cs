@@ -27,7 +27,7 @@ namespace Invoicing_T
 
             #region 查詢公司資料
 
-            DataSet ds1 = tmp.Getcompany_info();//取得公司資料
+            DataSet ds1 = tmp.GetCompanyInfo();//取得公司資料
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["company_info"].Rows[0];

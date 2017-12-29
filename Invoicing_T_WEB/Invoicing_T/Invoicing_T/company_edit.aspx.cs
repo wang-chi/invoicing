@@ -27,7 +27,7 @@ namespace Invoicing_T
 
             #region 查詢公司資料
 
-            DataSet ds1 = tmp.Getcompany_info();//取得公司資料
+            DataSet ds1 = tmp.GetCompanyInfo();//取得公司資料
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["company_info"].Rows[0];
@@ -62,7 +62,7 @@ namespace Invoicing_T
                 if (((!string.IsNullOrWhiteSpace(com_name.Text)) && (!string.IsNullOrWhiteSpace(com_address.Text)) && (!string.IsNullOrWhiteSpace(com_un.Text)) && (!string.IsNullOrWhiteSpace(com_agent.Text)) && (!string.IsNullOrWhiteSpace(com_tel.Text)) && (!string.IsNullOrWhiteSpace(com_fax.Text))))
                 {
 
-                tmp.UpDatecompany(tmpViewData);
+                tmp.UpdateCompany(tmpViewData);
                 Response.Redirect("company_manage.aspx");//跳轉到登入畫面
                 }
             
