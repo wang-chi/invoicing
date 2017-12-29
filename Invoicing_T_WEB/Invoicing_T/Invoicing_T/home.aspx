@@ -57,6 +57,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="manage.aspx">基本資料管理</a>
                     </li>
+               <li class="nav-item">
+                        <a class="nav-link" href="company_manage.aspx">公司資料管理</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
                     </li>

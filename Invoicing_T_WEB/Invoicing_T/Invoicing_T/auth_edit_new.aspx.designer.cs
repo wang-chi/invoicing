@@ -10,7 +10,7 @@
 namespace Invoicing_T {
     
     
-    public partial class group_edit_new {
+    public partial class auth_edit_new {
         
         /// <summary>
         /// form1 控制項。
@@ -31,22 +31,22 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// InputId 控制項。
+        /// InputID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InputId;
+        protected global::System.Web.UI.WebControls.TextBox InputID;
         
         /// <summary>
-        /// Label12 控制項。
+        /// Msg_ExistID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label12;
+        protected global::System.Web.UI.WebControls.Label Msg_ExistID;
         
         /// <summary>
         /// Label11 控制項。
@@ -67,21 +67,21 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.TextBox InputName;
         
         /// <summary>
-        /// Label2 控制項。
+        /// Label13 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// Button1 控制項。
+        /// Button3 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button Button3;
     }
 }

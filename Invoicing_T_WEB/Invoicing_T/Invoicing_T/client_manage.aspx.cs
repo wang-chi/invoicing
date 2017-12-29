@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,9 +25,9 @@ namespace Invoicing_T
             DataSet ds = tmp.GetClient();
             if (ds != null)
             {
-                lvauthInfo.DataSource = null;
-                lvauthInfo.DataSource = ds.Tables["client"];
-                lvauthInfo.DataBind();
+                IvClientInfo.DataSource = null;
+                IvClientInfo.DataSource = ds.Tables["client"];
+                IvClientInfo.DataBind();
             }
             #endregion
         }

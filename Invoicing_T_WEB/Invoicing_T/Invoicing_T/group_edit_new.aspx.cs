@@ -10,7 +10,7 @@ namespace Invoicing_T
 {
     public partial class group_edit_new : System.Web.UI.Page
     {
-        string r_id,r_name,r_info;//註冊項目
+        string r_id, r_name; //註冊項目
         DBHandle tmp = new DBHandle();
 
         protected void Page_Load(object sender, EventArgs e)

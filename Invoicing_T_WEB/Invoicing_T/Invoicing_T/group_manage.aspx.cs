@@ -44,5 +44,6 @@ namespace Invoicing_T
             String selection = " WHERE r_id LIKE '%" + TextBox1.Text + "%'";
             all(null, null, selection);
         }
+        
     }
 }
