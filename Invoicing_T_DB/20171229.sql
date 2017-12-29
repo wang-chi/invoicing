@@ -106,9 +106,10 @@ BEGIN
 END
 
 --權限Code
-SELECT ra.r_id, a.a_name,a_page ,ra.viewmode
-FROM roles_auth ra, auth a
-WHERE  ra.a_id = a.a_id AND ra.r_id = 'R0001'
+SELECT m.m_id,ra.r_id, a.a_name,a_page ,ra.viewmode
+FROM member m, roles_auth ra, auth a
+WHERE  ra.a_id = a.a_id AND ra.r_id = m.r_id AND m.m_id = 'nutc01'
+ORDER BY m.m_id
 
 --分公司資料表
 DROP TABLE company;

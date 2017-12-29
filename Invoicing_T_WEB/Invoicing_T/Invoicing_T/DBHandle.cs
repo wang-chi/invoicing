@@ -9,7 +9,8 @@ namespace Invoicing_T
 {
     public class DBHandle
     {
-        public SqlConnectionStringBuilder ConnectionAzure() {
+        public SqlConnectionStringBuilder ConnectionAzure()
+        {
             #region 執行SQL語法-連線資料庫
             var cb = new SqlConnectionStringBuilder();
             cb.DataSource = "nutc106db.database.windows.net";
@@ -20,7 +21,7 @@ namespace Invoicing_T
 
             #endregion
         }
-        
+
         public void Insert(string p)
         {
             #region 執行SQL語法-新增員工/群組
@@ -179,7 +180,7 @@ namespace Invoicing_T
             try
             {
 
-                SqlConnectionStringBuilder cb =  ConnectionAzure();
+                SqlConnectionStringBuilder cb = ConnectionAzure();
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
@@ -198,7 +199,7 @@ namespace Invoicing_T
             return ds;
             #endregion
         }
-        internal DataSet CheckAuth()
+        internal DataSet CheckAuth(string m_id)
         {
             #region 檢查功能權限
             SqlConnectionStringBuilder cb = ConnectionAzure();
@@ -209,7 +210,8 @@ namespace Invoicing_T
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
-                    cmd.CommandText = "SELECT ra.r_id, a.a_name,a_page ,ra.viewmode FROM roles_auth ra, auth a WHERE ra.a_id = a.a_id"; //設定SQL的語法(I->新增S->修改U->查詢D->刪除)(ISUD=CRUD)
+                    //設定SQL的語法(I->新增S->修改U->查詢D->刪除)(ISUD=CRUD)
+                    cmd.CommandText = "SELECT m.m_id,ra.r_id, a.a_name ,ra.viewmode FROM member m, roles_auth ra, auth a WHERE  ra.a_id = a.a_id AND ra.r_id = m.r_id AND m.m_id = '" + m_id + "'";
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
                     dr.Fill(ds, "CheckAuth");//在DataSet中查詢,為DataSet中的資料表重新命名
@@ -225,7 +227,7 @@ namespace Invoicing_T
         }
 
 
-        internal DataSet GetState(string p2)
+        internal DataSet GetState(string p)
         {
             #region 分辨身分是否停權
             DataSet ds = new DataSet();
@@ -236,7 +238,7 @@ namespace Invoicing_T
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
-                    cmd.CommandText = p2;
+                    cmd.CommandText = p;
                     cmd.Connection = cn;
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);
                     dr.Fill(ds, "state");
@@ -413,7 +415,7 @@ namespace Invoicing_T
         {
             #region 執行SQL語法-顯示權限資料
 
-            String tmpSql = "SELECT * FROM auth "+p;
+            String tmpSql = "SELECT * FROM auth " + p;
 
 
             DataSet ds = new DataSet();
@@ -1126,7 +1128,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             }
             #endregion
         }
-        
+
         internal void UpdateGroup(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-修改群組資料

@@ -38,25 +38,27 @@ namespace Invoicing_T
                         DataSet ds_position = tmp.GetState(p2);//檢查身分
 
                         if (ds_position != null)
-                         {
-                        foreach (DataRow dr_position in ds_position.Tables["state"].Rows)
                         {
-                        string position_check;
-                        position_check = dr_position["m_state"].ToString();//把table"position"中的member_position欄位轉字串
+                            foreach (DataRow dr_position in ds_position.Tables["state"].Rows)
+                            {
+                                string position_check;
+                                position_check = dr_position["m_state"].ToString();//把table"position"中的member_position欄位轉字串
 
-                         if (position_check == "True")
-                         {
-                        //Session["position"] = position_check; //把值丟掉下一頁
-                        Response.Redirect("HomePage.aspx");
+                                if (position_check == "True")
+                                {
+                                    //Session["position"] = position_check; //把值丟掉下一頁
+                                    Session.Add("UserID", id);//存取使用者ID
+                                    Response.Redirect("HomePage.aspx");
+                                    
                                 }
 
-                        if (position_check == "False")
-                         {
+                                if (position_check == "False")
+                                {
                                     msg_error.Text = "帳號被停權無法啟用";
                                 }
                             }
                         }
-                        
+
                     }
                     else
                     {
@@ -68,6 +70,6 @@ namespace Invoicing_T
             }
             #endregion
         }
-        
+
     }
 }
