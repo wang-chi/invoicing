@@ -109,7 +109,7 @@
                                 <tr>
 
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "group_edit.aspx?ActionState=UpDate&r_id="+Eval("r_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtnUpdate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "group_edit.aspx?ActionState=UpDate&r_id="+Eval("r_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

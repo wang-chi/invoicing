@@ -37,7 +37,7 @@ namespace Invoicing_T
                 DataRow tmpDataRow = ds1.Tables["member_info"].Rows[0];
 
                 m_id.Text = tmpDataRow["m_id"].ToString();
-                m_pwd.Text = tmpDataRow["m_pwd"].ToString();
+                //m_pwd.Text = tmpDataRow["m_pwd"].ToString();
                 m_state.Text = tmpDataRow["m_state"].ToString();
                 m_name.Text = tmpDataRow["m_name"].ToString();
                 m_sex.Text = tmpDataRow["m_sex"].ToString();

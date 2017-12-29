@@ -44,7 +44,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        protected void bt_company_edit_Click(object sender, EventArgs e)
+        protected void btn_company_edit_Click(object sender, EventArgs e)
         {
             Server.Transfer("company_edit.aspx", true);//導到修改頁
         }

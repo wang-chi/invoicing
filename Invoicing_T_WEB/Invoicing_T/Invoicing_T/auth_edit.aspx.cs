@@ -22,10 +22,10 @@ namespace Invoicing_T
                     switch (HiddenF_ActionState.Value)
                     {
                         case "UpDate":
-                            btUpDate.Visible = true;
+                            btnUpdate.Visible = true;
                             break;
                         case "Delete":
-                            btDelete.Visible = true;
+                            btnDelete.Visible = true;
                             auth_name_input.ReadOnly = true;
                             auth_name_input.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
                             break;
@@ -56,7 +56,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        protected void bt_Click(object sender, EventArgs e)
+        protected void btn_Click(object sender, EventArgs e)
         {
 
             #region 修改/刪除權限資料
@@ -66,10 +66,10 @@ namespace Invoicing_T
             string tmpID = ((Button)sender).ID;//(Button)sender->將object強制轉型成button
             switch (tmpID)//使用者按下哪一個按鈕
             {
-                case "btUpDate":
+                case "btnUpdate":
                     tmp.UpdateAuth(tmpViewData);
                     break;
-                case "btDelete":
+                case "btnDelete":
                     tmp.DeleteAuth(tmpViewData);
                     break;
             }

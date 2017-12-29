@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="supplier_manage.aspx.cs" Inherits="Invoicing_T.supplier_mange" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="supplier_manage.aspx.cs" Inherits="Invoicing_T.supplier_manage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,7 +49,7 @@
                         <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="supplier_mange.aspx">廠商管理<span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" href="supplier_manage.aspx">廠商管理<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="client_manage.aspx">客戶管理</a>
@@ -108,7 +108,7 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtnUpdate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

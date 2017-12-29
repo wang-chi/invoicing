@@ -29,6 +29,6 @@ namespace Invoicing_T {
 		
 		protected System.Web.UI.WebControls.Label com_fax;
 		
-		protected System.Web.UI.WebControls.Button bt_company_edit;
+		protected System.Web.UI.WebControls.Button btn_company_edit;
 	}
 }

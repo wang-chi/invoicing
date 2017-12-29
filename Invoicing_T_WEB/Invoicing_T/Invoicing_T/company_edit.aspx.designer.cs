@@ -31,6 +31,6 @@ namespace Invoicing_T {
 		
 		protected System.Web.UI.WebControls.Label Label2;
 		
-		protected System.Web.UI.WebControls.Button btUpDatecompany;
+		protected System.Web.UI.WebControls.Button btnUpdatecompany;
 	}
 }

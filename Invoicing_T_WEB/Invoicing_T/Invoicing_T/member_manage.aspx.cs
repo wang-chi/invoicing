@@ -38,7 +38,7 @@ namespace Invoicing_T
 
         protected void btn_insert_member(object sender, EventArgs e)
         {
-            Response.Redirect("id_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("member_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

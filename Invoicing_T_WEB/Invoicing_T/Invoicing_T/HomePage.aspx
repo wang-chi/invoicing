@@ -56,7 +56,7 @@
                         <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="client_manage.aspx">客戶管理<span class="sr-only">(current)</span></a>
@@ -64,6 +64,9 @@
                 </ul>
 
                 <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductPage.aspx">商品管理</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="product_manage.aspx">商品管理</a>
                     </li>
