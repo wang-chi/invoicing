@@ -13,14 +13,13 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
-            //Session.Remove("position");
+
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string id = InputAccount.Text;
             string pwd = InputPassword.Text;//把密碼丟進字串pwd中
-            string p = "Select m_pwd,m_id From member";//查詢語法
+            string p = "Select m_pwd, m_id From member";//查詢語法
 
             #region 執行SQL語法-驗證
             DataSet ds1 = tmp.check_id_pwd(p);//DBHamdle驗證
@@ -30,8 +29,8 @@ namespace Invoicing_T
                 foreach (DataRow dr in ds1.Tables["allInfo"].Rows)//DBHamdle中的table"allInfo"
                 {
                     string id_check, pwd_check;
-                    id_check = dr["m_id"].ToString();//把table"allInfo"中的member_id欄位轉字串
-                    pwd_check = dr["m_pwd"].ToString();//把table"allInfo"中的member_pwd欄位轉字串
+                    id_check = dr["m_id"].ToString().Trim();//把table"allInfo"中的member_id欄位轉字串
+                    pwd_check = dr["m_pwd"].ToString().Trim();//把table"allInfo"中的member_pwd欄位轉字串
                     if ((id_check == InputAccount.Text) && (pwd_check == InputPassword.Text))//如果相等跳轉業面
                     {
                         string p2 = "Select m_position From member Where m_id='" + id + "'";//查詢身分

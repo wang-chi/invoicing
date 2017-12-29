@@ -13,19 +13,17 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
             if (!IsPostBack)
             {
-                this.all(null, null);//查詢群組資料
+                this.all(null, null,"");//查詢群組資料
             }
         }
 
-        protected void all(object sender, EventArgs e)
+        protected void all(object sender, EventArgs e, String p)
         {
             #region 查詢權限資料
-            Dictionary<string, object> tmpFilter = new Dictionary<string, object>();//建立新的字典以方便查詢
 
-            DataSet ds = tmp.Getauth(tmpFilter);
+            DataSet ds = tmp.GetAuth(p);
             if (ds != null)
             {
                 lvauthInfo.DataSource = null;
@@ -34,7 +32,16 @@ namespace Invoicing_T
             }
             #endregion
         }
+        protected void btn_insert_auth(object sender, EventArgs e)
+        {
+            Response.Redirect("auth_edit_new.aspx");//跳轉到新增頁面
+        }
 
-        
+        protected void btn_search(object sender, EventArgs e)
+        {
+            String selection = " WHERE a_id LIKE '%" + InputSearchAuthID.Text + "%'";
+            all(null, null, selection);
+        }
+
     }
 }

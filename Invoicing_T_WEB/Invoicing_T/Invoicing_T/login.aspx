@@ -7,28 +7,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>中科大進銷存 登入</title>
     <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="login.css" rel="stylesheet" />
 
+    <link href="login.css" rel="stylesheet" />
 </head>
 <body>
     <div class="loginform">
+        <span>進銷存管理系統</span>
+        <hr>
+
         <form id="loginform" runat="server" class="container">
             <div class="form-group row">
-                <asp:Label class="col-sm-5 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
+                <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
                 <div class="col-sm-5">
                     <asp:TextBox ID="InputAccount" runat="server" MinLength="1" MaxLength="10" />
                 </div>
             </div>
 
             <div class="form-group row">
-                <asp:Label class="col-sm-5 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
+                <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
                 <div class="col-sm-5">
                     <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="3" MaxLength="20" />
 
                 </div>
             </div>
             <div>
-
                 <div class="form-action">
                     <asp:Button ID="Button1" type="submit" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click" Text="登　入" />
                 </div>

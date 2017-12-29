@@ -6,26 +6,30 @@
     background-size: cover;
     text-align: center;
     background-attachment: fixed;
-    font-family:'Microsoft JhengHei UI';
+    font-family: 'Microsoft JhengHei UI'
 }
 
 .loginform {
     width: 25%;
-    min-width:300px;
-    min-height:200px;
-    margin:auto auto;
+    min-width: 300px;
+    min-height: 200px;
+    margin: auto auto;
     background-color: rgba(255,255,255,0.7);
-    border-radius:15px;
-    margin-top:23em;   
-    
-    padding:15px;
+    border-radius: 15px;
+    margin-top: 15em;
+    padding: 15px
 }
 
 div.form-action {
-    margin-top:1rem;
-    margin-bottom:1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem
 }
 
 .col-form-label {
-    text-align:right;
+    text-align: center
+}
+
+hr {
+    border-top-width: 2px;
+    border-top-color: #a1a1a1
 }
