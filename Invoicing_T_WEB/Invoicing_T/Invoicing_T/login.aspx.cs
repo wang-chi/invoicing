@@ -13,16 +13,16 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session.Remove("position");
+
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
             string id = InputAccount.Text;
             string pwd = InputPassword.Text;//把密碼丟進字串pwd中
-            string p = "Select m_pwd,m_id From member";//查詢語法
+            string p = "SELECT m_pwd, m_id FROM member";//查詢語法
 
             #region 執行SQL語法-驗證
-            DataSet ds1 = tmp.check_id_pwd(p);//DBHamdle驗證
+            DataSet ds1 = tmp.LoginCheck(p);//DBHamdle驗證
 
             if (ds1 != null)
             {
@@ -33,21 +33,21 @@ namespace Invoicing_T
                     pwd_check = dr["m_pwd"].ToString().Trim();//把table"allInfo"中的member_pwd欄位轉字串
                     if ((id_check == InputAccount.Text) && (pwd_check == InputPassword.Text))//如果相等跳轉業面
                     {
-                        string p2 = "Select m_position From member Where m_id='" + id + "'";//查詢身分
+                        string p2 = "SELECT m_state FROM member WHERE m_id='" + id + "'";//查詢身分
 
-                        DataSet ds_position = tmp.GetPosition(p2);//檢查身分
+                        DataSet ds_position = tmp.GetState(p2);//檢查身分
 
                         if (ds_position != null)
                          {
-                        foreach (DataRow dr_position in ds_position.Tables["position"].Rows)
+                        foreach (DataRow dr_position in ds_position.Tables["state"].Rows)
                         {
                         string position_check;
-                        position_check = dr_position["m_position"].ToString();//把table"position"中的member_position欄位轉字串
+                        position_check = dr_position["m_state"].ToString();//把table"position"中的member_position欄位轉字串
 
                          if (position_check == "True")
                          {
                         //Session["position"] = position_check; //把值丟掉下一頁
-                        Response.Redirect("home.aspx");
+                        Response.Redirect("HomePage.aspx");
                                 }
 
                         if (position_check == "False")

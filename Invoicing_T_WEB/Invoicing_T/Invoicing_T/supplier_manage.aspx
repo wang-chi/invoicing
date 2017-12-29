@@ -31,10 +31,10 @@
             <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="home.aspx">Overview </a>
+                        <a class="nav-link" href="HomePage.aspx">Overview </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="id_manage.aspx">帳號管理</a>
+                        <a class="nav-link" href="member_manage.aspx">帳號管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="group_manage.aspx">角色管理</a>
@@ -46,7 +46,7 @@
 
                  <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="supplier_mange.aspx">廠商管理<span class="sr-only">(current)</span></a>
@@ -73,8 +73,8 @@
                     <h1>廠商查詢</h1>
                     <asp:Label ID="Label3" runat="server" Text="請以廠商ID查詢："></asp:Label>
                     <asp:TextBox ID="InputSupplier" runat="server"></asp:TextBox>
-                    <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
-                    <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_supplier" />
+                    <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
+                    <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_supplier" />
 
                     <h1>總覽</h1>
                     <div>
@@ -108,12 +108,12 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtUpDate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
                                             <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

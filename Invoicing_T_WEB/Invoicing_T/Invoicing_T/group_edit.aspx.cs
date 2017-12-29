@@ -48,7 +48,7 @@ namespace Invoicing_T
 
             #region 查詢群組資料
 
-            DataSet ds1 = tmp.Getgroup_info(p);//取得營地資料
+            DataSet ds1 = tmp.GetGroupInfo(p);//取得營地資料
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["group_info"].Rows[0];
@@ -69,10 +69,10 @@ namespace Invoicing_T
             switch (tmpID)//使用者按下哪一個按鈕
             {
                 case "btUpDate":
-                    tmp.UpDategroup(tmpViewData);
+                    tmp.UpdateGroup(tmpViewData);
                     break;
                 case "btDelete":
-                    tmp.Deletegroup(tmpViewData);
+                    tmp.DeleteGroup(tmpViewData);
                     break;
             }
             Server.Transfer("group_manage.aspx", true);//導回群組管理

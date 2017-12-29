@@ -23,7 +23,7 @@ namespace Invoicing_T
         {
             #region 查詢權限資料
 
-            DataSet ds = tmp.Getauth();
+            DataSet ds = tmp.GetAuth(p);
             if (ds != null)
             {
                 lvauthInfo.DataSource = null;
@@ -39,7 +39,7 @@ namespace Invoicing_T
 
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE a_id LIKE '%" + TextBox1.Text + "%'";
+            String selection = " WHERE a_id LIKE '%" + InputSearchAuthID.Text + "%'";
             all(null, null, selection);
         }
 
