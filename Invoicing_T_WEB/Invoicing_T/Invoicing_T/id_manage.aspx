@@ -15,15 +15,16 @@
             <li class="breadcrumb-item active" aria-current="page">帳號管理</li>
         </ol>
     </nav>
+
     <form id="form1" runat="server">
 
         <div>
 
-            <asp:LinkButton ID="lbtInsert" runat="server"  PostBackUrl='<%# "id_edit.aspx?ActionState=Insert&m_id="+Eval("m_id")%>' ToolTip="新增">
+            <asp:LinkButton ID="lbtInsert" class="btn"  runat="server"  PostBackUrl='<%# "id_edit.aspx?ActionState=Insert&m_id="+Eval("m_id")%>' ToolTip="新增">
                   <asp:Label ID="Label7" runat="server" Text="新增"></asp:Label>
-                            </asp:LinkButton>
+            </asp:LinkButton>
 
-            </div>
+        </div>
 
         <div>
 
