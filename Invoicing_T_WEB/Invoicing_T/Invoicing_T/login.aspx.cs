@@ -13,12 +13,7 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            //tmp.DB_Cnstr = "Data Source=DESKTOP-OP0RFML\\SQLEXPRESS;Initial Catalog=Invoicing_T;Integrated Security=False;User ID=user13106;Password=123";//進入資料庫
-            tmp.DB_Cnstr = "Server=tcp:nutc106db.database.windows.net,1433;Initial Catalog=invoicing;Persist Security Info=False;User ID={nutc03};Password={NUTCia003};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-=======
->>>>>>> a7bb961776122ecb2c3f70bd146c558aaff5bc52
-            //Session.Remove("position");
+
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
