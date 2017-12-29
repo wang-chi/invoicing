@@ -91,7 +91,7 @@
                             <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                         </div>
                         <div style="margin: auto">
-                            <asp:Button ID="Button3" class="btn" runat="server" Text="新增權限" OnClick="btn_insert_auth" ValidationGroup="AllValidators" />
+                            <asp:Button ID="Button3" class="btn btn-primary" runat="server" Text="新增權限" OnClick="btn_insert_auth" ValidationGroup="AllValidators" />
                         </div>
 
                     </form>

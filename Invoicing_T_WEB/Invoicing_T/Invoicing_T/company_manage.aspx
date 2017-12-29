@@ -49,13 +49,16 @@
 
                  <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+                        <a class="nav-link" href="#">基本資料管理</a>
+                    </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="client_manage.aspx">客戶管理<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
                     </li>
                 </ul>
 
@@ -100,7 +103,7 @@
                             </div>
 
                             <div class="form-group">
-                                <asp:Button ID="bt_company_edit" class="btn" runat="server" Text="編輯"  OnClick="bt_company_edit_Click" />
+                                <asp:Button ID="bt_company_edit" class="btn btn-success" runat="server" Text="編輯"  OnClick="bt_company_edit_Click" />
                             </div>
 
                         </div>

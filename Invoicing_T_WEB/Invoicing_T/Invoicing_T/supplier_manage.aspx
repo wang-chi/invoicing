@@ -73,8 +73,8 @@
                     <h1>廠商查詢</h1>
                     <asp:Label ID="Label3" runat="server" Text="請以廠商ID查詢："></asp:Label>
                     <asp:TextBox ID="InputSupplier" runat="server"></asp:TextBox>
-                    <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
-                    <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_supplier" />
+                    <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
+                    <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_supplier" />
 
                     <h1>總覽</h1>
                     <div>
@@ -108,12 +108,12 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtUpDate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
                                             <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

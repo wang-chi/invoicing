@@ -11,19 +11,6 @@
 
 </head>
 <body>
-<<<<<<< HEAD
-    <nav aria-label="breadcrumb" role="navigation" runat="server">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
-            <li class="logout" aria-current="page" style="position:fixed; right:1rem;">登出</li>
-        </ol>
-    </nav>
-    <form id="form1" runat="server">
-        <div>
-            <asp:Button ID="btn_id_manage" class="btn" runat="server" Text="帳號管理" OnClick="btn_id_manage_Click" />
-            <asp:Button ID="btn_group_manage" class="btn" runat="server" Text="群組管理" OnClick="btn_group_manage_Click" />
-            <asp:Button ID="btn_role_manage" class="btn" runat="server" Text="權限管理" OnClick="btn_role_manag_Click" />
-=======
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Dashboard</a>
@@ -43,7 +30,6 @@
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
->>>>>>> a7bb961776122ecb2c3f70bd146c558aaff5bc52
         </div>
       </nav>
  
@@ -68,11 +54,11 @@
           </ul>
 
            <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
-                    </li>
                <li class="nav-item">
-                        <a class="nav-link" href="company_manage.aspx">公司資料管理</a>
+                        <a class="nav-link" href="manage.aspx">基本資料管理</a>
+               </li>
+               <li class="nav-item">
+                        <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>

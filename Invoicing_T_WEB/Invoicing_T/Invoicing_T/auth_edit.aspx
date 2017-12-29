@@ -121,8 +121,8 @@
                             <asp:TextBox ID="auth_name_input" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:Button ID="btUpDate" class="btn" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
-                        <asp:Button ID="btDelete" class="btn" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
+                        <asp:Button ID="btUpDate" class="btn btn-danger" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
+                        <asp:Button ID="btDelete" class="btn btn-danger" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
                     </div>
 
                     </form>

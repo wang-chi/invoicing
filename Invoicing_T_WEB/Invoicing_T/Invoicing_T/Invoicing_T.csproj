@@ -80,7 +80,6 @@
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="group_edit_new.aspx" />
     <Content Include="id_edit_new.aspx" />
-    <Content Include="login.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />

@@ -11,23 +11,12 @@
     <link href="table.css" rel="stylesheet" />
 </head>
 <body>
-<<<<<<< HEAD
-    <nav aria-label="breadcrumb" role="navigation">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="home.aspx">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">帳號管理</li>
-        </ol>
-    </nav>
-
-    <form id="form1" runat="server">
-=======
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <a class="navbar-brand" href="#">Dashboard</a>
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
->>>>>>> a7bb961776122ecb2c3f70bd146c558aaff5bc52
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
@@ -45,13 +34,6 @@
             </div>
         </nav>
 
-<<<<<<< HEAD
-            <asp:LinkButton ID="lbtInsert" class="btn"  runat="server"  PostBackUrl='<%# "id_edit.aspx?ActionState=Insert&m_id="+Eval("m_id")%>' ToolTip="新增">
-                  <asp:Label ID="Label7" runat="server" Text="新增"></asp:Label>
-            </asp:LinkButton>
-
-        </div>
-=======
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -75,23 +57,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">基本資料管理</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">廠商管理</a>
+                        <li class="nav-item">
+                        <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">客戶管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
                     </li>
                 </ul>
 
-                <ul class="nav nav-pills flex-column">
+               <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品管理</a>
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">商品類別管理</a>
+                        <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">進貨管理</a>
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
                     </li>
                 </ul>
             </nav>
@@ -99,11 +84,13 @@
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <form runat="server">
                     <h1>帳號查詢</h1>
-                    <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
-                    <asp:TextBox ID="InputMemberID" runat="server"></asp:TextBox>
-                    <asp:Button ID="Button2" class="btn" runat="server" Text="查詢" OnClick="btn_search" />
-                    <asp:Button ID="Button1" class="btn" runat="server" Text="新增" OnClick="btn_insert_member" />
 
+                        <div >
+                            <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
+                            <asp:TextBox ID="InputMemberID"  runat="server" aria-label="Search"></asp:TextBox>
+                            <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />            
+                            <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_member" />
+                    </div>
                     <h1>總覽</h1>
                     <div>
                         <asp:ListView ID="lvmemberInfo" runat="server" GroupItemCount="1" GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
@@ -115,7 +102,6 @@
                                                 <asp:Label ID="Label2" runat="server" Text="編輯狀態"></asp:Label></th>
                                             <th width="8%">
                                                 <asp:Label ID="Label10" runat="server" Text="用戶ID"></asp:Label></th>
->>>>>>> a7bb961776122ecb2c3f70bd146c558aaff5bc52
 
                                             <th width="8%">
                                                 <asp:Label ID="Label27" runat="server" Text="用戶狀態"></asp:Label></th>
@@ -137,7 +123,7 @@
                                 <tr>
 
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-primary btn-sm" PostBackUrl='<%# "id_edit.aspx?ActionState=UpDate&m_id="+Eval("m_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "id_edit.aspx?ActionState=UpDate&m_id="+Eval("m_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
