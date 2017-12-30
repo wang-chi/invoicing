@@ -11,7 +11,7 @@
 namespace Invoicing_T {
 	
 	
-	public partial class id_edit {
+	public partial class member_edit {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
 		

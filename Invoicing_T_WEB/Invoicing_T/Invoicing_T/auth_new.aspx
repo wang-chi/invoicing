@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_new.aspx.cs" Inherits="Invoicing_T.auth_edit_new" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_new.aspx.cs" Inherits="Invoicing_T.auth_new" %>
 
 <!DOCTYPE html>
 

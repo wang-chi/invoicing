@@ -37,7 +37,7 @@ namespace Invoicing_T
 
         protected void btn_insert_supplier(object sender, EventArgs e)
         {
-            Response.Redirect("supplier_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("supplier_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

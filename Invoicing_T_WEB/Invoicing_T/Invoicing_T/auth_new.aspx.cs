@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class auth_edit_new : System.Web.UI.Page
+    public partial class auth_new : System.Web.UI.Page
     {
         string a_id, a_name; //註冊項目
         DBHandle tmp = new DBHandle();
@@ -24,7 +24,7 @@ namespace Invoicing_T
             a_id = InputID.Text;
             a_name = InputName.Text;
 
-            string auth_edit_new;
+            string auth_new;
             string select_id = "SELECT a_id FROM auth ";//查詢member_id是否有重複
 
             DataSet ds = tmp.GetAuthId(select_id);
@@ -52,10 +52,10 @@ namespace Invoicing_T
                 //如果必填欄位都輸入,則新增置資料庫中
                 if (((!string.IsNullOrWhiteSpace(InputID.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text))))
                 {
-                    auth_edit_new = @"INSERT INTO auth (a_id,a_name) 
+                    auth_new = @"INSERT INTO auth (a_id,a_name) 
                     VALUES('" + a_id + "',N'" + a_name + "')";//新增
 
-                    tmp.Insert(auth_edit_new);//用Insert方法
+                    tmp.Insert(auth_new);//用Insert方法
 
                     Response.Redirect("auth_manage.aspx");//跳轉到登入畫面
                 }

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class group_edit_new : System.Web.UI.Page
+    public partial class group_new : System.Web.UI.Page
     {
         string r_id, r_name; //註冊項目
         DBHandle tmp = new DBHandle();
@@ -23,7 +23,7 @@ namespace Invoicing_T
             r_id = InputId.Text;
             r_name = InputName.Text;
             
-            string id_edit_new;
+            string id_new;
             string select_id = "SELECT r_id FROM roles ";//查詢member_id是否有重複
 
             DataSet ds = tmp.GetGroupId(select_id);
@@ -52,10 +52,10 @@ namespace Invoicing_T
                 if (((!string.IsNullOrWhiteSpace(InputId.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text))))
                 {
                    
-                    id_edit_new = @"INSERT INTO roles (r_id,r_name) 
+                    id_new = @"INSERT INTO roles (r_id,r_name) 
                     VALUES('" + r_id + "',N'" + r_name + "')";//新增
 
-                    tmp.Insert(id_edit_new);//用Insert方法
+                    tmp.Insert(id_new);//用Insert方法
 
                     Response.Redirect("group_manage.aspx");//跳轉到登入畫面
                 }

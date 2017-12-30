@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="member_edit.aspx.cs" Inherits="Invoicing_T.id_edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="member_edit.aspx.cs" Inherits="Invoicing_T.member_edit" %>
 
 <!DOCTYPE html>
 

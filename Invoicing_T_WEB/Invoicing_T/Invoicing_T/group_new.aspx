@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="group_new.aspx.cs" Inherits="Invoicing_T.group_edit_new" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="group_new.aspx.cs" Inherits="Invoicing_T.group_new" %>
 
 <!DOCTYPE html>
 

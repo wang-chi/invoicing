@@ -11,6 +11,6 @@
 namespace Invoicing_T {
 	
 	
-	public partial class home {
+	public partial class HomePage {
 	}
 }

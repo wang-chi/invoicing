@@ -73,7 +73,7 @@
                         <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
+                        <a class="nav-link active" href="client_manage.aspx">客戶管理</a>
                     </li>
                 </ul>
             </nav>

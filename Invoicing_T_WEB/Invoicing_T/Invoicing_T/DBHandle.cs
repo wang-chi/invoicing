@@ -56,7 +56,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        public DataSet Getid(string p)
+        public DataSet GetId(string p)
         {
             #region 檢測帳號是否重複
             SqlCommand cmd = new SqlCommand();
@@ -444,7 +444,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getmember(String p)
+        internal DataSet GetMember(String p)
         {
             #region 執行SQL語法-顯示帳號資料
             String tmpSql = "SELECT * FROM member" + p;

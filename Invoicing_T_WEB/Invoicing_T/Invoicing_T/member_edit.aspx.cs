@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class id_edit : System.Web.UI.Page
+    public partial class member_edit : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
         String member_tmp_p;

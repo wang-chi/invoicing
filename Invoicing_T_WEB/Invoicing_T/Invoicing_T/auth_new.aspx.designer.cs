@@ -11,7 +11,7 @@
 namespace Invoicing_T {
 	
 	
-	public partial class auth_edit_new {
+	public partial class auth_new {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
 		
