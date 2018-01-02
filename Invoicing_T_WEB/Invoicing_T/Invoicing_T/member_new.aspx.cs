@@ -16,7 +16,7 @@ namespace Invoicing_T
         protected void Page_Load(object sender, EventArgs e)
         {
             Label8.Visible = false;//改下拉選單註解
-            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
         }
 

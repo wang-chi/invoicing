@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{8F78D007-510E-4092-BC2A-086688733710}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Invoicing_T/member_new.aspx">
+    <Files>
+      <File FileName="Invoicing_T/supplier_new.aspx.cs" Line="1" Column="1" />
+      <File FileName="Invoicing_T/supplier_new.aspx" Line="115" Column="31" />
+      <File FileName="Invoicing_T/client_new.aspx.cs" Line="25" Column="37" />
+      <File FileName="Invoicing_T/client_new.aspx" Line="1" Column="1" />
+      <File FileName="Invoicing_T/member_new.aspx" Line="110" Column="82" />
+      <File FileName="Invoicing_T/member_new.aspx.cs" Line="19" Column="40" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/id_manage.aspx" relfile="Invoicing_T/id_manage.aspx" line="34" column="1" />
+      <Breakpoint file="/Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/member_new.aspx.cs" relfile="Invoicing_T/member_new.aspx.cs" line="12" column="31" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Invoicing_T/HomePage.aspx.cs" line="26" offsetX="416" offsetY="375" expression="ds" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Invoicing__T PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

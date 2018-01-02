@@ -52,9 +52,6 @@
                         <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link active" href="client_manage.aspx">客戶管理</a>
                     </li>
                 </ul>
@@ -79,19 +76,37 @@
                 <div>
                     <form id="form1" runat="server">
                         <div class="form-group">
-                            <asp:Label ID="Label6" runat="server" Text="客戶資料新增帳號"></asp:Label>
-                            <asp:TextBox ID="InputID" runat="server" Width="150px"></asp:TextBox>
-                            <asp:Label ID="Msg_ExistID" runat="server" Text="帳號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                            <asp:Label ID="Label6" runat="server" Text="客戶編號"></asp:Label>
+                            <asp:TextBox ID="InputID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
+                            <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                        </div>
+
+                        <div class="form-group">
+                            <asp:Label ID="Label1" runat="server" Text="客戶名稱"></asp:Label>
+                            <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group">
+                            <asp:Label ID="Label5" runat="server" Text="客戶電話"></asp:Label>
+                            <asp:TextBox ID="InputPhone" runat="server" Width="150px" MaxLength="10"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Label ID="Label11" runat="server" Text="客戶資料新增名稱"></asp:Label>
-                            <asp:TextBox ID="InputName" runat="server" Width="150px"></asp:TextBox>
+                            <asp:Label ID="Label3" runat="server" Text="客戶地址"></asp:Label>
+                            <asp:TextBox ID="InputAddress" runat="server" Width="150px" MaxLength="40"></asp:TextBox>
                         </div>
+                        <div class="form-group">
+                            <asp:Label ID="Label10" runat="server" Text="客戶電子信箱"></asp:Label>
+                            <asp:TextBox ID="InputEmail" runat="server" Width="150px" MaxLength="40"></asp:TextBox>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="InputEmail" Display="Dynamic" ErrorMessage="電子郵件地址的格式錯誤。" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="AllValidators" Font-Size="9pt" ForeColor="Red">無效的格式！</asp:RegularExpressionValidator>
+                        </div>
+
+
                         <div>
                             <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                         </div>
+
                         <div style="margin: auto">
-                            <asp:Button ID="Button3" class="btn btn-primary" runat="server" Text="新增客戶" OnClick="btn_insert_client" ValidationGroup="AllValidators" />
+                            <asp:Button ID="Button3" class="btn btn-success" runat="server" Text="新增客戶" OnClick="btn_insert_client" ValidationGroup="AllValidators" />
                         </div>
 
                     </form>

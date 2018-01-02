@@ -76,7 +76,7 @@
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <h1>員工資料新增</h1>
-                <div>
+                
                     <form id="form1" runat="server">
                         <div class="form-group">
                             <asp:Label ID="Label6" runat="server" Text="員工帳號"></asp:Label>
@@ -123,12 +123,12 @@
                             <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                         </div>
                         <div style="margin: auto">
-                            <asp:Button ID="Button3" class="btn" runat="server" Text="新增員工" OnClick="btn_insert_member" ValidationGroup="AllValidators" />
+                            <asp:Button ID="Button3" class="btn btn-success" runat="server" Text="新增員工" OnClick="btn_insert_member" ValidationGroup="AllValidators" />
                         </div>
 
                     </form>
 
-                </div>
+               
 
             </main>
         </div>
