@@ -23,8 +23,8 @@ namespace Invoicing_T {
 		
 		protected System.Web.UI.WebControls.TextBox auth_name_input;
 		
-		protected System.Web.UI.WebControls.Button btUpDate;
+		protected System.Web.UI.WebControls.Button btnUpdate;
 		
-		protected System.Web.UI.WebControls.Button btDelete;
+		protected System.Web.UI.WebControls.Button btnDelete;
 	}
 }

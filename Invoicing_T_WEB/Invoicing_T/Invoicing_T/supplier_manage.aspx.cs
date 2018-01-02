@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class supplier_mange : System.Web.UI.Page
+    public partial class supplier_manage : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace Invoicing_T
 
         protected void btn_insert_supplier(object sender, EventArgs e)
         {
-            Response.Redirect("supplier_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("supplier_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

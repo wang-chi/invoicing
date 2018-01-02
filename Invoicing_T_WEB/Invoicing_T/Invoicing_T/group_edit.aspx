@@ -62,56 +62,52 @@
                             <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                            <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="client_manage.aspx">客戶管理</a>
                         </li>
                     </ul>
 
-                    <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_manage.aspx">商品管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
-                        </li>
-                    </ul>
+                     <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductPage.aspx">商品資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_type_manage.aspx">類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
+                    </li>
+                </ul>
                 </nav>
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                     <h1>角色資料修改</h1>
-                    <div>
-                        <form id="form1" runat="server">
 
-                            <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
-                            <asp:HiddenField ID="HiddenF_rid" runat="server" />
-
-
-                            <div class="form-group">
-                                群組ID：
-                                <asp:Label ID="r_id" runat="server" Text='<%# Eval("r_id") %>' />
-                            </div>
-                            <div class="form-group"></div>
-                            群組名稱：
+                    <form id="form1" runat="server">
+                        <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
+                        <asp:HiddenField ID="HiddenF_rid" runat="server" />
+                        <div class="form-group">
+                            <label>群組ID：</label>
+                            <asp:Label ID="r_id" runat="server" Text='<%# Eval("r_id") %>' />
+                        </div>
+                        <div class="form-group">
+                            <label>群組名稱：</label>
                             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </div>
-                    <div class="form-group">
-                        <asp:Button ID="btUpDate" class="btn" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
-                        <asp:Button ID="btDelete" class="btn" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
-                    </div>
-
+                        </div>
+                        <div class="form-group">
+                            <asp:Button ID="btnUpdate" class="btn btn-success" runat="server" Text="修改"  Visible="false" />
+                            <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除"  Visible="false" />
+                        </div>
                     </form>
-
-            </div>
-
             </main>
+     
+            </div>
         </div>
-        </div>
-
     </body>
 
     </html>

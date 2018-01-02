@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="member_manage.aspx.cs" Inherits="Invoicing_T.id_manage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="member_manage.aspx.cs" Inherits="Invoicing_T.member_manage" %>
 
 <!DOCTYPE html>
 
@@ -117,7 +117,7 @@
                                 <tr>
 
                                     <td>
-                                        <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "id_edit.aspx?ActionState=UpDate&m_id="+Eval("m_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtnUpdate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "member_edit.aspx?ActionState=UpDate&m_id="+Eval("m_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

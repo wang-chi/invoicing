@@ -33,7 +33,7 @@ namespace Invoicing_T
         }
         protected void btn_insert_client(object sender, EventArgs e)
         {
-            Response.Redirect("client_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("client_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

@@ -36,7 +36,7 @@ namespace Invoicing_T
 
         protected void btn_insert_group(object sender, EventArgs e)
         {
-            Response.Redirect("group_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("group_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="group_new.aspx.cs" Inherits="Invoicing_T.group_edit_new" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="group_new.aspx.cs" Inherits="Invoicing_T.group_new" %>
 
 <!DOCTYPE html>
 
@@ -53,7 +53,7 @@
                         <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="client_manage.aspx">客戶管理</a>

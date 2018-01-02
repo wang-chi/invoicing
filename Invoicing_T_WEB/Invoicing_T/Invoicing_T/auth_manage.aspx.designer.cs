@@ -33,7 +33,7 @@ namespace Invoicing_T {
 		
 		protected System.Web.UI.WebControls.PlaceHolder itemPlaceholder;
 		
-		protected System.Web.UI.WebControls.LinkButton lbtUpDate;
+		protected System.Web.UI.WebControls.LinkButton lbtnUpdate;
 		
 		protected System.Web.UI.WebControls.Label Label7;
 		

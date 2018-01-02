@@ -107,6 +107,7 @@
     </None>
     <Content Include="image\mount-cook.jpg" />
     <Content Include="login.css" />
+    <Content Include="AuthDialog.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="auth_edit.aspx" />

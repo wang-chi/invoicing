@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_edit.aspx.cs" Inherits="Invoicing_T.auth_edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="auth_edit.aspx.cs" Inherits="Invoicing_T.auth_edit" %>
 
 <!DOCTYPE html>
 
@@ -45,39 +45,45 @@
                             <a class="nav-link " href="HomePage.aspx">Overview </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="member_manage.aspx">帳號管理<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="member_manage.aspx">帳號管理</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="group_manage.aspx">角色管理</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="auth_manage.aspx">權限管理</a>
+                            <a class="nav-link active" href="auth_manage.aspx">權限管理<span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="client_manage.aspx">客戶管理</a>
-                        </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="company_manage.aspx">公司管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
+                    </li>
+                </ul>
 
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_manage.aspx">商品管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
-                        </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="ProductPage.aspx">商品資料管理<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_type_manage.aspx">類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
+                    </li>
+                </ul>
                 </nav>
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
@@ -95,14 +101,11 @@
                                 <asp:TextBox ID="auth_name_input" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="btUpDate" class="btn btn-danger" runat="server" Text="修　　改" OnClick="bt_Click" Visible="false" />
-                                <asp:Button ID="btDelete" class="btn btn-danger" runat="server" Text="刪　　除" OnClick="bt_Click" Visible="false" />
+                                <asp:Button ID="btnUpdate" class="btn btn-danger" runat="server" Text="修改" OnClick="btn_Click" Visible="false" />
+                                <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" OnClick="btn_Click" Visible="false" />
                             </div>
                         </form>
-
-                
-
-            </main>
+                                    </main>
         </div>
         </div>
 

@@ -51,9 +51,9 @@
 
                  <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">基本資料管理</a>
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
                     </li>
-                        <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="company_manage.aspx">公司管理</a>
                     </li>
                     <li class="nav-item">
@@ -64,12 +64,15 @@
                     </li>
                 </ul>
 
-                <ul class="nav nav-pills flex-column">
+                 <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductPage.aspx">商品資料管理</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="product_manage.aspx">商品管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
+                        <a class="nav-link" href="product_type_manage.aspx">類別管理</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
@@ -113,7 +116,7 @@
                     <tr>
 
                         <td>
-                            <asp:LinkButton ID="lbtUpDate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "auth_edit.aspx?ActionState=UpDate&a_id="+Eval("a_id")%>' ToolTip="修改">
+                            <asp:LinkButton ID="lbtnUpdate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "auth_edit.aspx?ActionState=UpDate&a_id="+Eval("a_id")%>' ToolTip="修改">
                                 <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                             </asp:LinkButton>
                         </td>

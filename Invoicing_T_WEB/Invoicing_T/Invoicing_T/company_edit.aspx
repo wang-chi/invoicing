@@ -58,28 +58,34 @@
                     </ul>
 
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="supplier_mange.aspx">廠商管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="client_manage.aspx">客戶管理</a>
-                        </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ManagePage.aspx">基本資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="company_manage.aspx">公司管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplier_manage.aspx">廠商管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="client_manage.aspx">客戶管理</a>
+                    </li>
+                </ul>
 
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_manage.aspx">商品管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
-                        </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProductPage.aspx">商品資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_manage.aspx">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_type_manage.aspx">類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
+                    </li>
+                </ul>
                 </nav>
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
@@ -112,7 +118,7 @@
                                 <asp:Label ID="Label2" runat="server" Text="*資料要填寫齊全" Visible="false" Font-Size="9pt" ForeColor="Red"></asp:Label>
                             </div>
                             <div class="form-group">
-                                <asp:Button ID="btUpDatecompany" class="btn btn-success" runat="server" Text="修　　改" OnClick="btUpDatecompany_Click" />
+                                <asp:Button ID="btnUpdatecompany" class="btn btn-success" runat="server" Text="修　　改" OnClick="btnUpdateCompany_Click" />
                             </div>
                     </form>
 

@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class supplier_edit_new : System.Web.UI.Page
+    public partial class supplier_new : System.Web.UI.Page
     {
         string s_id, s_name, s_address, s_phone, s_email;//註冊項目
         DBHandle tmp = new DBHandle();
@@ -26,7 +26,7 @@ namespace Invoicing_T
             s_phone = InputPhone.Text;
             s_email = InputEmail.Text;
 
-            string supplier_edit_new;
+            string supplier_new;
             string select_id = "SELECT s_id FROM supplier ";//查詢supplier_id是否有重複
 
             DataSet ds = tmp.GetSupplierId(select_id);
@@ -62,10 +62,10 @@ namespace Invoicing_T
                     //String str = dt.ToString(); // 轉成字串，例：2012/6/5 下午 04:43:57
 
 
-                    supplier_edit_new = @"Insert Into supplier (s_id, s_name, s_address, s_phone, s_email, createdate, update_time) 
+                    supplier_new = @"Insert Into supplier (s_id, s_name, s_address, s_phone, s_email, createdate, update_time) 
                     Values('" + s_id + "',N'" + s_name + "',N'" + s_address + "',N'" + s_phone + "','" + s_email  + "', GETDATE(), GETDATE())";//新增
 
-                    tmp.Insert(supplier_edit_new);//用Insert方法
+                    tmp.Insert(supplier_new);//用Insert方法
 
                     Response.Redirect("supplier_manage.aspx");//跳轉到登入畫面
                 }

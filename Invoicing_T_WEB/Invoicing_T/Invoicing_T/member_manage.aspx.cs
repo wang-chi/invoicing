@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class id_manage : System.Web.UI.Page
+    public partial class member_manage : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +25,7 @@ namespace Invoicing_T
 
             #region 查詢帳號資料
 
-            DataSet ds = tmp.Getmember(p);
+            DataSet ds = tmp.GetMember(p);
             if (ds != null)
             {
                 lvmemberInfo.DataSource = null;
@@ -38,7 +38,7 @@ namespace Invoicing_T
 
         protected void btn_insert_member(object sender, EventArgs e)
         {
-            Response.Redirect("id_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("member_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)
