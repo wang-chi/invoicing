@@ -21,9 +21,23 @@ namespace Invoicing_T {
 		
 		protected System.Web.UI.WebControls.Label Msg_ExistID;
 		
-		protected System.Web.UI.WebControls.Label Label11;
+		protected System.Web.UI.WebControls.Label Label1;
 		
 		protected System.Web.UI.WebControls.TextBox InputName;
+		
+		protected System.Web.UI.WebControls.Label Label5;
+		
+		protected System.Web.UI.WebControls.TextBox InputPhone;
+		
+		protected System.Web.UI.WebControls.Label Label3;
+		
+		protected System.Web.UI.WebControls.TextBox InputAddress;
+		
+		protected System.Web.UI.WebControls.Label Label10;
+		
+		protected System.Web.UI.WebControls.TextBox InputEmail;
+		
+		protected System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 		
 		protected System.Web.UI.WebControls.Label Label13;
 		

@@ -34,7 +34,7 @@ namespace Invoicing_T
         }
         protected void btn_insert_auth(object sender, EventArgs e)
         {
-            Response.Redirect("auth_edit_new.aspx");//跳轉到新增頁面
+            Response.Redirect("auth_new.aspx");//跳轉到新增頁面
         }
 
         protected void btn_search(object sender, EventArgs e)

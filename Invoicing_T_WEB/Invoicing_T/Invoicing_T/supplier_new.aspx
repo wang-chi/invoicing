@@ -111,7 +111,7 @@
                         </div>
 
                         <div style="margin: auto">
-                            <asp:Button ID="Button3" class="btn" runat="server" Text="新增廠商" OnClick="btn_insert_supplier" ValidationGroup="AllValidators" />
+                            <asp:Button ID="Button3" class="btn btn-success" runat="server" Text="新增廠商" OnClick="btn_insert_supplier" ValidationGroup="AllValidators" />
                         </div>
 
                     </form>
