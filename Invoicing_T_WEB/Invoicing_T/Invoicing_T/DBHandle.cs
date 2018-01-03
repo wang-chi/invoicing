@@ -265,7 +265,7 @@ namespace Invoicing_T
         }
 
 
-        public DataSet LoginCheck(string p1)
+        public DataSet LoginCheck(string m_id)
         {
             #region 驗證帳號及密碼        
             DataSet ds = new DataSet();
@@ -277,7 +277,8 @@ namespace Invoicing_T
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
-                    cmd.CommandText = p1;
+                    //string sql = "SELECT m_pwd, m_id FROM member WHERE m_id = '"+m_id+"'";//查詢語法
+                    cmd.CommandText = "SELECT m_pwd, m_id FROM member WHERE m_id = '" + m_id + "'";
                     cmd.Connection = cn;
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);
                     dr.Fill(ds, "allInfo");

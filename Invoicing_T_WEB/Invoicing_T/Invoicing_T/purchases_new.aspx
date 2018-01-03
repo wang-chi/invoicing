@@ -21,9 +21,9 @@
                 <h1>新增進貨單</h1>
                   <div>
                     <form id="form1" runat="server">
-                        <asp:Button ID="btn_add" runat="server" Text="添加商品" OnClick="btn_add_Click" />
-                        <asp:Button ID="btn_delete" runat="server" Text="刪除商品" OnClick="btn_delete_Click"/>
-                        <asp:Button ID="btn_update" runat="server" Text="更新" OnClick="btn_update_Click"/>
+                        <asp:Button ID="btn_add" class="btn btn-success" runat="server" Text="添加商品" OnClick="btn_add_Click" />
+                        <asp:Button ID="btn_delete" class="btn btn-danger" runat="server" Text="刪除商品" OnClick="btn_delete_Click"/>
+                        <asp:Button ID="btn_update" class="btn btn-primary" runat="server" Text="更新商品" OnClick="btn_update_Click"/>
                         
                     <br/>
                     <br/>

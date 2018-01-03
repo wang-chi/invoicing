@@ -24,7 +24,7 @@ namespace Invoicing_T
             string p = "SELECT m_pwd, m_id FROM member";//查詢語法
 
             #region 執行SQL語法-驗證
-            DataSet ds1 = tmp.LoginCheck(p);//DBHamdle驗證
+            DataSet ds1 = tmp.LoginCheck(id);//DBHamdle驗證
 
             if (ds1 != null)
             {

@@ -33,16 +33,16 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr class="success">
-                                            <th width="25%">
+                                            <th width="10%">
                                                 <asp:Label ID="Label2" runat="server" Text="編輯"></asp:Label></th>
                                             <th width="10%">
                                                 <asp:Label ID="Label4" runat="server" Text="刪除"></asp:Label></th>
-                                            <th width="25%">
+                                            <th width="20%">
                                                 <asp:Label ID="Label10" runat="server" Text="商品ID"></asp:Label></th>
 
-                                            <th width="25%">
+                                            <th width="20%">
                                                 <asp:Label ID="Label27" runat="server" Text="商品分類ID"></asp:Label></th>
-                                            <th width="25%">
+                                            <th width="40%">
                                                 <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label></th>
 
 

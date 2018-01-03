@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="member_manage.aspx.cs" Inherits="Invoicing_T.member_manage" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,11 +14,9 @@
     <div class="container-fluid">
         <div class="row">
             <%Response.WriteFile("nav.aspx");%>
-
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <form runat="server">
                     <h1>帳號查詢</h1>
-
                     <div>
                         <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
                         <asp:TextBox ID="InputMemberID" runat="server" aria-label="Search"></asp:TextBox>
@@ -45,7 +42,6 @@
 
                                             <th width="20%">
                                                 <asp:Label ID="Label4" runat="server" Text="用戶角色"></asp:Label></th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,13 +51,11 @@
                             </LayoutTemplate>
                             <ItemTemplate>
                                 <tr>
-
                                     <td>
                                         <asp:LinkButton ID="lbtnUpdate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "member_edit.aspx?ActionState=UpDate&m_id="+Eval("m_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
-
                                     <td>
                                         <asp:Label ID="member_id" runat="server" Text='<%# Eval("m_id") %>'></asp:Label></td>
 
@@ -72,11 +66,9 @@
                                         <td><%# Eval("m_email") %></td>
                                        <td><%# Eval("createdate") %></td>
                                         <td><%# Eval("update_time") %></td>-->
-
                                 </tr>
                             </ItemTemplate>
                         </asp:ListView>
-
                     </div>
                 </form>
             </main>
