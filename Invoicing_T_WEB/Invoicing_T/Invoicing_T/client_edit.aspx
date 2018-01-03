@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="member_manage.aspx">編輯權限資料</a>
+                            <a class="nav-link" href="member_manage.aspx">編輯客戶資料</a>
                         </li>
                     </ul>
 
@@ -85,18 +85,30 @@
                 </nav>
 
                 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-                    <h1>權限資料修改</h1>
+                    <h1>客戶資料修改</h1>
 
                         <form id="form1" runat="server">
                             <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
                             <asp:HiddenField ID="HiddenF_rid" runat="server" />
                             <div class="form-group">
                                 <label>客戶ID：</label>
-                                <asp:Label ID="a_id" runat="server" Text='<%# Eval("c_id") %>' />
+                                <asp:Label ID="c_id" runat="server" Text='<%# Eval("c_id") %>' />
                             </div>
                             <div class="form-group">
-                                <label>客戶稱：</label>
-                                <asp:TextBox ID="InputClientName" runat="server"></asp:TextBox>
+                                <label>客戶名稱：</label>
+                                <asp:TextBox ID="c_name" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label>客戶地址：</label>
+                                <asp:TextBox ID="c_address" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label>客戶電話：</label>
+                                <asp:TextBox ID="c_phone" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label>客戶電子信箱：</label>
+                                <asp:TextBox ID="c_email" runat="server"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <asp:Button ID="btnUpdate" class="btn btn-danger" runat="server" Text="修改" OnClick="btn_Click" Visible="false" />

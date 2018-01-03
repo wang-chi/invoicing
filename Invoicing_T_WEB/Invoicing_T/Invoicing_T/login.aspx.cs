@@ -48,7 +48,8 @@ namespace Invoicing_T
 
                                 if (position_check == "True")
                                 {
-                                    //Session["position"] = position_check; //把值丟掉下一頁
+                                    Session["m_id"] = id; //把值丟掉下一頁
+
                                     Session.Add("UserID", id);//存取使用者ID
                                     Response.Redirect("HomePage.aspx");
                                     

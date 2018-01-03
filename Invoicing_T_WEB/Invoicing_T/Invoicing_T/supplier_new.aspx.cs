@@ -56,12 +56,9 @@ namespace Invoicing_T
 
 
                 //如果必填欄位都輸入,則新增置資料庫中
-                if ((string.IsNullOrWhiteSpace(InputID.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)) || (string.IsNullOrWhiteSpace(InputAddress.Text)) || (string.IsNullOrWhiteSpace(InputPhone.Text)) || (string.IsNullOrWhiteSpace(InputEmail.Text)))
+                if ((!string.IsNullOrWhiteSpace(InputID.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text)) && (!string.IsNullOrWhiteSpace(InputAddress.Text)) && (!string.IsNullOrWhiteSpace(InputPhone.Text)) && (!string.IsNullOrWhiteSpace(InputEmail.Text)))
                 {
-                    // DateTime dt = DateTime.NOw; // 取得現在時間
-                    //String str = dt.ToString(); // 轉成字串，例：2012/6/5 下午 04:43:57
-
-
+      
                     supplier_new = @"Insert Into supplier (s_id, s_name, s_address, s_phone, s_email, createdate, update_time) 
                     Values('" + s_id + "',N'" + s_name + "',N'" + s_address + "',N'" + s_phone + "','" + s_email  + "', GETDATE(), GETDATE())";//新增
 

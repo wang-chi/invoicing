@@ -119,12 +119,12 @@
                                 <tr>
 
                                     <td>
-                                        <asp:LinkButton ID="lbtnUpdate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "client_edit.aspx?ActionState=UpDate&r_id="+Eval("c_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtnUpdate" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "client_edit.aspx?ActionState=UpDate&c_id="+Eval("c_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "client_edit.aspx?ActionState=Delete&r_id="+Eval("c_id")%>' ToolTip="刪除">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-danger btn-sm" PostBackUrl='<%# "client_edit.aspx?ActionState=Delete&c_id="+Eval("c_id")%>' ToolTip="刪除">
                                             <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

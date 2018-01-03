@@ -74,7 +74,13 @@
                         <a class="nav-link" href="product_type_manage.aspx">商品類別管理</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="invoicing_manage.aspx">進貨管理</a>
+                        <a class="nav-link" href="purchases_manage.aspx">進貨單管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplier_price_manage.aspx">進貨價格</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="client_price_manage.aspx">銷貨價格</a>
                     </li>
                 </ul>
             </nav>

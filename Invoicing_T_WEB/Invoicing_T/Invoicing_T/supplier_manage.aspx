@@ -87,7 +87,7 @@
                                             <th width="10%">
                                                 <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
                                             <th width="10%">
-                                                <asp:Label ID="Label1" runat="server" Text="修改"></asp:Label></th>
+                                                <asp:Label ID="Label1" runat="server" Text="刪除"></asp:Label></th>
                                             <th width="16%">
                                                 <asp:Label ID="Label10" runat="server" Text="廠商ID"></asp:Label></th>
                                             <th width="16%">
@@ -108,12 +108,12 @@
                             <ItemTemplate>
                                 <tr>
                                     <td>
-                                        <asp:LinkButton ID="lbtnUpdate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&r_id="+Eval("s_id")%>' ToolTip="修改">
+                                        <asp:LinkButton ID="lbtnUpdate" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=UpDate&s_id="+Eval("s_id")%>' ToolTip="修改">
                                             <asp:Label ID="Label7" runat="server" Text="修改"></asp:Label>
                                         </asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&r_id="+Eval("s_id")%>' ToolTip="刪除">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" class="btn btn-danger btn-sm" PostBackUrl='<%# "supplier_edit.aspx?ActionState=Delete&s_id="+Eval("s_id")%>' ToolTip="刪除">
                                             <asp:Label ID="Label2" runat="server" Text="刪除"></asp:Label>
                                         </asp:LinkButton>
                                     </td>

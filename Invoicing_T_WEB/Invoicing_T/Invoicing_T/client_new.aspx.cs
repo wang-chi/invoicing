@@ -27,14 +27,14 @@ namespace Invoicing_T
             c_email = InputEmail.Text;
 
             string client_new;
-            string select_id = "SELECT c_id FROM supplier ";//查詢supplier_id是否有重複
+            string select_id = "SELECT c_id FROM client ";//查詢supplier_id是否有重複
 
-            DataSet ds = tmp.GetSupplierId(select_id);
+            DataSet ds = tmp.GetClientId(select_id);
 
             if (ds != null)
             {
                 //檢測帳號是否有重複
-                foreach (DataRow dr in ds.Tables["supplierInfo"].Rows)
+                foreach (DataRow dr in ds.Tables["ClientInfo"].Rows)
                 {
                     string all_id;
                     all_id = dr["c_id"].ToString();
@@ -56,14 +56,14 @@ namespace Invoicing_T
 
 
                 //如果必填欄位都輸入,則新增置資料庫中
-                if ((string.IsNullOrWhiteSpace(InputID.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)) || (string.IsNullOrWhiteSpace(InputAddress.Text)) || (string.IsNullOrWhiteSpace(InputPhone.Text)) || (string.IsNullOrWhiteSpace(InputEmail.Text)))
+                if ((!string.IsNullOrWhiteSpace(InputID.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text)) && (!string.IsNullOrWhiteSpace(InputAddress.Text)) && (!string.IsNullOrWhiteSpace(InputPhone.Text)) && (!string.IsNullOrWhiteSpace(InputEmail.Text)))
                 {
-                    client_new = @"Insert Into supplier (c_id, c_name, c_address, c_phone, c_email, createdate, update_time) 
+                    client_new = @"Insert Into client (c_id, c_name, c_address, c_phone, c_email, createdate, update_time) 
                     Values('" + c_id + "',N'" + c_name + "',N'" + c_address + "',N'" + c_phone + "','" + c_email + "', GETDATE(), GETDATE())";//新增
 
                     tmp.Insert(client_new);//用Insert方法
 
-                    Response.Redirect("supplier_manage.aspx");//跳轉到登入畫面
+                    Response.Redirect("client_manage.aspx");//跳轉到登入畫面
                 }
             }
 

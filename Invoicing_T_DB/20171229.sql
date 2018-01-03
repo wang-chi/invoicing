@@ -171,12 +171,15 @@ CREATE TABLE product_type
 (
 pt_id nchar(5) NOT NULL,
 pt_name nvarchar(20) NOT NULL
-
 primary key(pt_id)
 );
-
+INSERT INTO product_type(pt_id, pt_name) VALUES('PT001',N'文具用品');
+INSERT INTO product_type(pt_id, pt_name) VALUES('PT002',N'生產料件');
+INSERT INTO product_type(pt_id, pt_name) VALUES('PT003',N'製造料件');
+INSERT INTO product_type(pt_id, pt_name) VALUES('PT004',N'生活用品');
 
 --商品資料表
+DROP TABLE product;
 CREATE TABLE product
 (
 p_id nchar(5) NOT NULL,
@@ -186,6 +189,9 @@ p_name nvarchar(20) NOT NULL
 primary key(p_id),
 FOREIGN KEY (pt_id) REFERENCES product_type(pt_id)
 );
+INSERT INTO product(p_id, pt_id, p_name) VALUES('P0001','PT002',N'原物料');
+INSERT INTO product(p_id, pt_id, p_name) VALUES('P0002','PT004',N'水杯');
+INSERT INTO product(p_id, pt_id, p_name) VALUES('P0003','PT004',N'紙杯');
 --進貨價格表
 CREATE TABLE supplier_price
 (

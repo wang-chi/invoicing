@@ -63,6 +63,7 @@
     <Content Include="client_edit.aspx" />
     <Content Include="client_manage.aspx" />
     <Content Include="client_new.aspx" />
+    <Content Include="client_price_manage.aspx" />
     <Content Include="company_edit.aspx" />
     <Content Include="company_manage.aspx" />
     <Content Include="company_new.aspx" />
@@ -91,6 +92,11 @@
     <Content Include="product_edit.aspx" />
     <Content Include="product_manage.aspx" />
     <Content Include="product_new.aspx" />
+    <Content Include="product_type_edit.aspx" />
+    <Content Include="product_type_manage.aspx" />
+    <Content Include="product_type_new.aspx" />
+    <Content Include="purchases_manage.aspx" />
+    <Content Include="purchases_new.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -121,6 +127,7 @@
     <Content Include="supplier_edit.aspx" />
     <Content Include="supplier_new.aspx" />
     <Content Include="supplier_manage.aspx" />
+    <Content Include="supplier_price_manage.aspx" />
     <Content Include="table.css" />
     <Content Include="dashboard.css" />
     <Content Include="Web.config" />
@@ -168,6 +175,13 @@
     <Compile Include="client_new.aspx.designer.cs">
       <DependentUpon>client_new.aspx</DependentUpon>
     </Compile>
+    <Compile Include="client_price_manage.aspx.cs">
+      <DependentUpon>client_price_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="client_price_manage.aspx.designer.cs">
+      <DependentUpon>client_price_manage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="company_edit.aspx.cs">
       <DependentUpon>company_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +225,7 @@
     <Compile Include="employee_new.aspx.designer.cs">
       <DependentUpon>employee_new.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GetValuePurchases.cs" />
     <Compile Include="group_edit.aspx.cs">
       <DependentUpon>group_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -232,6 +247,7 @@
     <Compile Include="group_manage.aspx.designer.cs">
       <DependentUpon>group_manage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GVPEntity.cs" />
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -302,7 +318,42 @@
     <Compile Include="product_new.aspx.designer.cs">
       <DependentUpon>product_new.aspx</DependentUpon>
     </Compile>
+    <Compile Include="product_type_edit.aspx.cs">
+      <DependentUpon>product_type_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product_type_edit.aspx.designer.cs">
+      <DependentUpon>product_type_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product_type_manage.aspx.cs">
+      <DependentUpon>product_type_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product_type_manage.aspx.designer.cs">
+      <DependentUpon>product_type_manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product_type_new.aspx.cs">
+      <DependentUpon>product_type_new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product_type_new.aspx.designer.cs">
+      <DependentUpon>product_type_new.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="purchases_manage.aspx.cs">
+      <DependentUpon>purchases_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="purchases_manage.aspx.designer.cs">
+      <DependentUpon>purchases_manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="purchases_new.aspx.cs">
+      <DependentUpon>purchases_new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="purchases_new.aspx.designer.cs">
+      <DependentUpon>purchases_new.aspx</DependentUpon>
+    </Compile>
     <Compile Include="supplier_edit.aspx.cs">
       <DependentUpon>supplier_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +374,13 @@
     </Compile>
     <Compile Include="supplier_manage.aspx.designer.cs">
       <DependentUpon>supplier_manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supplier_price_manage.aspx.cs">
+      <DependentUpon>supplier_price_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supplier_price_manage.aspx.designer.cs">
+      <DependentUpon>supplier_price_manage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <PropertyGroup>
