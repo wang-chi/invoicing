@@ -10,7 +10,7 @@
 namespace Invoicing_T {
     
     
-    public partial class company_edit {
+    public partial class company_new {
         
         /// <summary>
         /// form1 控制項。
@@ -22,84 +22,66 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// com_id 控制項。
+        /// Label6 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_id;
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
-        /// com_name 控制項。
+        /// InputID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_name;
+        protected global::System.Web.UI.WebControls.TextBox InputID;
         
         /// <summary>
-        /// com_address 控制項。
+        /// Msg_ExistID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_address;
+        protected global::System.Web.UI.WebControls.Label Msg_ExistID;
         
         /// <summary>
-        /// com_un 控制項。
+        /// Label11 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_un;
+        protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// com_agent 控制項。
+        /// InputName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_agent;
+        protected global::System.Web.UI.WebControls.TextBox InputName;
         
         /// <summary>
-        /// com_tel 控制項。
+        /// Label13 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_tel;
+        protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// com_fax 控制項。
+        /// Button3 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_fax;
-        
-        /// <summary>
-        /// Label2 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// btnUpdatecompany 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdatecompany;
+        protected global::System.Web.UI.WebControls.Button Button3;
     }
 }

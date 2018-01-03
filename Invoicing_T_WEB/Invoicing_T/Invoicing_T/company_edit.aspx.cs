@@ -44,7 +44,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        protected void btUpDatecompany_Click(object sender, EventArgs e)
+        protected void btnUpdateCompany_Click(object sender, EventArgs e)
         {
 
             #region 修改公司資料

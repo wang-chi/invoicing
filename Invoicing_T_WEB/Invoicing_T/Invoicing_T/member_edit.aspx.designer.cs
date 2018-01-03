@@ -10,7 +10,7 @@
 namespace Invoicing_T {
     
     
-    public partial class company_edit {
+    public partial class member_edit {
         
         /// <summary>
         /// form1 控制項。
@@ -22,84 +22,102 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// com_id 控制項。
+        /// HiddenF_ActionState 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_id;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenF_ActionState;
         
         /// <summary>
-        /// com_name 控制項。
+        /// HiddenF_mid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_name;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenF_mid;
         
         /// <summary>
-        /// com_address 控制項。
+        /// m_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_address;
+        protected global::System.Web.UI.WebControls.Label m_id;
         
         /// <summary>
-        /// com_un 控制項。
+        /// m_pwd 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_un;
+        protected global::System.Web.UI.WebControls.Label m_pwd;
         
         /// <summary>
-        /// com_agent 控制項。
+        /// m_state 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_agent;
+        protected global::System.Web.UI.WebControls.Label m_state;
         
         /// <summary>
-        /// com_tel 控制項。
+        /// m_name 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_tel;
+        protected global::System.Web.UI.WebControls.Label m_name;
         
         /// <summary>
-        /// com_fax 控制項。
+        /// m_sex 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox com_fax;
+        protected global::System.Web.UI.WebControls.Label m_sex;
         
         /// <summary>
-        /// Label2 控制項。
+        /// r_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label r_id;
         
         /// <summary>
-        /// btnUpdatecompany 控制項。
+        /// m_phone 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdatecompany;
+        protected global::System.Web.UI.WebControls.Label m_phone;
+        
+        /// <summary>
+        /// m_email 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label m_email;
+        
+        /// <summary>
+        /// bt_position 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bt_position;
     }
 }

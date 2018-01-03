@@ -9,7 +9,8 @@ namespace Invoicing_T
 {
     public class DBHandle
     {
-        public SqlConnectionStringBuilder ConnectionAzure() {
+        public SqlConnectionStringBuilder ConnectionAzure()
+        {
             #region 執行SQL語法-連線資料庫
             var cb = new SqlConnectionStringBuilder();
             cb.DataSource = "nutc106db.database.windows.net";
@@ -20,17 +21,13 @@ namespace Invoicing_T
 
             #endregion
         }
-        
+
         public void Insert(string p)
         {
-            #region 執行SQL語法-新增員工/群組
+            #region 執行SQL語法-新增員工/群組/廠商
             try
             {
-                var cb = new SqlConnectionStringBuilder();
-                cb.DataSource = "nutc106db.database.windows.net";
-                cb.UserID = "nutc03";
-                cb.Password = "NUTCia03";
-                cb.InitialCatalog = "invoicing";
+                SqlConnectionStringBuilder cb = ConnectionAzure();
                 SqlTransaction tran = null;//產生物件
                 SqlCommand cmd = new SqlCommand();//新增cmd的物件
                 using (var cn = new SqlConnection(cb.ConnectionString))
@@ -59,7 +56,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        public DataSet Getid(string p)
+        public DataSet GetId(string p)
         {
             #region 檢測帳號是否重複
             SqlCommand cmd = new SqlCommand();
@@ -122,9 +119,9 @@ namespace Invoicing_T
             #endregion
         }
 
-        public DataSet GetGroupId(string p)
+        public DataSet GetClientId(string p)
         {
-            #region 檢測群組帳號是否重複
+            #region 檢測客戶帳號是否重複
             SqlCommand cmd = new SqlCommand();
             DataSet ds = new DataSet();
             try
@@ -134,6 +131,95 @@ namespace Invoicing_T
                 cb.UserID = "nutc03";
                 cb.Password = "NUTCia03";
                 cb.InitialCatalog = "invoicing";
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "ClientInfo");
+                    cn.Close();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return ds;
+            #endregion
+        }
+
+        public DataSet GetProductTypeId(string p)
+        {
+            #region 檢測商品類別帳號是否重複
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "ProductTypeInfo");
+                    cn.Close();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return ds;
+            #endregion
+        }
+
+        public DataSet GetProductId(string p)
+        {
+            #region 檢測商品編號是否重複
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "ProductInfo");
+                    cn.Close();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            return ds;
+            #endregion
+        }
+
+        public DataSet GetGroupId(string p)
+        {
+            #region 檢測群組帳號是否重複
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
@@ -159,11 +245,7 @@ namespace Invoicing_T
             DataSet ds = new DataSet();
             try
             {
-                var cb = new SqlConnectionStringBuilder();
-                cb.DataSource = "nutc106db.database.windows.net";
-                cb.UserID = "nutc03";
-                cb.Password = "NUTCia03";
-                cb.InitialCatalog = "invoicing";
+                SqlConnectionStringBuilder cb = ConnectionAzure();
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
@@ -183,7 +265,7 @@ namespace Invoicing_T
         }
 
 
-        public DataSet check_id_pwd(string p1)
+        public DataSet LoginCheck(string p1)
         {
             #region 驗證帳號及密碼        
             DataSet ds = new DataSet();
@@ -191,8 +273,7 @@ namespace Invoicing_T
             try
             {
 
-                SqlConnectionStringBuilder cb =  ConnectionAzure();
-
+                SqlConnectionStringBuilder cb = ConnectionAzure();
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
@@ -211,8 +292,35 @@ namespace Invoicing_T
             return ds;
             #endregion
         }
+        internal DataSet CheckAuth(string m_id)
+        {
+            #region 檢查功能權限
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    //設定SQL的語法(I->新增S->修改U->查詢D->刪除)(ISUD=CRUD)
+                    cmd.CommandText = "SELECT m.m_id,ra.r_id, a.a_name ,ra.viewmode FROM member m, roles_auth ra, auth a WHERE  ra.a_id = a.a_id AND ra.r_id = m.r_id AND m.m_id = '" + m_id + "'";
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "CheckAuth");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
 
-        internal DataSet GetPosition(string p2)
+
+        internal DataSet GetState(string p)
         {
             #region 分辨身分是否停權
             DataSet ds = new DataSet();
@@ -220,14 +328,13 @@ namespace Invoicing_T
             {
                 SqlConnectionStringBuilder cb = ConnectionAzure();
                 SqlCommand cmd = new SqlCommand();
-
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
-                    cmd.CommandText = p2;
+                    cmd.CommandText = p;
                     cmd.Connection = cn;
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);
-                    dr.Fill(ds, "position");
+                    dr.Fill(ds, "state");
                     cn.Close();
                 }
 
@@ -241,7 +348,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getinfo()
+        internal DataSet GetMemberInfo()
         {
             #region 個人資料查詢
             SqlConnectionStringBuilder cb = ConnectionAzure();
@@ -267,7 +374,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getinfo_group()
+        internal DataSet GetGroupInfo()
         {
             #region 群組資料查詢
 
@@ -294,72 +401,7 @@ namespace Invoicing_T
             return ds;//回傳DataSet的表
             #endregion
         }
-
-        /*internal DataSet Getsearch(Dictionary<string, object> tmpFilter)
-        {
-            #region 執行SQL語法-全部查詢
-
-            String tmpSql = "SELECT house_guid,house_city,house_area,house_title,house_rent,house_address,image FROM House_detail WHERE 1=1 ";
-            foreach (string tmpkey in tmpFilter.Keys)//每一個有加入KEY的查詢
-            {
-                //把每一個加入的key值加入到SQL語法中,利用參數式的資料查詢與法  
-                if (tmpkey == "house_title")
-                {
-                    tmpSql += " And " + tmpkey + " Like @" + tmpkey;//模糊查詢
-                }
-                else
-                {
-                    tmpSql += " And " + tmpkey + "=@" + tmpkey;
-                }
-
-            }
-            SqlConnection cn = new SqlConnection(DB_Cnstr);
-            SqlCommand cmd = new SqlCommand();//新增cmd的物件
-            DataSet ds = new DataSet();
-
-            try
-            {
-
-                cn.Open();//開啟資料庫
-
-                cmd.CommandText = tmpSql;
-                foreach (string tmpkey in tmpFilter.Keys)
-                {
-                    //定義key的參數,把每一個key找出來並定義參數 
-                    if (tmpkey == "house_title")
-                    {
-                        cmd.Parameters.AddWithValue("@" + tmpkey, "%" + tmpFilter[tmpkey] + "%");//模糊查詢
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@" + tmpkey, tmpFilter[tmpkey]);
-                    }
-
-                }
-                cmd.Connection = cn;//指定連線物件
-
-                SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
-
-                dr.Fill(ds, "Search");//在DataSet中查詢,為DataSet中的資料表重新命名
-
-            }
-            catch (Exception)
-            {
-                return null;//如果錯誤  回傳null值
-            }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
-
-            return ds;//回傳DataSet的表
-
-            #endregion
-        }*/
-
+        
         internal DataSet GetGroup(String p)
         {
             #region 執行SQL語法-顯示群組資料
@@ -401,7 +443,7 @@ namespace Invoicing_T
         {
             #region 執行SQL語法-顯示權限資料
 
-            String tmpSql = "SELECT * FROM auth "+p;
+            String tmpSql = "SELECT * FROM auth " + p;
 
 
             DataSet ds = new DataSet();
@@ -430,7 +472,7 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet Getmember(String p)
+        internal DataSet GetMember(String p)
         {
             #region 執行SQL語法-顯示帳號資料
             String tmpSql = "SELECT * FROM member" + p;
@@ -600,7 +642,7 @@ namespace Invoicing_T
 
         internal DataSet GetSupplier(String p)
         {
-            #region 執行SQL語法-顯示帳號資料
+            #region 執行SQL語法-顯示廠商資料
             String tmpSql = "SELECT * FROM supplier" + p;
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
@@ -615,6 +657,99 @@ namespace Invoicing_T
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
                     dr.Fill(ds, "supplier");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+
+
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetPurchases(String p)
+        {
+            #region 執行SQL語法-顯示廠商資料
+            String tmpSql = "SELECT * FROM purchases" + p;
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "purchases");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+
+
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetProductType(String p)
+        {
+            #region 執行SQL語法-顯示廠商資料
+            String tmpSql = "SELECT * FROM product_type" + p;
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "product_type");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+
+
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetProduct(String p)
+        {
+            #region 執行SQL語法-顯示商品資料
+            String tmpSql = "SELECT * FROM product" + p;
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "product");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
                 }
             }
@@ -662,7 +797,7 @@ namespace Invoicing_T
 
         internal DataSet GetSupplierInfo(string p)
         {
-            #region 查詢member資料
+            #region 查詢supplier資料
 
 
             string tmp = "SELECT * FROM supplier WHERE s_id=@s_id";
@@ -680,6 +815,170 @@ namespace Invoicing_T
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
 
                     dr.Fill(ds, "supplier_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetClientInfo(string p)
+        {
+            #region 查詢client資料
+            
+            string tmp = "SELECT * FROM client WHERE c_id=@c_id";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@c_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "client_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetProductTypeInfo(string p)
+        {
+            #region 查詢product_type資料
+
+
+            string tmp = "SELECT * FROM product_type WHERE pt_id=@pt_id";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@pt_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "product_type_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetProductInfo(string p)
+        {
+            #region 查詢product資料
+
+
+            string tmp = "SELECT * FROM product WHERE p_id=@p_id";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@p_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "product_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetSupplierPriceInfo(string p)
+        {
+            #region 查詢supplier_price資料
+
+
+            string tmp = "SELECT * FROM supplier_price WHERE sp_id=@sp_id";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@sp_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "supplier_price_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetClientPriceInfo(string p)
+        {
+            #region 查詢client_price資料
+
+
+            string tmp = "SELECT * FROM client_price WHERE cp_id=@cp_id";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@cp_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "client_price_info");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
                 }
 
@@ -846,7 +1145,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         internal void UpdateMemberData(String member_position, String m_id)
         {
             #region 執行SQL語法-修改員工資料(停權與否)
-            string tmp = "Update member set m_position='" + member_position + "'  WHERE m_id='" + m_id + "'";//利用參數方式寫SQL語法
+            string tmp = "Update member set m_state='" + member_position + "'  WHERE m_id='" + m_id + "'";//利用參數方式寫SQL語法
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
@@ -954,6 +1253,150 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
+        internal void DeleteSupplier(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除廠商資料
+            string tmp = @"Delete  FROM supplier WHERE s_id=@s_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@s_id", tmpViewData["s_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeleteClient(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除客戶資料
+            string tmp = @"Delete  FROM client WHERE c_id=@c_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@c_id", tmpViewData["c_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeleteProductType(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除商品類別資料
+            string tmp = @"Delete  FROM product_type WHERE pt_id=@pt_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@pt_id", tmpViewData["pt_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeleteProduct(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除商品資料
+            string tmp = @"Delete  FROM product WHERE p_id=@p_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@p_id", tmpViewData["p_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+        
         internal DataSet Getmemberall(string s_id, string s_name)
         {
             #region 執行SQL語法-顯示資料
@@ -1114,7 +1557,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             }
             #endregion
         }
-        
+
         internal void UpdateGroup(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-修改群組資料
@@ -1233,6 +1676,162 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
 
             #endregion
         }
+
+        internal void UpdateSupplier(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-修改廠商資料
+            string tmp = "Update supplier set s_name=@s_name,s_address=@s_address,s_phone=@s_phone,s_email=@s_email  WHERE s_id=@s_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@s_id", tmpViewData["s_id"]);
+                    cmd.Parameters.AddWithValue("@s_name", tmpViewData["s_name"]);
+                    cmd.Parameters.AddWithValue("@s_address", tmpViewData["s_address"]);
+                    cmd.Parameters.AddWithValue("@s_phone", tmpViewData["s_phone"]);
+                    cmd.Parameters.AddWithValue("@s_email", tmpViewData["s_email"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void UpdateClient(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-修改客戶資料
+            string tmp = "Update client set c_name=@c_name,c_address=@c_address,c_phone=@c_phone,c_email=@c_email  WHERE c_id=@c_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@c_id", tmpViewData["c_id"]);
+                    cmd.Parameters.AddWithValue("@c_name", tmpViewData["c_name"]);
+                    cmd.Parameters.AddWithValue("@c_address", tmpViewData["c_address"]);
+                    cmd.Parameters.AddWithValue("@c_phone", tmpViewData["c_phone"]);
+                    cmd.Parameters.AddWithValue("@c_email", tmpViewData["c_email"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void UpdateProductType(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-修改商品類別資料
+            string tmp = "Update product_type set pt_name=@pt_name  WHERE pt_id=@pt_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@pt_id", tmpViewData["pt_id"]);
+                    cmd.Parameters.AddWithValue("@pt_name", tmpViewData["pt_name"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void UpdateProduct(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-修改商品資料
+            string tmp = "Update product set p_name=@p_name,pt_id=@pt_id WHERE p_id=@p_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@p_id", tmpViewData["p_id"]);
+                    cmd.Parameters.AddWithValue("@p_name", tmpViewData["p_name"]);
+                    cmd.Parameters.AddWithValue("@pt_id", tmpViewData["pt_id"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+        
 
     }
 }

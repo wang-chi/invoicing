@@ -1,10 +1,10 @@
-﻿//------------------------------------------------------------------------------
-// <自動產生的>
-//     這段程式碼是由工具產生的。
+//------------------------------------------------------------------------------
+// <�۰ʲ��ͪ�>
+//     �o�q�{���X�O�Ѥu�㲣�ͪ��C
 //
-//     變更這個檔案可能會導致不正確的行為，而且如果已重新產生
-//     程式碼，則會遺失變更。
-// </自動產生的>
+//     �ܧ�o���ɮץi��|�ɭP�����T���欰�A�ӥB�p�G�w���s����
+//     �{���X�A�h�|���ܧ�C
+// </�۰ʲ��ͪ�>
 //------------------------------------------------------------------------------
 
 namespace Invoicing_T {
@@ -13,66 +13,66 @@ namespace Invoicing_T {
     public partial class group_edit {
         
         /// <summary>
-        /// form1 控制項。
+        /// form1 ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// HiddenF_ActionState 控制項。
+        /// HiddenF_ActionState ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HiddenF_ActionState;
         
         /// <summary>
-        /// HiddenF_rid 控制項。
+        /// HiddenF_rid ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HiddenF_rid;
         
         /// <summary>
-        /// r_id 控制項。
+        /// r_id ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label r_id;
         
         /// <summary>
-        /// TextBox1 控制項。
+        /// TextBox1 ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// btUpDate 控制項。
+        /// btnUpdate ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUpDate;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btDelete 控制項。
+        /// btnDelete ����C
         /// </summary>
         /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// �۰ʲ��ͪ����C
+        /// �Y�n�ק�A�бN���ŧi�q�]�p�u���ɮײ���{���X��m�ɮסC
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btDelete;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
     }
 }
