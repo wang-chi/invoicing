@@ -223,7 +223,7 @@ CREATE TABLE purchases
 (
 pur_id nchar(5)  NOT NULL,
 s_id  nchar(5)  NOT NULL,
-m_id nchar(5) NOT NULL,
+m_id nchar(6) NOT NULL,
 accept bit NOT NULL,
 deliverydate datetime NOT NULL,
 createdate datetime NOT NULL,
