@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Invoicing_T.login" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,7 +25,7 @@
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
                 <div class="col-sm-5">
-                    <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="5" MaxLength="15" />
+                    <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="8" MaxLength="15" />
 
                 </div>
             </div>
