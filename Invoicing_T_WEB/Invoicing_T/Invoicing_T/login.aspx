@@ -17,15 +17,15 @@
         <form id="loginform" runat="server" class="container">
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
-                <div class="col-sm-5">
-                    <asp:TextBox ID="InputAccount" runat="server" MinLength="5" MaxLength="10" />
+                <div class="col-sm-8">
+                    <asp:TextBox ID="InputAccount" class="form-control" runat="server"  aria-label="Default" MinLength="5" MaxLength="10" placeholder="請輸入員工帳號"  />
                 </div>
             </div>
 
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
-                <div class="col-sm-5">
-                    <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="8" MaxLength="15" />
+                <div class="col-sm-8">
+                    <asp:TextBox ID="InputPassword" TextMode="Password" class="form-control" runat="server"  aria-label="Default" MinLength="6" MaxLength="15" placeholder="請輸入員工密碼"  />
 
                 </div>
             </div>

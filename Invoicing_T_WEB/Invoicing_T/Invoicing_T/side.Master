@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="side.master.cs" Inherits="Invoicing_T.side" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="dashboard.css" rel="stylesheet" />
+    <link href="table.css" rel="stylesheet" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!--header-->
+    <%Response.WriteFile("header.html");%>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a id="auth_HomePage" class="nav-link" href="HomePage.aspx" runat="server" style="display: none;">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_member_manage" class="nav-link" href="member_manage.aspx" runat="server" style="display: none;">帳號管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_group_manage" class="nav-link" href="group_manage.aspx" runat="server" style="display: none;">角色管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_auth_manage" class="nav-link" href="auth_manage.aspx" runat="server" style="display: none;">權限管理</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a id="auth_ManagePage" class="nav-link" href="ManagePage.aspx" runat="server" style="display: none;">基本資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_company_manage" class="nav-link" href="company_manage.aspx" runat="server" style="display: none;">公司管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_supplier_manage" class="nav-link" href="supplier_manage.aspx" runat="server" style="display: none;">廠商管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_client_manage" class="nav-link" href="client_manage.aspx" runat="server" style="display: none;">客戶管理</a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a id="auth_ProductPage" class="nav-link" href="ProductPage.aspx" runat="server" style="display: none;">商品資料管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_product_manage" class="nav-link" href="product_manage.aspx" runat="server" style="display: none;">商品管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_product_type_manage" class="nav-link" href="product_type_manage.aspx" runat="server" style="display: none;">類別管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_purchases_manage" class="nav-link" href="purchases_manage.aspx" runat="server" style="display: none;">進貨單管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_supplier_price_manage" class="nav-link" href="supplier_price_manage.aspx" runat="server" style="display: none;">進貨價格</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_client_price_manage" class="nav-link" href="client_price_manage.aspx" runat="server" style="display: none;">銷貨價格</a>
+                    </li>
+                </ul>
+            </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <!--Page內容-->
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</body>
+</html>

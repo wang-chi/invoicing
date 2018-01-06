@@ -108,6 +108,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="side.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -370,6 +371,13 @@
     </Compile>
     <Compile Include="purchases_new.aspx.designer.cs">
       <DependentUpon>purchases_new.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="side.Master.cs">
+      <DependentUpon>side.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="side.Master.designer.cs">
+      <DependentUpon>side.Master</DependentUpon>
     </Compile>
     <Compile Include="supplier_edit.aspx.cs">
       <DependentUpon>supplier_edit.aspx</DependentUpon>

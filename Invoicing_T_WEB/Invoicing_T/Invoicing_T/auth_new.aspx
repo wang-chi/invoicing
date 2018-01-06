@@ -27,6 +27,10 @@
                             <asp:Label ID="Label11" runat="server" Text="權限名稱"></asp:Label>
                             <asp:TextBox ID="InputName" runat="server" Width="150px"></asp:TextBox>
                         </div>
+                         <div class="form-group">
+                            <asp:Label ID="Label1" runat="server" Text="權限名稱"></asp:Label>
+                            <asp:TextBox ID="TextBox1" runat="server" Width="150px"></asp:TextBox>
+                        </div>
                         <div>
                             <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                         </div>
