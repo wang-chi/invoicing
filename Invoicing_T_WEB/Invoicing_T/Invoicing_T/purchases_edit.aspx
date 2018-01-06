@@ -123,47 +123,65 @@
                         <asp:Label ID="update_time" runat="server" Text='<%# Eval("update_time") %>' />
                     </div>
                     <div>
+                        <br />
+                        <br />
 
-                        <asp:ListView ID="IvPurchases_info_Info" runat="server" GroupItemCount="1"
-                            GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
-                            <LayoutTemplate>
-                                <table class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr class="success">
-                                            <th width="25%">
-                                                <asp:Label ID="Label10" runat="server" Text="商品名稱"></asp:Label></th>
-                                            <th width="25%">
-                                                <asp:Label ID="Label5" runat="server" Text="業務員編號"></asp:Label></th>
-                                             <th width="25%">
-                                                <asp:Label ID="Label6" runat="server" Text="商品價格"></asp:Label></th>
-                                            <th width="25%">
-                                                <asp:Label ID="Label4" runat="server" Text="商品數量"></asp:Label></th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
-                                    </tbody>
-                                </table>
-                            </LayoutTemplate>
-                            <ItemTemplate>
-                                <tr>
-                                    <td>
-                                        <asp:TextBox ID="p_id" runat="server" Text='<%# Eval("p_id") %>'></asp:TextBox>
-                                        </td>
-                                     <td>
-                                        <%# Eval("m_id") %>
-                                        </td>
-                                     <td>
-                                        <asp:TextBox ID="purin_price" runat="server" Text='<%# Eval("purin_price") %>'></asp:TextBox>
-                                        </td>
-                                     <td>
-                                        <asp:TextBox ID="purin_qty" runat="server" Text='<%# Eval("purin_qty") %>'></asp:TextBox>
-                                        </td>
+                        <asp:Button ID="btn_add" class="btn btn-success" runat="server" Text="新增商品" OnClick="btn_add_Click" />
+                        
+                        <asp:Button ID="btn_update" class="btn btn-primary" runat="server" Text="更新商品" OnClick="btn_update_Click" />
 
-                                </tr>
-                            </ItemTemplate>
-                        </asp:ListView>
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
+                           HeaderStyle-Height="35" RowStyle-Height="35" Width="80%"
+                            ShowFooter="true" OnRowDataBound="GridView1_RowDataBound">
+                            <Columns>
+
+                                <asp:TemplateField>
+                                    <HeaderTemplate>刪除</HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Button ID="btn_delete" class="btn btn-danger" runat="server" Text="刪除商品" OnClick="btn_delete_Click" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField>
+                                    <HeaderTemplate>商品編號</HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:TextBox ID="Input_pur_id" runat="server" Text='<%# Eval("p_id") %>'></asp:TextBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField>
+                                    <HeaderTemplate>商品單價</HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:TextBox ID="Input_pur_price" runat="server" Text='<%# Eval("purin_price") %>'></asp:TextBox>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField>
+                                    <HeaderTemplate>商品數量</HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:TextBox ID="Input_pur_count" runat="server" Text='<%# Eval("purin_qty") %>'></asp:TextBox>
+                                    </ItemTemplate>
+                                    <FooterStyle HorizontalAlign="Right" />
+                                    <FooterTemplate>
+                                        單身商品總計
+                                   
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField>
+                                    <HeaderStyle Width="100" />
+                                    <ItemStyle Width="100" />
+                                    <FooterStyle Width="100" />
+                                    <HeaderTemplate>商品小計</HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:Label ID="total_1" runat="server" Text=""></asp:Label>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <asp:Label ID="pur_total" runat="server" Text=""></asp:Label>
+                                    </FooterTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
 
                         </div>
 

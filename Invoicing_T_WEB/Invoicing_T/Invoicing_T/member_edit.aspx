@@ -26,9 +26,6 @@
                                 用戶ID：<asp:Label ID="m_id" runat="server" Text='<%# Eval("m_id") %>' />
                             </div>
                             <div class="form-group">
-                                用戶密碼：<asp:Label ID="m_pwd" runat="server" Text='<%# Eval("m_pwd") %>' />
-                            </div>
-                            <div class="form-group">
                                 用戶狀態：<asp:Label ID="m_state" runat="server" Text='<%# Eval("m_state") %>' />
                             </div>
                             <div class="form-group">

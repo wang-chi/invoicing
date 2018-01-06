@@ -56,6 +56,37 @@ namespace Invoicing_T
             #endregion
         }
 
+        internal DataSet GetDDL(String p)
+        {
+            #region 執行SQL語法-群組下拉查詢
+
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = p;//
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+
+                    dr.Fill(ds, "ddl_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
         public DataSet GetId(string p)
         {
             #region 檢測帳號是否重複
@@ -86,6 +117,32 @@ namespace Invoicing_T
             return ds;
             #endregion
 
+        }
+
+        public DataSet GetNewId(String p)
+        {
+            #region 找尋最後的帳號
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "selectnewid");
+                    cn.Close();
+                }
+            }
+            catch
+            {
+                return null;
+            }
+            return ds;
+            #endregion
         }
 
         public DataSet GetSupplierId(string p)
@@ -507,7 +564,7 @@ namespace Invoicing_T
         internal DataSet GetMember(String p)
         {
             #region 執行SQL語法-顯示帳號資料
-            String tmpSql = "SELECT * FROM member" + p;
+            String tmpSql = "SELECT member.*,roles.r_name FROM member,roles WHERE member.r_id=roles.r_id " + p;
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();

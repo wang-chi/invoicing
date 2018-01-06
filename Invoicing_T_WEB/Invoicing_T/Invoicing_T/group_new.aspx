@@ -20,7 +20,7 @@
                 <form id="form1" runat="server">
                     <div class="form-group">
                         <asp:Label ID="Label6" runat="server" Text="群組帳號"/>
-                        <asp:TextBox ID="InputId" runat="server"/>
+                        <asp:Label ID="Id" runat="server" Text="Label"></asp:Label>
                         <asp:Label ID="Label12" runat="server" Text="已有此群組帳號" Visible="false" Font-Size="9pt" ForeColor="Red"/>
                     </div>
                     <div class="form-group">
@@ -31,7 +31,7 @@
                         <asp:Label ID="Label2" runat="server" Text="*資料要填寫齊全" Visible="false" Font-Size="9pt" ForeColor="Red"></asp:Label>
                     </div>
                     <div class="form-group">
-                        <asp:Button ID="Button1" runat="server" Text="新增群組" OnClick="btn_insert_group" Font-Size="12pt" Height="30px" Width="94px" />
+                        <asp:Button ID="Button1" class="btn btn-success" runat="server" Text="新增群組" OnClick="btn_insert_group" Font-Size="12pt" Height="30px" Width="94px" />
                     </div>            
                 </form>    
             </main>

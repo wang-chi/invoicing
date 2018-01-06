@@ -130,22 +130,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// InputRoles 控制項。
+        /// ddlGroup 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InputRoles;
-        
-        /// <summary>
-        /// Label8 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGroup;
         
         /// <summary>
         /// Label5 控制項。

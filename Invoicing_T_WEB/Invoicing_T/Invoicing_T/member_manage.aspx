@@ -61,11 +61,8 @@
 
                                     <td><%# Eval("m_state") %></td>
                                     <td><%# Eval("m_name") %></td>
-                                    <td><%# Eval("r_id") %></td>
-                                    <!-- <td><%# Eval("m_phone") %></td>
-                                        <td><%# Eval("m_email") %></td>
-                                       <td><%# Eval("createdate") %></td>
-                                        <td><%# Eval("update_time") %></td>-->
+                                    <td><%# Eval("r_name") %></td>
+                                  
                                 </tr>
                             </ItemTemplate>
                         </asp:ListView>

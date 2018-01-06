@@ -11,6 +11,11 @@ namespace Invoicing_T
     public partial class purchases_edit : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
+
+        GetValuePurchases objGVP = new GetValuePurchases();
+        GVPEntity objGVPEntity = new GVPEntity();
+        decimal sumTotal = 0.0m;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,7 +43,9 @@ namespace Invoicing_T
                 }
 
                 this.all(null, null, HiddenF_rid.Value);//查詢群組資料
+                Data_Binding();
             }
+            objGVPEntity = TempGVPEntity;
 
         }
 
@@ -50,9 +57,9 @@ namespace Invoicing_T
             DataSet ds = tmp.GetPurchasesinfoInfo(p);
             if (ds != null)
             {
-                IvPurchases_info_Info.DataSource = null;
-                IvPurchases_info_Info.DataSource = ds.Tables["purchases_info_info"];
-                IvPurchases_info_Info.DataBind();
+                GridView1.DataSource = null;
+                GridView1.DataSource = ds.Tables["purchases_info_info"];
+                this.GridView1.DataBind();
             }
 
             #endregion
@@ -117,7 +124,106 @@ namespace Invoicing_T
             #endregion
         }
 
-        
+        protected void btn_add_Click(object sender, EventArgs e)
+        {
+            //添加新的行位
+            objGVP.PurID = Guid.NewGuid().ToString();
+            objGVP.pid = string.Empty;
+            objGVP.Name = string.Empty;
+            objGVP.Price = 0;
+            objGVP.Count = 0;
+
+            objGVPEntity.Add(objGVP);
+            TempGVPEntity = objGVPEntity;
+
+            Data_Binding();
+
+        }
+
+        private GVPEntity TempGVPEntity
+        {
+            get
+            {
+                if (Session["GVPEntity"] == null)
+                {
+                    return new GVPEntity();
+                }
+                else
+                {
+                    return (GVPEntity)Session["GVPEntity"];
+                }
+            }
+            set
+            {
+                Session["GVPEntity"] = value;
+            }
+        }
+
+        private void Data_Binding()
+        {
+            this.GridView1.DataSource = objGVPEntity.GetValuePurchasesDatas;
+            this.GridView1.DataBind();
+        }
+
+        protected void btn_delete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (GridViewRow gvr in this.GridView1.Rows)
+                {
+                        GetValuePurchases objgvp = new GetValuePurchases();
+                        objgvp.PurID = this.GridView1.DataKeys[gvr.RowIndex].Value.ToString();
+                        objGVPEntity.Delete(objgvp);
+                }
+                TempGVPEntity = objGVPEntity;
+                Data_Binding();
+            }
+            catch (Exception ex) { }
+        }
+
+        protected void btn_update_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (GridViewRow gvr in this.GridView1.Rows)
+                {
+                    GetValuePurchases objgvp = new GetValuePurchases();
+                    objgvp.PurID = this.GridView1.DataKeys[gvr.RowIndex].Value.ToString();
+                    objgvp.pid = ((TextBox)gvr.FindControl("Input_pur_id")).Text.Trim();
+                    objgvp.Name = ((TextBox)gvr.FindControl("Input_pur_name")).Text.Trim();
+                    objgvp.Price = Convert.ToDecimal(((TextBox)gvr.FindControl("Input_pur_price")).Text.Trim());
+                    objgvp.Count = Convert.ToDecimal(((TextBox)gvr.FindControl("Input_pur_count")).Text.Trim());
+
+                    objGVPEntity.Edit(objgvp);
+                    TempGVPEntity = objGVPEntity;
+                    Data_Binding();
+
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                sumTotal = 0.0m;
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                sumTotal += Convert.ToDecimal(DataBinder.Eval(e.Row.DataItem, "total_1"));
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                if (e.Row.FindControl("pur_total") != null)
+                {
+                    Label lb1 = (Label)e.Row.FindControl("pur_total");
+                    lb1.Text = sumTotal.ToString();
+                }
+            }
+        }
+
+
 
     }
 }

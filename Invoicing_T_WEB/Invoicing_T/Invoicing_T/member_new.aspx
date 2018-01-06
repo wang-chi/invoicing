@@ -21,13 +21,13 @@
 
                 <form id="form1" runat="server">
                     <div class="form-group">
-                        <asp:Label ID="Label6" runat="server" Text="員工帳號"></asp:Label>
+                        <asp:Label ID="Label6" runat="server" Text="員工編號"></asp:Label>
                         <asp:TextBox ID="InputID" runat="server" Width="150px"></asp:TextBox>
                         <asp:Label ID="Msg_ExistID" runat="server" Text="帳號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                     </div>
                     <div class="form-group">
                         <asp:Label ID="Label11" runat="server" Text="員工密碼"></asp:Label>
-                        <asp:TextBox ID="InputPWD" runat="server" Width="150px"></asp:TextBox>
+                        <asp:TextBox ID="InputPWD" runat="server" Width="150px" MaxLength="12"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <asp:Label ID="Label12" runat="server" Text="員工狀態"></asp:Label>
@@ -49,12 +49,12 @@
                     </div>
                     <div class="form-group">
                         <asp:Label ID="Label2" runat="server" Text="角　　色"></asp:Label>
-                        <asp:TextBox ID="InputRoles" runat="server" Width="150px"></asp:TextBox>
-                        <asp:Label ID="Label8" runat="server" Text="改下拉" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                        <asp:DropDownList ID="ddlGroup" runat="server" ToolTip="群組選項"></asp:DropDownList>
+                        
                     </div>
                     <div class="form-group">
                         <asp:Label ID="Label5" runat="server" Text="電話號碼"></asp:Label>
-                        <asp:TextBox ID="InputPhone" runat="server" Width="150px"></asp:TextBox>
+                        <asp:TextBox ID="InputPhone" runat="server" Width="150px" MaxLength="10"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <asp:Label ID="Label10" runat="server" Text="電子信箱"></asp:Label>
