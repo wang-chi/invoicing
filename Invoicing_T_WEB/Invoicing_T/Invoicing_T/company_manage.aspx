@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-        <h1>員工資料</h1>
+        <h1>公 司資料</h1>
         <form id="form1" runat="server">
             <div class="form-group">
                 公司ID：<asp:Label ID="com_id" runat="server" Text='<%# Eval("com_id") %>' />
@@ -28,7 +28,7 @@
                 公司傳真號碼：<asp:Label ID="com_fax" runat="server" Text='<%# Eval("com_fax") %>' />
             </div>
             <div class="form-group">
-                <asp:Button ID="btn_company_edit" class="btn btn-success" runat="server" Text="編輯" OnClick="btn_company_edit_Click" />
+                <asp:Button ID="btn_company_edit" class="btn btn-success" runat="server" Text="修改" OnClick="btn_company_edit_Click" />
             </div>
         </form>
     </main>

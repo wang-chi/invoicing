@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <form runat="server">
             <h1>商品類別查詢</h1>
@@ -11,7 +10,6 @@
             <asp:TextBox ID="InputProductType" runat="server"></asp:TextBox>
             <asp:Button ID="btn_search" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search_Click" />
             <asp:Button ID="btn_insert_product_type" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_product_type_Click" />
-
             <h1>總覽</h1>
             <div>
                 <asp:ListView ID="IvClientInfo" runat="server" GroupItemCount="1"
@@ -19,15 +17,15 @@
                     <LayoutTemplate>
                         <table class="table table-bordered table-hover">
                             <thead>
-                                <tr class="success">
-                                    <th width="10%">
+                                <tr>
+                                    <th scope="col">
                                         <asp:Label ID="Label8" runat="server" Text="編輯"></asp:Label></th>
-                                    <%--<th width="10%">
-                                                <asp:Label ID="Label1" runat="server" Text="刪除"></asp:Label></th>--%>
-                                    <th width="16%">
+                                    <th scope="col">
                                         <asp:Label ID="Label10" runat="server" Text="商品類別ID"></asp:Label></th>
-                                    <th width="16%">
+                                    <th scope="col">
                                         <asp:Label ID="Label14" runat="server" Text="商品類別名稱"></asp:Label></th>
+                                    <th scope="col">
+                                        <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +47,6 @@
                             </td>
                             <td><%# Eval("pt_id") %></td>
                             <td><%# Eval("pt_name") %></td>
-
                         </tr>
                     </ItemTemplate>
                 </asp:ListView>

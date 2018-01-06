@@ -27,7 +27,9 @@ namespace Invoicing_T
                         case "Delete":
                             btnDelete.Visible = true;
                             auth_name_input.ReadOnly = true;
-                            auth_name_input.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
+                            auth_name_input.BackColor = System.Drawing.ColorTranslator.FromHtml("#dedede");
+                            auth_page_input.ReadOnly = true;
+                            auth_page_input.BackColor = System.Drawing.ColorTranslator.FromHtml("#dedede");
                             break;
                     }
                 }
@@ -52,6 +54,7 @@ namespace Invoicing_T
                 DataRow tmpDataRow = ds1.Tables["auth_info"].Rows[0];
                 a_id.Text = tmpDataRow["a_id"].ToString();
                 auth_name_input.Text = tmpDataRow["a_name"].ToString();
+                auth_page_input.Text = tmpDataRow["a_page"].ToString();
             }
             #endregion
         }
@@ -89,6 +92,7 @@ namespace Invoicing_T
             //("資料庫欄位")
             tmpViewData.Add("a_id", a_id.Text);
             tmpViewData.Add("a_name", auth_name_input.Text);
+            tmpViewData.Add("a_page", auth_page_input.Text);
             return tmpViewData;
             #endregion
         }

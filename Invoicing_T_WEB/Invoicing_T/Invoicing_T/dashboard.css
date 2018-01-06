@@ -67,3 +67,7 @@ h1 {
 a, p, h1, h2, h3, h4, tr, td, th,ul,li,ol,label,span {
     font-family:'Microsoft JhengHei UI';
 }
+
+.form-group {
+    padding: 0.5rem;
+}

@@ -51,10 +51,8 @@ namespace Invoicing_T
             #endregion
 
         }
-
-        protected void btn_insert_member(object sender, EventArgs e)
+        protected void insert_member_Click(object sender, EventArgs e)
         {
-
             //把畫面中使用者輸入的欄位值都到各個字串中
             m_id = InputID.Text;
             m_pwd = InputPWD.Text;
@@ -92,15 +90,14 @@ namespace Invoicing_T
                 //如果必填欄位都輸入,則新增置資料庫中
                 if ((!string.IsNullOrWhiteSpace(InputID.Text) && (!string.IsNullOrWhiteSpace(InputPWD.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text)) && (!string.IsNullOrWhiteSpace(ddlGroup.SelectedValue.Trim())) && (!string.IsNullOrWhiteSpace(InputPhone.Text)) && (!string.IsNullOrWhiteSpace(InputEmail.Text))))
                 {
- 
+
                     id_new = @"Insert Into member (m_id,m_pwd,m_state,m_name,m_sex,r_id,m_email,m_phone,createdate,update_time) 
-                    Values('" + m_id + "','" + m_pwd + "','" + m_state + "',N'" + m_name + "','" + m_sex + "','" + r_id  + "','" + m_email + "','" + m_phone + "', GETDATE(), GETDATE())";//新增
+                    Values('" + m_id + "','" + m_pwd + "','" + m_state + "',N'" + m_name + "','" + m_sex + "','" + r_id + "','" + m_email + "','" + m_phone + "', GETDATE(), GETDATE())";//新增
                     tmp.Insert(id_new);//用Insert方法
                     Response.Redirect("member_manage.aspx");//跳轉到登入畫面
                 }
             }
-
-
         }
+
     }
 }

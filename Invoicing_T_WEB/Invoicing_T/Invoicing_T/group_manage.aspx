@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <form runat="server">
-            <h1>帳號查詢</h1>
+            <h1>角色查詢</h1>
             <asp:Label ID="Label3" runat="server" Text="請以群組ID查詢："></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />

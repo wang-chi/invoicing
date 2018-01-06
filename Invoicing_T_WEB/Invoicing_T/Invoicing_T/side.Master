@@ -46,22 +46,22 @@
                 </ul>
                 <ul class="nav nav-pills flex-column">
                     <li class="nav-item">
-                        <a id="auth_ProductPage" class="nav-link" href="ProductPage.aspx" runat="server" style="display: none;">商品資料管理</a>
+                        <a id="auth_ProductPage" class="nav-link" href="ProductPage.aspx" runat="server" style="display: block;">商品資料管理</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_product_manage" class="nav-link" href="product_manage.aspx" runat="server" style="display: none;">商品管理</a>
+                        <a id="auth_product_manage" class="nav-link" href="product_manage.aspx" runat="server" style="display: block;">商品管理</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_product_type_manage" class="nav-link" href="product_type_manage.aspx" runat="server" style="display: none;">類別管理</a>
+                        <a id="auth_product_type_manage" class="nav-link" href="product_type_manage.aspx" runat="server" style="display: block;">類別管理</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_purchases_manage" class="nav-link" href="purchases_manage.aspx" runat="server" style="display: none;">進貨單管理</a>
+                        <a id="auth_purchases_manage" class="nav-link" href="purchases_manage.aspx" runat="server" style="display: block;">進貨單管理</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_supplier_price_manage" class="nav-link" href="supplier_price_manage.aspx" runat="server" style="display: none;">進貨價格</a>
+                        <a id="auth_supplier_price_manage" class="nav-link" href="supplier_price_manage.aspx" runat="server" style="display: block;">進貨價格</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_client_price_manage" class="nav-link" href="client_price_manage.aspx" runat="server" style="display: none;">銷貨價格</a>
+                        <a id="auth_client_price_manage" class="nav-link" href="client_price_manage.aspx" runat="server" style="display: block;">銷貨價格</a>
                     </li>
                 </ul>
             </nav>
