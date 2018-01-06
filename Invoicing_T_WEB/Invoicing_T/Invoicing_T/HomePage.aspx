@@ -11,34 +11,12 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>
-
-    </header>
-
+    <%Response.WriteFile("header.html");%>
     <div class="container-fluid">
         <div class="row">
-            <%   
-                Response.WriteFile("nav.aspx");
-            %>
-
+            <%Response.WriteFile("nav.aspx");%>
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <h1>Dashboard</h1>
-
                 <section class="row text-center placeholders">
                     <div class="col-6 col-sm-3 placeholder">
                         <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" />
