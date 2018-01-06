@@ -393,7 +393,7 @@ namespace Invoicing_T
                 {
                     cn.Open();
                     //設定SQL的語法(I->新增S->修改U->查詢D->刪除)(ISUD=CRUD)
-                    cmd.CommandText = "SELECT m.m_id,ra.r_id, a.a_name ,ra.viewmode FROM member m, roles_auth ra, auth a WHERE  ra.a_id = a.a_id AND ra.r_id = m.r_id AND m.m_id = '" + m_id + "'";
+                    cmd.CommandText = "SELECT m.m_id,ra.r_id, a.a_page ,ra.viewmode FROM member m, roles_auth ra, auth a WHERE  ra.a_id = a.a_id AND ra.r_id = m.r_id AND m.m_id = '" + m_id + "'";
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
                     dr.Fill(ds, "CheckAuth");//在DataSet中查詢,為DataSet中的資料表重新命名
