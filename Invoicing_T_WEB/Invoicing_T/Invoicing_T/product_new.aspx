@@ -1,54 +1,41 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="product_new.aspx.cs" Inherits="Invoicing_T.product_new" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="product_new.aspx.cs" Inherits="Invoicing_T.product_new" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>新增商品</title>
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="dashboard.css" rel="stylesheet" />
-    <link href="table.css" rel="stylesheet" />
-
-</head>
-<body>
-    <%Response.WriteFile("header.html");%>
-    <div class="container-fluid">
-        <div class="row">
-            <%Response.WriteFile("nav.aspx");%>
-            <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-                <h1>商品資料新增</h1>
-                <div>
-                    <form id="form1" runat="server">
-                        <div class="form-group">
-                            <asp:Label ID="Label6" runat="server" Text="商品編號"></asp:Label>
-                            <asp:TextBox ID="InputID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
-                            <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
-                        </div>
-                        <div class="form-group">
-                            <asp:Label ID="Label2" runat="server" Text="商品類別編號"></asp:Label>
-                            <asp:TextBox ID="InputTypeID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
-                        </div>
-
-                        <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label>
-                            <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
-                        </div>
-
-                        <div>
-                            <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
-                        </div>
-
-                        <div style="margin: auto">
-                            <asp:Button ID="btn_insert_product" class="btn btn-success" runat="server" Text="新增商品" ValidationGroup="AllValidators" OnClick="btn_insert_product_Click" />
-                        </div>
-
-                    </form>
-
+    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        <h1>商品資料新增</h1>
+        <div>
+            <form id="form1" runat="server">
+                <div class="form-group">
+                    <asp:Label ID="Label6" runat="server" Text="商品編號"></asp:Label>
+                    <asp:TextBox ID="InputID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
+                    <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                </div>
+                <div class="form-group">
+                    <asp:Label ID="Label2" runat="server" Text="商品類別編號"></asp:Label>
+                    <asp:TextBox ID="InputTypeID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
                 </div>
 
-            </main>
+                <div class="form-group">
+                    <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label>
+                    <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
+                </div>
+
+                <div>
+                    <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                </div>
+
+                <div style="margin: auto">
+                    <asp:Button ID="btn_insert_product" class="btn btn-success" runat="server" Text="新增商品" ValidationGroup="AllValidators" OnClick="btn_insert_product_Click" />
+                </div>
+
+            </form>
+
         </div>
-    </div>
-</body>
-</html>
+
+    </main>
+
+</asp:Content>
+
