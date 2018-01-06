@@ -19,6 +19,29 @@
 
             <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
                 <h1>新增進貨單</h1>
+                <form id="form1" runat="server">
+                <div>
+                    <asp:Label ID="Label1" runat="server" Text="進貨單編號："></asp:Label>
+                    <asp:TextBox ID="InputPurid" runat="server"></asp:TextBox>
+                    <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                    </div>
+
+                    <div>
+                    <asp:Label ID="Label2" runat="server" Text="廠商編號："></asp:Label>
+                    <asp:TextBox ID="InputSid" runat="server"></asp:TextBox>
+                    </div>
+
+                    <div>
+                    <asp:Label ID="Label3" runat="server" Text="業務員編號："></asp:Label>
+                    <asp:TextBox ID="InputMid" runat="server"></asp:TextBox>
+                    </div>
+
+                    <div>
+                    <asp:Label ID="Label4" runat="server" Text="交貨日日期："></asp:Label>
+                    <asp:TextBox ID="InputDeliverydate" runat="server" TextMode="DateTime"></asp:TextBox>
+                    </div>
+
+                    <!--單身 -->
                   <div>
                     <form id="form1" runat="server">
                         <asp:Button ID="btn_add" class="btn btn-success" runat="server" Text="添加商品" OnClick="btn_add_Click" />
@@ -68,7 +91,7 @@
                                     </ItemTemplate>
                                 <FooterStyle HorizontalAlign="Right" />
                                 <FooterTemplate>
-                                    商品小計
+                                    單身商品總計
                                     </FooterTemplate>
                             </asp:TemplateField>
 
@@ -76,7 +99,7 @@
                                 <HeaderStyle Width="100" />
                                 <ItemStyle Width="100" />
                                 <FooterStyle Width="100" />
-                                <HeaderTemplate>進貨單金額總計</HeaderTemplate>
+                                <HeaderTemplate>商品小計</HeaderTemplate>
                                 <ItemTemplate>
                                     <%# Eval("Total") %>
                                     </ItemTemplate>
@@ -84,16 +107,22 @@
                                    <asp:Label ID="pur_total" runat="server" Text=""></asp:Label>
                                    </FooterTemplate>
                             </asp:TemplateField>
-
-
                                 </Columns>
                     </asp:GridView>
 
-                    </form>
                 </div>
+                     <div>
+                            <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                        </div>
+                    <div>
+                        <asp:button ID="btn_insert_purchases" runat="server" text="新增進貨單" OnClick="btn_insert_purchases_Click" />
+                        </div>
+
+                </form>
             </main>
         </div>
     </div>
 </body>
+
 </html>
 

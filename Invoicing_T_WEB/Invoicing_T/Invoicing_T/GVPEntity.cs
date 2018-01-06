@@ -8,6 +8,7 @@ namespace Invoicing_T
 {
     public class GVPEntity
     {
+
         private SortedList<string, GetValuePurchases> pur_sl = new SortedList<string, GetValuePurchases>();
 
         public GVPEntity()
