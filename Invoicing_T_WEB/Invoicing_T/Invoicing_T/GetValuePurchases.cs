@@ -47,12 +47,12 @@ namespace Invoicing_T
 
         public GetValuePurchases()
         {
-
+           
         }
 
-        /*public GetValuePurchases(string id,string name, decimal price, decimal count, decimal total)
+        /*public GetValuePurchases(string id, string name, decimal price, decimal count, decimal total)
         {
-            this.pur_id = id;
+             this.pur_id = id;
             this.pur_name = name;
             this.pur_price = price;
             this.pur_count = count;

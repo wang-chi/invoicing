@@ -86,8 +86,10 @@
     <None Include="packages.config" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="group_new.aspx" />
+    <Content Include="header.html" />
     <Content Include="member_new.aspx" />
     <Content Include="ManagePage.aspx" />
+    <Content Include="nav.aspx" />
     <Content Include="ProductPage.aspx" />
     <Content Include="product_edit.aspx" />
     <Content Include="product_manage.aspx" />
@@ -290,6 +292,13 @@
     </Compile>
     <Compile Include="ManagePage.aspx.designer.cs">
       <DependentUpon>ManagePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nav.aspx.cs">
+      <DependentUpon>nav.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nav.aspx.designer.cs">
+      <DependentUpon>nav.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductPage.aspx.cs">
       <DependentUpon>ProductPage.aspx</DependentUpon>

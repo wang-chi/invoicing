@@ -8,16 +8,16 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class HomePage : System.Web.UI.Page
+    public partial class nav : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.CheckAuth();
+            //this.CheckAuth();
+            
         }
-
-        private void CheckAuth() {
+        private void CheckAuth()
+        {
             #region 確認可到訪頁面權限
             if (Session["UserID"] != null)
             {
@@ -28,7 +28,8 @@ namespace Invoicing_T
                     DataTable dt = ds.Tables["CheckAuth"];
 
                 }
-            }else
+            }
+            else
             {
                 Response.Redirect("login.aspx");//跳轉到登入頁面
             }

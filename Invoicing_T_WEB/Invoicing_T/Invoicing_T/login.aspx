@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Invoicing_T.login" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -13,20 +12,20 @@
 <body>
     <div class="loginform">
         <span>進銷存管理系統</span>
-        <hr>
+        <hr/>
 
         <form id="loginform" runat="server" class="container">
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
                 <div class="col-sm-5">
-                    <asp:TextBox ID="InputAccount" runat="server" MinLength="1" MaxLength="10" />
+                    <asp:TextBox ID="InputAccount" runat="server" MinLength="5" MaxLength="10" />
                 </div>
             </div>
 
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
                 <div class="col-sm-5">
-                    <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="3" MaxLength="20" />
+                    <asp:TextBox ID="InputPassword" runat="server" TextMode="Password" MinLength="8" MaxLength="15" />
 
                 </div>
             </div>

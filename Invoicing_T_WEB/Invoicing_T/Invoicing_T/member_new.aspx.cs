@@ -15,8 +15,40 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label8.Visible = false;//改下拉選單註解
             //UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+            if (!IsPostBack)
+            {
+                this.SetGroup();//設定區域下拉選項
+            }
+
+        }
+
+        private void SetGroup()
+        {
+            #region 設定群組下拉選項
+
+            string p = "SELECT * FROM roles";
+            ddlGroup.Items.Clear();//清空下拉項目
+            ListItem cmplistitem = new ListItem();//新增下拉
+            cmplistitem.Text = "請選擇群組:";
+            cmplistitem.Value = "";
+            ddlGroup.Items.Add(cmplistitem);
+            cmplistitem = null;
+
+            DataSet ds = tmp.GetDDL(p);
+
+            if (ds != null)
+            {
+                foreach (DataRow dr in ds.Tables["ddl_info"].Rows)
+                {
+                    ListItem cmplistitemnew = new ListItem();//新增下拉
+                    cmplistitemnew.Text = dr["r_name"].ToString();
+                    cmplistitemnew.Value = dr["r_id"].ToString();
+                    ddlGroup.Items.Add(cmplistitemnew);
+
+                }
+            }
+            #endregion
 
         }
 
@@ -29,7 +61,7 @@ namespace Invoicing_T
             m_state = RadioButtonList2.SelectedItem.Value;
             m_name = InputName.Text;
             m_sex = RadioButtonList1.SelectedItem.Value;
-            r_id = InputRoles.Text;
+            r_id = ddlGroup.SelectedValue.Trim();
             m_phone = InputPhone.Text;
             m_email = InputEmail.Text;
 
@@ -51,14 +83,14 @@ namespace Invoicing_T
 
                 }
                 //如果有任一欄位未輸入  則顯示「必填」
-                if ((string.IsNullOrWhiteSpace(InputID.Text)) || (string.IsNullOrWhiteSpace(InputPWD.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)) || (string.IsNullOrWhiteSpace(InputRoles.Text)) || (string.IsNullOrWhiteSpace(InputPhone.Text)) || (string.IsNullOrWhiteSpace(InputEmail.Text)))
+                if ((string.IsNullOrWhiteSpace(InputID.Text)) || (string.IsNullOrWhiteSpace(InputPWD.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)) || (string.IsNullOrWhiteSpace(ddlGroup.SelectedValue.Trim())) || (string.IsNullOrWhiteSpace(InputPhone.Text)) || (string.IsNullOrWhiteSpace(InputEmail.Text)))
                 {
                     Label10.Visible = true;
                     Label10.Text = "*必須填入資料";
 
                 }
                 //如果必填欄位都輸入,則新增置資料庫中
-                if ((!string.IsNullOrWhiteSpace(InputID.Text) && (!string.IsNullOrWhiteSpace(InputPWD.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text)) && (!string.IsNullOrWhiteSpace(InputRoles.Text)) && (!string.IsNullOrWhiteSpace(InputPhone.Text)) && (!string.IsNullOrWhiteSpace(InputEmail.Text))))
+                if ((!string.IsNullOrWhiteSpace(InputID.Text) && (!string.IsNullOrWhiteSpace(InputPWD.Text)) && (!string.IsNullOrWhiteSpace(InputName.Text)) && (!string.IsNullOrWhiteSpace(ddlGroup.SelectedValue.Trim())) && (!string.IsNullOrWhiteSpace(InputPhone.Text)) && (!string.IsNullOrWhiteSpace(InputEmail.Text))))
                 {
  
                     id_new = @"Insert Into member (m_id,m_pwd,m_state,m_name,m_sex,r_id,m_email,m_phone,createdate,update_time) 

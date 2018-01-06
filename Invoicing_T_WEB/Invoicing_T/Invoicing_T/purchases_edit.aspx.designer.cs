@@ -94,13 +94,31 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label update_time;
         
         /// <summary>
-        /// IvPurchases_info_Info 控制項。
+        /// btn_add 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView IvPurchases_info_Info;
+        protected global::System.Web.UI.WebControls.Button btn_add;
+        
+        /// <summary>
+        /// btn_update 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_update;
+        
+        /// <summary>
+        /// GridView1 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
         /// btnUpdate 控制項。
