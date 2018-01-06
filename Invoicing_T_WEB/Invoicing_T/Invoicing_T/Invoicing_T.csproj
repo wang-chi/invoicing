@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="auth_edit.aspx" />
     <Content Include="auth_new.aspx" />
     <Content Include="client_edit.aspx" />
     <Content Include="client_manage.aspx" />
@@ -87,8 +88,8 @@
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="group_new.aspx" />
     <Content Include="header.html" />
-    <Content Include="member_new.aspx" />
     <Content Include="ManagePage.aspx" />
+    <Content Include="member_new.aspx" />
     <Content Include="ProductPage.aspx" />
     <Content Include="product_edit.aspx" />
     <Content Include="product_manage.aspx" />
@@ -99,6 +100,7 @@
     <Content Include="purchases_edit.aspx" />
     <Content Include="purchases_manage.aspx" />
     <Content Include="purchases_new.aspx" />
+    <Content Include="roles_manage.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -119,7 +121,6 @@
     <Content Include="AuthDialog.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="auth_edit.aspx" />
     <Content Include="auth_manage.aspx" />
     <Content Include="group_edit.aspx" />
     <Content Include="group_manage.aspx" />
@@ -258,6 +259,13 @@
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManagePage.aspx.cs">
+      <DependentUpon>ManagePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagePage.aspx.designer.cs">
+      <DependentUpon>ManagePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="member_edit.aspx.cs">
       <DependentUpon>member_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -285,13 +293,6 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ManagePage.aspx.cs">
-      <DependentUpon>ManagePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ManagePage.aspx.designer.cs">
-      <DependentUpon>ManagePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductPage.aspx.cs">
       <DependentUpon>ProductPage.aspx</DependentUpon>
@@ -363,6 +364,13 @@
     </Compile>
     <Compile Include="purchases_new.aspx.designer.cs">
       <DependentUpon>purchases_new.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="roles_manage.aspx.cs">
+      <DependentUpon>roles_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="roles_manage.aspx.designer.cs">
+      <DependentUpon>roles_manage.aspx</DependentUpon>
     </Compile>
     <Compile Include="side.Master.cs">
       <DependentUpon>side.Master</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
+using System.Data;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,7 +37,7 @@ namespace Invoicing_T
                     HiddenF_rid.Value = Request.QueryString["a_id"].ToString();//主索引
                     this.SetMaintainData(HiddenF_rid.Value);//設定要維護的資料
                 }
-                
+
             }
         }
 
@@ -92,7 +92,5 @@ namespace Invoicing_T
             return tmpViewData;
             #endregion
         }
-
-
     }
 }

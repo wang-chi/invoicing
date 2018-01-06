@@ -1,16 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="false" CodeBehind="member_manage.aspx.cs" Inherits="Invoicing_T.member_manage" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="member_manage.aspx.cs" Inherits="Invoicing_T.member_manage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <form runat="server">
             <h1>帳號查詢</h1>
-            <div>
-                <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："></asp:Label>
-                <asp:TextBox ID="InputMemberID" runat="server" aria-label="Search"></asp:TextBox>
-                <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
-                <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_member" />
+            <div class="form-group row">
+                <asp:Label ID="Label3" runat="server" Text="請以用戶ID查詢："/>
+                <div class="col-sm-3">
+                    <asp:TextBox ID="InputMemberID" CssClass="form-control" runat="server" aria-label="Search"></asp:TextBox>
+                </div>
+                <div class="form-group">
+                    <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
+                </div>
+                <div class="form-group">
+                    <asp:Button ID="Button1" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_member" />
+                </div>
             </div>
             <h1>總覽</h1>
             <div>
