@@ -101,7 +101,8 @@ namespace Invoicing_T
 
                     break;
                 case "btnDelete":
-                    tmp.DeleteSupplier(tmpViewData);
+                    delete_product();
+                    tmp.DeletePurchases(tmpViewData);
                     break;
             }
             Server.Transfer("purchases_manage.aspx", true);//導回群組管理
@@ -144,6 +145,21 @@ namespace Invoicing_T
                 p_purin = lv_purin.Text;
 
                 tmp.UpdatePurchasesInfo(p_price, p_qty, p_purin);
+
+            }
+        }
+
+        private void delete_product()
+        {
+            foreach (ListViewItem myItem in lvauthInfo.Items)
+            {
+                Label lv_purin;
+                string  p_purin;
+                
+                lv_purin = (Label)myItem.FindControl("purinid");
+                p_purin = lv_purin.Text;
+
+                tmp.DeletePurchasesInfo(p_purin);
 
             }
         }

@@ -31,13 +31,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// InputOrderID 控制項。
+        /// orid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label InputOrderID;
+        protected global::System.Web.UI.WebControls.Label orid;
         
         /// <summary>
         /// Msg_ExistID 控制項。
@@ -58,13 +58,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// InputClient 控制項。
+        /// InputCid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InputClient;
+        protected global::System.Web.UI.WebControls.TextBox InputCid;
         
         /// <summary>
         /// ddlClientGroup 控制項。

@@ -38,13 +38,13 @@ namespace Invoicing_T
 
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE pur_id LIKE '%" + InputOrders.Text + "%'";
+            String selection = " WHERE or_id LIKE '%" + InputOrders.Text + "%'";
             all(null, null, selection);
         }
 
         protected void btn_insert_orders_Click(object sender, EventArgs e)
         {
-            Response.Redirect("orders_new.aspx");//跳轉到新增頁面
+            Response.Redirect("orders_new.aspx");//跳轉到登入畫面
         }
     }
 }

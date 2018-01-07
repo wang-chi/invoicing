@@ -8,7 +8,7 @@
             <asp:Label ID="Label3" runat="server" Text="請以銷貨單編號查詢："></asp:Label>
             <asp:TextBox ID="InputOrders" runat="server"></asp:TextBox>
             <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
-            <asp:Button ID="btn_insert_orders" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_orders_Click" />
+            <asp:Button ID="btn_insert_orders" class="btn btn-primary" runat="server" Text="新增" OnClick="btn_insert_orders_Click"/>
 
             <h1>總覽</h1>
             <div>

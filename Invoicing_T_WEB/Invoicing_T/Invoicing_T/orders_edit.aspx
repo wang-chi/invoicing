@@ -147,7 +147,7 @@
 
                             <td>
                                 <%# Eval("p_id") %>
-                                <asp:Label ID="purinid" runat="server" Text='<%# Eval("orin_id") %>' Visible="false"></asp:Label>
+                                <asp:Label ID="orinid" runat="server" Text='<%# Eval("orin_id") %>' Visible="false"></asp:Label>
                             </td>
                             <td>
                                 <%# Eval("p_name") %>

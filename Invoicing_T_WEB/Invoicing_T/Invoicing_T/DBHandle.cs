@@ -945,6 +945,37 @@ namespace Invoicing_T
             #endregion
         }
 
+        internal DataSet GetOrdersinfoInfo(String p)
+        {
+            #region 執行SQL語法-顯示銷貨單單頭資料
+            String tmpSql = "SELECT orders_info.*,product.*  FROM orders_info,product WHERE orders_info.or_id='" + p + "' AND  orders_info.p_id= product.p_id";
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "orders_info_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+
+
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
         internal DataSet GetProductType(String p)
         {
             #region 執行SQL語法-顯示商品種類資料
@@ -1236,7 +1267,7 @@ namespace Invoicing_T
             #region 查詢client_price資料
 
 
-            string tmp = "SELECT * FROM client_price WHERE cp_id=@cp_id";
+            string tmp = "SELECT * FROM client_price "+p;
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try
@@ -1246,7 +1277,7 @@ namespace Invoicing_T
                 {
                     cn.Open();//開啟資料庫
                     cmd.CommandText = tmp;//
-                    cmd.Parameters.AddWithValue("@cp_id", p);//定義參數
+                    
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
 
@@ -1297,153 +1328,36 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal void InsertCampData(Dictionary<string, object> tmpViewData, String this_member)
+        internal DataSet GetOrdersInfo(string p)
         {
-            #region 執行SQL語法-新增至資料庫
-            string tmp = @"INSERT INTO House_detail(house_guid, house_title, house_city, house_area,house_address,
-house_rent,house_deposit,house_footage,house_floor,house_totalfloor,house_patterns,house_situation,
-house_parking,house_community,house_fee,house_renttime,IS_cook,IS_pet,
-house_state_student,house_state_woker,house_staet_family,house_sex_ask,house_moved,
-IS_TV, IS_REF, IS_ac, IS_Cac, IS_W, IS_dryer, IS_H, IS_df,IS_lamp,IS_Net,IS_CATV,IS_phone,
-IS_sofa,IS_wardrobe,IS_single_bed,IS_double_bed,IS_bookcase,IS_desk_chair,
-IS_balc,IS_yard,IS_metro_P,IS_car_P,IS_elev,IS_LR,IS_KIT,IS_window,
-IS_natural_gas,IS_bottledl_gas,IS_indoorsl_gas,IS_outdoorsl_gas,IS_electricl_gas,IS_sun_gas,
-IS_access,IS_FE,IS_smoke,IS_fire,IS_esladder,IS_essling,IS_EL,IS_moniter,IS_exhauster,IS_COalarm,IS_header,IS_security,IS_route,house_inside,member_guid)
-Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
-@house_rent,@house_deposit,@house_footage,@house_floor,@house_totalfloor,@house_patterns,@house_situation,
-@house_parking,@house_community,@house_fee,@house_renttime,@IS_cook,@IS_pet,
-@house_state_student,@house_state_woker,@house_staet_family,@house_sex_ask,@house_moved,
-@IS_TV,@IS_REF,@IS_ac,@IS_Cac,@IS_W,@IS_dryer,@IS_H,@IS_df,@IS_lamp,@IS_Net,@IS_CATV,@IS_phone,
-@IS_sofa,@IS_wardrobe,@IS_single_bed,@IS_double_bed,@IS_bookcase,@IS_desk_chair,
-@IS_balc,@IS_yard,@IS_metro_P,@IS_car_P,@IS_elev,@IS_LR,@IS_KIT,@IS_window,
-@IS_natural_gas,@IS_bottledl_gas,@IS_indoorsl_gas,@IS_outdoorsl_gas,@IS_electricl_gas,@IS_sun_gas,
-@IS_access,@IS_FE,@IS_smoke,@IS_fire,@IS_esladder,@IS_essling,@IS_EL,@IS_moniter,@IS_exhauster,@IS_COalarm,@IS_header,@IS_security,@IS_route,@house_inside,@member_guid)";
-            //利用參數方式寫SQL語法
-            SqlConnection cn = new SqlConnection("");
-            SqlTransaction tran = null;//產生物件
+            #region 查詢orders資料
+
+
+            string tmp = "SELECT * FROM orders WHERE or_id=@or_id";
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
             try
             {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmp;//
+                    cmd.Parameters.AddWithValue("@or_id", p);//定義參數
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
 
-                cn.Open();//開啟資料庫
+                    dr.Fill(ds, "orders_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
 
-
-                tran = cn.BeginTransaction();//建立SqlConnection交易
-
-                cmd.CommandText = tmp;//新增
-                #region 定義參數
-
-
-                cmd.Parameters.AddWithValue("@house_guid", Guid.NewGuid().ToString());//新增亂數
-
-                cmd.Parameters.AddWithValue("@house_title", tmpViewData["house_title"]);
-
-                cmd.Parameters.AddWithValue("@house_city", tmpViewData["house_city"]);
-                cmd.Parameters.AddWithValue("@house_area", tmpViewData["house_area"]);
-                cmd.Parameters.AddWithValue("@house_address", tmpViewData["house_address"]);
-
-                cmd.Parameters.AddWithValue("@house_rent", tmpViewData["house_rent"]);
-                cmd.Parameters.AddWithValue("@house_deposit", tmpViewData["house_deposit"]);
-
-                cmd.Parameters.AddWithValue("@house_footage", tmpViewData["house_footage"]);
-                cmd.Parameters.AddWithValue("@house_floor", tmpViewData["house_floor"]);
-                cmd.Parameters.AddWithValue("@house_totalfloor", tmpViewData["house_totalfloor"]);
-
-                cmd.Parameters.AddWithValue("@house_patterns", tmpViewData["house_patterns"]);
-                cmd.Parameters.AddWithValue("@house_situation", tmpViewData["house_situation"]);
-
-                cmd.Parameters.AddWithValue("@house_parking", tmpViewData["house_parking"]);
-                cmd.Parameters.AddWithValue("@house_community", tmpViewData["house_community"]);
-
-                cmd.Parameters.AddWithValue("@house_fee", tmpViewData["house_fee"]);
-                cmd.Parameters.AddWithValue("@house_renttime", tmpViewData["house_renttime"]);
-
-                cmd.Parameters.AddWithValue("@IS_cook", tmpViewData["IS_cook"]);
-                cmd.Parameters.AddWithValue("@IS_pet", tmpViewData["IS_pet"]);
-
-                cmd.Parameters.AddWithValue("@house_state_student", tmpViewData["house_state_student"]);
-                cmd.Parameters.AddWithValue("@house_state_woker", tmpViewData["house_state_woker"]);
-                cmd.Parameters.AddWithValue("@house_staet_family", tmpViewData["house_staet_family"]);
-
-                cmd.Parameters.AddWithValue("@house_sex_ask", tmpViewData["house_sex_ask"]);
-                cmd.Parameters.AddWithValue("@house_moved", tmpViewData["house_moved"]);
-
-                cmd.Parameters.AddWithValue("@IS_TV", tmpViewData["IS_TV"]);
-                cmd.Parameters.AddWithValue("@IS_REF", tmpViewData["IS_REF"]);
-                cmd.Parameters.AddWithValue("@IS_ac", tmpViewData["IS_ac"]);
-                cmd.Parameters.AddWithValue("@IS_Cac", tmpViewData["IS_Cac"]);
-                cmd.Parameters.AddWithValue("@IS_W", tmpViewData["IS_W"]);
-                cmd.Parameters.AddWithValue("@IS_dryer", tmpViewData["IS_dryer"]);
-                cmd.Parameters.AddWithValue("@IS_H", tmpViewData["IS_H"]);
-                cmd.Parameters.AddWithValue("@IS_df", tmpViewData["IS_df"]);
-                cmd.Parameters.AddWithValue("@IS_lamp", tmpViewData["IS_lamp"]);
-                cmd.Parameters.AddWithValue("@IS_Net", tmpViewData["IS_Net"]);
-                cmd.Parameters.AddWithValue("@IS_CATV", tmpViewData["IS_CATV"]);
-                cmd.Parameters.AddWithValue("@IS_phone", tmpViewData["IS_phone"]);
-
-                cmd.Parameters.AddWithValue("@IS_sofa", tmpViewData["IS_sofa"]);
-                cmd.Parameters.AddWithValue("@IS_wardrobe", tmpViewData["IS_wardrobe"]);
-                cmd.Parameters.AddWithValue("@IS_single_bed", tmpViewData["IS_single_bed"]);
-                cmd.Parameters.AddWithValue("@IS_double_bed", tmpViewData["IS_double_bed"]);
-                cmd.Parameters.AddWithValue("@IS_bookcase", tmpViewData["IS_bookcase"]);
-                cmd.Parameters.AddWithValue("@IS_desk_chair", tmpViewData["IS_desk_chair"]);
-
-                cmd.Parameters.AddWithValue("@IS_balc", tmpViewData["IS_balc"]);
-                cmd.Parameters.AddWithValue("@IS_yard", tmpViewData["IS_yard"]);
-                cmd.Parameters.AddWithValue("@IS_metro_P", tmpViewData["IS_metro_P"]);
-                cmd.Parameters.AddWithValue("@IS_car_P", tmpViewData["IS_car_P"]);
-                cmd.Parameters.AddWithValue("@IS_elev", tmpViewData["IS_elev"]);
-                cmd.Parameters.AddWithValue("@IS_LR", tmpViewData["IS_LR"]);
-                cmd.Parameters.AddWithValue("@IS_KIT", tmpViewData["IS_KIT"]);
-                cmd.Parameters.AddWithValue("@IS_window", tmpViewData["IS_window"]);
-
-                cmd.Parameters.AddWithValue("@IS_natural_gas", tmpViewData["IS_natural_gas"]);
-                cmd.Parameters.AddWithValue("@IS_bottledl_gas", tmpViewData["IS_bottledl_gas"]);
-                cmd.Parameters.AddWithValue("@IS_indoorsl_gas", tmpViewData["IS_indoorsl_gas"]);
-                cmd.Parameters.AddWithValue("@IS_outdoorsl_gas", tmpViewData["IS_outdoorsl_gas"]);
-                cmd.Parameters.AddWithValue("@IS_electricl_gas", tmpViewData["IS_electricl_gas"]);
-                cmd.Parameters.AddWithValue("@IS_sun_gas", tmpViewData["IS_sun_gas"]);
-
-                cmd.Parameters.AddWithValue("@IS_access", tmpViewData["IS_access"]);
-                cmd.Parameters.AddWithValue("@IS_FE", tmpViewData["IS_FE"]);
-                cmd.Parameters.AddWithValue("@IS_smoke", tmpViewData["IS_smoke"]);
-                cmd.Parameters.AddWithValue("@IS_fire", tmpViewData["IS_fire"]);
-                cmd.Parameters.AddWithValue("@IS_esladder", tmpViewData["IS_esladder"]);
-                cmd.Parameters.AddWithValue("@IS_essling", tmpViewData["IS_essling"]);
-                cmd.Parameters.AddWithValue("@IS_EL", tmpViewData["IS_EL"]);
-                cmd.Parameters.AddWithValue("@IS_moniter", tmpViewData["IS_moniter"]);
-                cmd.Parameters.AddWithValue("@IS_exhauster", tmpViewData["IS_exhauster"]);
-                cmd.Parameters.AddWithValue("@IS_COalarm", tmpViewData["IS_COalarm"]);
-                cmd.Parameters.AddWithValue("@IS_header", tmpViewData["IS_header"]);
-                cmd.Parameters.AddWithValue("@IS_security", tmpViewData["IS_security"]);
-                cmd.Parameters.AddWithValue("@IS_route", tmpViewData["IS_route"]);
-
-                cmd.Parameters.AddWithValue("@house_inside", tmpViewData["house_inside"]);
-
-                cmd.Parameters.AddWithValue("@member_guid", this_member);
-
-                #endregion
-
-                cmd.Connection = cn;//指定連線物件
-
-                cmd.Transaction = tran;//建立SqlConnection交易
-
-
-                cmd.ExecuteNonQuery();//執行SQL語法
-
-                cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
             }
             catch (Exception)
             {
-                cmd.Transaction.Rollback();
+                return null;//如果錯誤  回傳null值
             }
-            finally
-            {
-                if (cn.State.Equals(ConnectionState.Open))
-                {
-                    cn.Close();
-                }
-            }
+            return ds;//回傳DataSet的表
+
             #endregion
         }
 
@@ -1579,6 +1493,110 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
                     #region 定義參數
                     cmd.Parameters.AddWithValue("@s_id", tmpViewData["s_id"]);
                     #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeleteOrders(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除銷貨資料
+            string tmp = @"Delete FROM orders WHERE or_id=@or_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@or_id", tmpViewData["or_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeleteOrdersInfo(String p)
+        {
+            #region 執行SQL語法-刪除進貨詳細資料
+            string tmp = @"Delete  FROM orders_info WHERE orin_id='"+p+"'";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                   
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void DeletePurchasesInfo(String p)
+        {
+            #region 執行SQL語法-刪除進貨詳細資料
+            string tmp = @"Delete  FROM purchases_info WHERE purin_id='" + p + "'";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+
                     cmd.Connection = cn;//指定連線物件
                     cmd.Transaction = tran;//建立SqlConnection交易
                     cmd.ExecuteNonQuery();//執行SQL語法
@@ -2254,6 +2272,45 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
+        internal void UpdateOrders(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-修改銷貨單資料
+            string tmp = "Update orders set m_id=@m_id,accept=@accept,deliverydate=@deliverydate,update_time=GETDATE()  WHERE or_id=@or_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@or_id", tmpViewData["or_id"]);
+                    cmd.Parameters.AddWithValue("@m_id", tmpViewData["m_id"]);
+                    cmd.Parameters.AddWithValue("@accept", tmpViewData["accept"]);
+                    cmd.Parameters.AddWithValue("@deliverydate", tmpViewData["deliverydate"]);
+                    #endregion
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
         internal void UpdateAuthGroup(String view, String raid)
         {
             #region 執行SQL語法-修改進貨單資料
@@ -2290,6 +2347,39 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         {
             #region 執行SQL語法-修改進貨單資料
             string tmp = "Update purchases_info set purin_price='" + price + "',purin_qty='" + qty + "'  WHERE purin_id='" + purinid + "'";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void UpdateOrdersInfo(String price, String qty, String orinid)
+        {
+            #region 執行SQL語法-修改銷貨單資料
+            string tmp = "Update orders_info set orin_price='" + price + "',orin_qty='" + qty + "'  WHERE orin_id='" + orinid + "'";//利用參數方式寫SQL語法
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 

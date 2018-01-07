@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -52,12 +53,12 @@ namespace Invoicing_T
 
             #region 查詢進貨單詳細資料資料
 
-            DataSet ds = tmp.GetPurchasesinfoInfo(p);
+            DataSet ds = tmp.GetOrdersinfoInfo(p);
             if (ds != null)
             {
-                lvauthInfo.DataSource = null;
-                lvauthInfo.DataSource = ds.Tables["purchases_info_info"];
-                lvauthInfo.DataBind();
+                lvordersInfo.DataSource = null;
+                lvordersInfo.DataSource = ds.Tables["orders_info_info"];
+                lvordersInfo.DataBind();
             }
 
             #endregion
@@ -68,12 +69,12 @@ namespace Invoicing_T
 
             #region 查詢群組資料
 
-            DataSet ds1 = tmp.GetPurchasesInfo(p);
+            DataSet ds1 = tmp.GetOrdersInfo(p);
             if (ds1 != null)
             {
-                DataRow tmpDataRow = ds1.Tables["purchases_info"].Rows[0];
-                pur_id.Text = tmpDataRow["pur_id"].ToString();
-                s_id.Text = tmpDataRow["s_id"].ToString();
+                DataRow tmpDataRow = ds1.Tables["orders_info"].Rows[0];
+                or_id.Text = tmpDataRow["or_id"].ToString();
+                c_id.Text = tmpDataRow["c_id"].ToString();
                 RadioButtonList1.SelectedValue = tmpDataRow["accept"].ToString();
                 deliverydate.Text = tmpDataRow["deliverydate"].ToString();
                 update_time.Text = tmpDataRow["update_time"].ToString();
@@ -88,21 +89,22 @@ namespace Invoicing_T
             #region 修改/刪除廠商資料
 
             Dictionary<string, object> tmpViewData = this.SetViewData();//設定畫面中的資料
-
+            
             string tmpID = ((Button)sender).ID;//(Button)sender->將object強制轉型成button
             switch (tmpID)//使用者按下哪一個按鈕
             {
                 case "btnUpdate":
-                    tmp.UpdatePurchases(tmpViewData);
+                    tmp.UpdateOrders(tmpViewData);
                     update_product();
 
 
                     break;
                 case "btnDelete":
-                    tmp.DeleteSupplier(tmpViewData);
+                    delete_product();
+                    tmp.DeleteOrders(tmpViewData);
                     break;
             }
-            Server.Transfer("purchases_manage.aspx", true);//導回群組管理
+            Server.Transfer("orders_manage.aspx", true);//導回群組管理
             #endregion
         }
 
@@ -116,7 +118,7 @@ namespace Invoicing_T
             Dictionary<string, object> tmpViewData = new Dictionary<string, object>();//object->可以儲存不同的資料型別
             //TODO : 補
             //("資料庫欄位")
-            tmpViewData.Add("pur_id", pur_id.Text);
+            tmpViewData.Add("or_id", or_id.Text);
             tmpViewData.Add("m_id", m_id.Text);
             tmpViewData.Add("accept", RadioButtonList1.SelectedItem.Value);
             tmpViewData.Add("deliverydate", deliverydate.Text);
@@ -127,24 +129,40 @@ namespace Invoicing_T
 
         private void update_product()
         {
-            foreach (ListViewItem myItem in lvauthInfo.Items)
+            foreach (ListViewItem myItem in lvordersInfo.Items)
             {
                 TextBox lv_price, lv_qty;
-                Label lv_purin;
-                string p_price, p_qty, p_purin;
+                Label lv_orin;
+                string p_price, p_qty, p_orin;
                 lv_price = (TextBox)myItem.FindControl("InputPrice");
                 p_price = lv_price.Text;
 
                 lv_qty = (TextBox)myItem.FindControl("InputQty");
                 p_qty = lv_qty.Text;
 
-                lv_purin = (Label)myItem.FindControl("purinid");
-                p_purin = lv_purin.Text;
+                lv_orin = (Label)myItem.FindControl("orinid");
+                p_orin = lv_orin.Text;
 
-                tmp.UpdatePurchasesInfo(p_price, p_qty, p_purin);
+                tmp.UpdateOrdersInfo(p_price, p_qty, p_orin);
 
             }
         }
+
+        private void delete_product()
+        {
+            foreach (ListViewItem myItem in lvordersInfo.Items)
+            {
+                Label lv_orin;
+                string p_orin;
+                
+                lv_orin = (Label)myItem.FindControl("orinid");
+                p_orin = lv_orin.Text;
+
+                tmp.DeleteOrdersInfo(p_orin);
+
+            }
+        }
+
 
         protected void btn_add_Click(object sender, EventArgs e)
         {
