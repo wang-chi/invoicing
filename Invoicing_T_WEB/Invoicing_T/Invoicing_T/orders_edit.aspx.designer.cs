@@ -10,7 +10,7 @@
 namespace Invoicing_T {
     
     
-    public partial class purchases_edit {
+    public partial class order_edit {
         
         /// <summary>
         /// form1 控制項。
@@ -40,22 +40,22 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.HiddenField HiddenF_rid;
         
         /// <summary>
-        /// pur_id 控制項。
+        /// or_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pur_id;
+        protected global::System.Web.UI.WebControls.Label or_id;
         
         /// <summary>
-        /// s_id 控制項。
+        /// c_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label s_id;
+        protected global::System.Web.UI.WebControls.Label c_id;
         
         /// <summary>
         /// m_id 控制項。
@@ -121,13 +121,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// lvauthInfo 控制項。
+        /// lvordersInfo 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvauthInfo;
+        protected global::System.Web.UI.WebControls.ListView lvordersInfo;
         
         /// <summary>
         /// btnUpdate 控制項。

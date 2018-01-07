@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class supplier_price_manage : System.Web.UI.Page
+    public partial class order_manage : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
@@ -23,23 +23,28 @@ namespace Invoicing_T
         protected void all(object sender, EventArgs e, String p)
         {
 
-            #region 查詢進貨資料
+            #region 查詢銷貨單資料
 
-            DataSet ds = tmp.GetSupplierPriceInfo(p);
+            DataSet ds = tmp.GetOrders(p);
             if (ds != null)
             {
-                IvSupplierPriceInfo.DataSource = null;
-                IvSupplierPriceInfo.DataSource = ds.Tables["supplier_price_info"];
-                IvSupplierPriceInfo.DataBind();
+                IvOrdersInfo.DataSource = null;
+                IvOrdersInfo.DataSource = ds.Tables["orders"];
+                IvOrdersInfo.DataBind();
             }
 
             #endregion
         }
-        
+
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " AND sp_id LIKE '%" + InputSupplier.Text + "%'";
+            String selection = " WHERE pur_id LIKE '%" + InputOrders.Text + "%'";
             all(null, null, selection);
+        }
+
+        protected void btn_insert_orders_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("orders_new.aspx");//跳轉到新增頁面
         }
     }
 }

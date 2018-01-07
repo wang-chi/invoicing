@@ -351,7 +351,36 @@ namespace Invoicing_T
             return ds;
             #endregion
         }
+        public DataSet GetOrdersId(string p)
+        {
+            #region 檢測訂單編號是否重複
+            SqlCommand cmd = new SqlCommand();
+            DataSet ds = new DataSet();
+            try
+            {
+                var cb = new SqlConnectionStringBuilder();
+                cb.DataSource = "nutc106db.database.windows.net";
+                cb.UserID = "nutc03";
+                cb.Password = "NUTCia03";
+                cb.InitialCatalog = "invoicing";
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "OrdersInfo");
+                    cn.Close();
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
 
+            return ds;
+            #endregion
+        }
 
         public DataSet LoginCheck(string m_id)
         {
@@ -490,7 +519,7 @@ namespace Invoicing_T
             return ds;//回傳DataSet的表
             #endregion
         }
-        
+
         internal DataSet GetGroup(String p)
         {
             #region 執行SQL語法-顯示群組資料
@@ -531,7 +560,7 @@ namespace Invoicing_T
         internal DataSet GetRolesAuth(String p)
         {
             #region 執行SQL語法-顯示群組及權限資料
-            String tmpSql = "SELECT roles_auth.*,auth.* FROM roles_auth,auth WHERE roles_auth.r_id='"+p+"' AND roles_auth.a_id=auth.a_id  ";
+            String tmpSql = "SELECT roles_auth.*,auth.* FROM roles_auth,auth WHERE roles_auth.r_id='" + p + "' AND roles_auth.a_id=auth.a_id  ";
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -636,7 +665,7 @@ namespace Invoicing_T
         internal DataSet GetMemberEdit(String p)
         {
             #region 執行SQL語法-顯示帳號資料
-            String tmpSql = "SELECT member.*,roles.r_name FROM member,roles WHERE member.m_id='" + p+"' AND member.r_id=roles.r_id";
+            String tmpSql = "SELECT member.*,roles.r_name FROM member,roles WHERE member.m_id='" + p + "' AND member.r_id=roles.r_id";
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -859,10 +888,36 @@ namespace Invoicing_T
             #endregion
         }
 
+        internal DataSet GetOrders(String p)
+        {
+            #region 執行SQL語法-顯示進貨單單頭資料
+            String tmpSql = "SELECT * FROM orders" + p;
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "orders");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
         internal DataSet GetPurchasesinfoInfo(String p)
         {
             #region 執行SQL語法-顯示進貨單單頭資料
-            String tmpSql = "SELECT purchases_info.*,product.*  FROM purchases_info,product WHERE purchases_info.pur_id='" + p+ "' AND  purchases_info.p_id= product.p_id";
+            String tmpSql = "SELECT purchases_info.*,product.*  FROM purchases_info,product WHERE purchases_info.pur_id='" + p + "' AND  purchases_info.p_id= product.p_id";
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -963,7 +1018,7 @@ namespace Invoicing_T
                 using (var cn = new SqlConnection(cb.ConnectionString))
                 {
                     cn.Open();
-                    string p = "SELECT p_price FROM product WHERE p_id = '"+p_id+"'";
+                    string p = "SELECT p_price FROM product WHERE p_id = '" + p_id + "'";
                     cmd.CommandText = p;
                     cmd.Connection = cn;
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);
@@ -984,7 +1039,7 @@ namespace Invoicing_T
         internal DataSet GetClient(String p)
         {
             #region 執行SQL語法-顯示帳號資料
-            String tmpSql = "SELECT * FROM client "+p;
+            String tmpSql = "SELECT * FROM client " + p;
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -1048,7 +1103,7 @@ namespace Invoicing_T
         internal DataSet GetClientInfo(string p)
         {
             #region 查詢client資料
-            
+
             string tmp = "SELECT * FROM client WHERE c_id=@c_id";
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -1148,7 +1203,7 @@ namespace Invoicing_T
             #region 查詢supplier_price資料
 
 
-            string tmp = "SELECT * FROM supplier_price WHERE sp_id=@sp_id";
+            string tmp = "SELECT sp.sp_id, sp.p_id, p.p_name, s.s_name, sp.price, sp.createdate FROM supplier_price sp , product p, supplier s WHERE sp.p_id = p.p_id AND sp.s_id = s.s_id " + p;
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try
@@ -1158,7 +1213,7 @@ namespace Invoicing_T
                 {
                     cn.Open();//開啟資料庫
                     cmd.CommandText = tmp;//
-                    cmd.Parameters.AddWithValue("@sp_id", p);//定義參數
+                    //cmd.Parameters.AddWithValue("@sp_id", p);//定義參數
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
 
@@ -1905,7 +1960,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
                     cmd.Parameters.AddWithValue("@m_phone", tmpViewData["m_phone"]);
                     cmd.Parameters.AddWithValue("@m_email", tmpViewData["m_email"]);
                     cmd.Parameters.AddWithValue("@m_id", tmpViewData["m_id"]);
-                   
+
                     #endregion
 
                     cmd.Connection = cn;//指定連線物件
@@ -2199,11 +2254,11 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
             #endregion
         }
 
-        internal void UpdateAuthGroup(String view,String raid)
+        internal void UpdateAuthGroup(String view, String raid)
         {
             #region 執行SQL語法-修改進貨單資料
-            string tmp = "Update roles_auth set viewmode='"+view+"'  WHERE ra_id='"+raid+"'";//利用參數方式寫SQL語法
-             SqlTransaction tran = null;//產生物件
+            string tmp = "Update roles_auth set viewmode='" + view + "'  WHERE ra_id='" + raid + "'";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
             try
@@ -2214,7 +2269,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
                     cn.Open();//開啟資料庫
                     tran = cn.BeginTransaction();//建立SqlConnection交易
                     cmd.CommandText = tmp;//新增
-                   
+
                     cmd.Connection = cn;//指定連線物件
                     cmd.Transaction = tran;//建立SqlConnection交易
                     cmd.ExecuteNonQuery();//執行SQL語法
@@ -2231,10 +2286,10 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
 
             #endregion
         }
-        internal void UpdatePurchasesInfo(String price,String qty,String purinid)
+        internal void UpdatePurchasesInfo(String price, String qty, String purinid)
         {
             #region 執行SQL語法-修改進貨單資料
-            string tmp = "Update purchases_info set purin_price='"+price+"',purin_qty='"+qty+"'  WHERE purin_id='"+purinid+"'";//利用參數方式寫SQL語法
+            string tmp = "Update purchases_info set purin_price='" + price + "',purin_qty='" + qty + "'  WHERE purin_id='" + purinid + "'";//利用參數方式寫SQL語法
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 
@@ -2246,7 +2301,7 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
                     cn.Open();//開啟資料庫
                     tran = cn.BeginTransaction();//建立SqlConnection交易
                     cmd.CommandText = tmp;//新增
-                   
+
                     cmd.Connection = cn;//指定連線物件
                     cmd.Transaction = tran;//建立SqlConnection交易
                     cmd.ExecuteNonQuery();//執行SQL語法

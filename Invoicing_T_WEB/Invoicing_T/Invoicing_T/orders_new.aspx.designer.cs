@@ -10,7 +10,7 @@
 namespace Invoicing_T {
     
     
-    public partial class purchases_edit {
+    public partial class order_new {
         
         /// <summary>
         /// form1 控制項。
@@ -22,76 +22,94 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// HiddenF_ActionState 控制項。
+        /// Label1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenF_ActionState;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// HiddenF_rid 控制項。
+        /// InputOrderID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenF_rid;
+        protected global::System.Web.UI.WebControls.Label InputOrderID;
         
         /// <summary>
-        /// pur_id 控制項。
+        /// Msg_ExistID 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pur_id;
+        protected global::System.Web.UI.WebControls.Label Msg_ExistID;
         
         /// <summary>
-        /// s_id 控制項。
+        /// Label2 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label s_id;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// m_id 控制項。
+        /// InputClient 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label m_id;
+        protected global::System.Web.UI.WebControls.TextBox InputClient;
         
         /// <summary>
-        /// RadioButtonList1 控制項。
+        /// ddlClientGroup 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClientGroup;
         
         /// <summary>
-        /// deliverydate 控制項。
+        /// Label3 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox deliverydate;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// update_time 控制項。
+        /// InputMid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label update_time;
+        protected global::System.Web.UI.WebControls.TextBox InputMid;
+        
+        /// <summary>
+        /// Label4 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label4;
+        
+        /// <summary>
+        /// InputDeliverydate 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox InputDeliverydate;
         
         /// <summary>
         /// btn_add 控制項。
@@ -101,6 +119,15 @@ namespace Invoicing_T {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_add;
+        
+        /// <summary>
+        /// btn_delete 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_delete;
         
         /// <summary>
         /// btn_update 控制項。
@@ -121,30 +148,21 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// lvauthInfo 控制項。
+        /// Msg_Error 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lvauthInfo;
+        protected global::System.Web.UI.WebControls.Label Msg_Error;
         
         /// <summary>
-        /// btnUpdate 控制項。
+        /// btn_insert_orders 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
-        
-        /// <summary>
-        /// btnDelete 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDelete;
+        protected global::System.Web.UI.WebControls.Button btn_insert_orders;
     }
 }

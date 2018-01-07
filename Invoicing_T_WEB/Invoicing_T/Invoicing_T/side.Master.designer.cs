@@ -139,6 +139,15 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_manage;
         
         /// <summary>
+        /// auth_purchases_return 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_return;
+        
+        /// <summary>
         /// auth_supplier_price_manage 控制項。
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_supplier_price_manage;
         
         /// <summary>
+        /// auth_order_manage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_order_manage;
+        
+        /// <summary>
         /// auth_client_price_manage 控制項。
         /// </summary>
         /// <remarks>
@@ -155,6 +173,15 @@ namespace Invoicing_T {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_client_price_manage;
+        
+        /// <summary>
+        /// logout 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logout;
         
         /// <summary>
         /// ContentPlaceHolder1 控制項。

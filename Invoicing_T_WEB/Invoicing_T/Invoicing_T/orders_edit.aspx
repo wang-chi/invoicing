@@ -1,28 +1,27 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="purchases_edit.aspx.cs" Inherits="Invoicing_T.purchases_edit" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="orders_edit.aspx.cs" Inherits="Invoicing_T.order_edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-        <h1>進貨單資料修改</h1>
+      <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+        <h1>銷貨單資料修改</h1>
 
         <form id="form1" runat="server">
             <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
             <asp:HiddenField ID="HiddenF_rid" runat="server" />
             <div class="form-group row">
                 <div>
-                    <label>進貨單編號：</label>
+                    <label>銷貨單編號：</label>
                 </div>
                 <div>
-                    <asp:Label ID="pur_id" runat="server" Text='<%# Eval("pur_id") %>' />
+                    <asp:Label ID="or_id" runat="server" Text='<%# Eval("or_id") %>' />
                 </div>
             </div>
             <div class="form-group row">
                 <div>
-                    <label>供應商編號：</label>
+                    <label>客戶編號：</label>
                 </div>
                 <div>
-                    <asp:Label ID="s_id" runat="server" Text='<%# Eval("s_id") %>' />
+                    <asp:Label ID="c_id" runat="server" Text='<%# Eval("c_id") %>' />
                 </div>
             </div>
             <div class="form-group row">
@@ -35,7 +34,7 @@
             </div>
             <div class="form-group row">
                 <div>
-                    <label>是否驗收：</label>
+                    <label>是否已交貨：</label>
                 </div>
                 <div>
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
@@ -53,8 +52,7 @@
                         <asp:TextBox ID="deliverydate" runat="server" placeholder="click to show datepicker"></asp:TextBox>
                     </div>
                 </div>
-               
-             
+           
             </div>
             <div class="form-group row">
                 <div>
@@ -122,7 +120,7 @@
             </div>
             這裡喔=========================================================================
             <div>
-                <asp:ListView ID="lvauthInfo" runat="server" GroupItemCount="1"
+                <asp:ListView ID="lvordersInfo" runat="server" GroupItemCount="1"
                     GroupPlaceholderID="GroupPlaceHolder" ItemPlaceholderID="ItemPlaceHolder">
                     <LayoutTemplate>
                         <table class="table table-bordered table-hover">
@@ -149,16 +147,16 @@
 
                             <td>
                                 <%# Eval("p_id") %>
-                                <asp:Label ID="purinid" runat="server" Text='<%# Eval("purin_id") %>' Visible="false"></asp:Label>
+                                <asp:Label ID="purinid" runat="server" Text='<%# Eval("orin_id") %>' Visible="false"></asp:Label>
                             </td>
                             <td>
                                 <%# Eval("p_name") %>
                             </td>
                             <td>
-                                <asp:TextBox ID="InputPrice" runat="server" Text='<%# Eval("purin_price") %>'></asp:TextBox>
+                                <asp:TextBox ID="InputPrice" runat="server" Text='<%# Eval("orin_price") %>'></asp:TextBox>
                             </td>
                             <td>
-                                <asp:TextBox ID="InputQty" runat="server" Text='<%# Eval("purin_qty") %>'></asp:TextBox>
+                                <asp:TextBox ID="InputQty" runat="server" Text='<%# Eval("orin_qty") %>'></asp:TextBox>
                             </td>
 
                         </tr>

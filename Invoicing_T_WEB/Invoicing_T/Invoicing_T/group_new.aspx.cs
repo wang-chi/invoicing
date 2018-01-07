@@ -90,7 +90,7 @@ namespace Invoicing_T
                     VALUES('" + r_id + "',N'" + r_name + "')";//新增
 
                     tmp.Insert(id_new);//用Insert方法
-
+                    
                     Response.Redirect("group_manage.aspx");//跳轉到登入畫面
                 }
             }
