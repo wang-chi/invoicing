@@ -31,7 +31,8 @@ namespace Invoicing_T
 
             #region 查詢帳號資料
             
-            DataSet ds1 = tmp.GetMemberInfo(p);//取得營地資料
+            
+            DataSet ds1 = tmp.GetMemberInfo(p);
             if (ds1 != null)
             {
                 DataRow tmpDataRow = ds1.Tables["member_info"].Rows[0];

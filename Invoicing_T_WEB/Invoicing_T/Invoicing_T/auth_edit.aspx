@@ -32,6 +32,9 @@
                     <asp:TextBox ID="auth_page_input" class="form-control" runat="server"></asp:TextBox>
                 </div>
             </div>
+            <div>
+
+                </div>
             <div class="form-group">
                 <asp:Button ID="btnUpdate" class="btn btn-danger" runat="server" Text="修改" OnClick="btn_Click" Visible="false" />
                 <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" OnClick="btn_Click" Visible="false" />

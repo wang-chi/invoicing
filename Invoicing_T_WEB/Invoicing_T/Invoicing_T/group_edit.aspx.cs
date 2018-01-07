@@ -28,8 +28,8 @@ namespace Invoicing_T
                             //btActionState.Text = "刪除房屋資料";
                             //btActionState.ToolTip = "狀態:刪除房屋資料";
                             btnDelete.Visible = true;
-                            TextBox1.ReadOnly = true;
-                            TextBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
+                            GroupName.ReadOnly = true;
+                            GroupName.BackColor = System.Drawing.ColorTranslator.FromHtml("#7B7B7B");
                             break;
                     }
                 }
@@ -39,7 +39,7 @@ namespace Invoicing_T
                     HiddenF_rid.Value = Request.QueryString["r_id"].ToString();//主索引
                     this.SetMaintainData(HiddenF_rid.Value);//設定要維護的資料
                 }
-                this.SetMaintainData(HiddenF_rid.Value);//設定要維護的資料
+                this.all(null, null, HiddenF_rid.Value);//查詢群組資料
             }
         }
 
@@ -53,7 +53,21 @@ namespace Invoicing_T
             {
                 DataRow tmpDataRow = ds1.Tables["group_info"].Rows[0];
                 r_id.Text = tmpDataRow["r_id"].ToString();
-                TextBox1.Text = tmpDataRow["r_name"].ToString();
+                GroupName.Text = tmpDataRow["r_name"].ToString();
+            }
+            #endregion
+        }
+
+        protected void all(object sender, EventArgs e, String p)
+        {
+            #region 查詢群組資料
+            DataSet ds = tmp.GetRolesAuth(p);
+            if (ds != null)
+            {
+                lvgroupInfo.DataSource = null;
+                lvgroupInfo.DataSource = ds.Tables["rolesauth"];
+                lvgroupInfo.DataBind();
+
             }
             #endregion
         }
@@ -70,6 +84,7 @@ namespace Invoicing_T
             {
                 case "btnUpdate":
                     tmp.UpdateGroup(tmpViewData);
+                    update_auth();
                     break;
                 case "btnDelete":
                     tmp.DeleteGroup(tmpViewData);
@@ -90,11 +105,27 @@ namespace Invoicing_T
             //TODO : 補
             //("資料庫欄位")
             tmpViewData.Add("r_id", r_id.Text);
-            tmpViewData.Add("r_name", TextBox1.Text);
+            tmpViewData.Add("r_name", GroupName.Text);
+
             return tmpViewData;
             #endregion
         }
 
+        protected void update_auth() {
+            foreach (ListViewItem myItem in lvgroupInfo.Items)
+            {
+                string a_view, a_raid;
+
+                RadioButtonList rbl = (RadioButtonList)myItem.FindControl("viewmode");
+                Label auth = (Label)myItem.FindControl("raid");
+
+                a_view = rbl.SelectedItem.Value.ToString();
+                a_raid = auth.Text;
+
+                tmp.UpdateAuthGroup(a_view, a_raid);
+                
+            }
+        }
 
     }
 }

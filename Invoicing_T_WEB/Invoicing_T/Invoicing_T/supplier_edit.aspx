@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label>廠商地電話：</label>
-                <asp:TextBox ID="s_phone" runat="server"></asp:TextBox>
+                <asp:TextBox ID="s_phone" runat="server" MaxLength="10"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label>廠商電子信箱：</label>

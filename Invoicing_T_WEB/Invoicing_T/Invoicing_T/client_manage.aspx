@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Invoicing_T.HomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="client_manage.aspx.cs" Inherits="Invoicing_T.client_manage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <form runat="server">
-            <h1>帳號查詢</h1>
+            <h1>客戶查詢</h1>
             <asp:Label ID="Label3" runat="server" Text="請以客戶ID查詢："></asp:Label>
             <asp:TextBox ID="InputSearchClientID" runat="server"></asp:TextBox>
             <asp:Button ID="Button2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />

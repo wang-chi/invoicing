@@ -8,7 +8,7 @@
         <form id="form1" runat="server">
             <div>
                 <asp:Label ID="Label1" runat="server" Text="進貨單編號："></asp:Label>
-                <asp:TextBox ID="InputPurid" runat="server"></asp:TextBox>
+                <asp:Label ID="purid" runat="server" Text="Label"></asp:Label>
                 <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
             </div>
 

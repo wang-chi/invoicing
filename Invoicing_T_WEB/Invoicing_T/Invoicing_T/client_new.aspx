@@ -9,7 +9,7 @@
             <form id="form1" runat="server">
                 <div class="form-group">
                     <asp:Label ID="Label6" runat="server" Text="客戶編號"></asp:Label>
-                    <asp:TextBox ID="InputID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
+                    <asp:Label ID="Id" runat="server" Text="Label"></asp:Label>
                     <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                 </div>
 

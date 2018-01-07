@@ -27,8 +27,40 @@ namespace Invoicing_T
                 Data_Binding();
                 InputMid.Text = m_id;
                 InputMid.ReadOnly = true;
+                NewId();
+
             }
             objGVPEntity = TempGVPEntity;
+        }
+
+        private void NewId()
+        {
+            String select_all_id = "select top 1 pur_id from purchases order by pur_id desc ";
+            DataSet ds = tmp.GetNewId(select_all_id);
+            if (ds != null)
+            {
+                foreach (DataRow dr in ds.Tables["selectnewid"].Rows)
+                {
+                    string all_id;
+                    all_id = dr["pur_id"].ToString();
+                    int all_id_new = int.Parse(all_id.Substring(2, 3));
+                    if (all_id_new < 9)
+                    {
+                        all_id = "H000" + (all_id_new + 1);
+                    }
+                    if (all_id_new < 99 && all_id_new >= 9)
+                    {
+                        all_id = "H00" + (all_id_new + 1);
+                    }
+                    if (all_id_new < 999 && all_id_new >= 99)
+                    {
+                        all_id = "H0" + (all_id_new + 1);
+                    }
+
+                    purid.Text = all_id;
+
+                }
+            }
         }
 
         protected void btn_add_Click(object sender, EventArgs e)
@@ -138,7 +170,7 @@ namespace Invoicing_T
         protected void btn_insert_purchases_Click(object sender, EventArgs e)
         {
             //把畫面中使用者輸入的欄位值都到各個字串中
-            pur_id = InputPurid.Text;
+            pur_id = purid.Text;
             s_id = InputSid.Text;
             delieverydate = InputDeliverydate.Text;
            
@@ -162,7 +194,7 @@ namespace Invoicing_T
                 }
 
                 //如果有任一欄位未輸入  則顯示「必填」
-                if ((string.IsNullOrWhiteSpace(InputPurid.Text)) || (string.IsNullOrWhiteSpace(InputSid.Text)) || (string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
+                if ((string.IsNullOrWhiteSpace(purid.Text)) || (string.IsNullOrWhiteSpace(InputSid.Text)) || (string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
                 {
                     Label13.Visible = true;
                     Label13.Text = "*必須填入資料";
@@ -170,7 +202,7 @@ namespace Invoicing_T
                 }
                 
                 //如果必填欄位都輸入,則新增置資料庫中
-                if ((!string.IsNullOrWhiteSpace(InputPurid.Text)) && (!string.IsNullOrWhiteSpace(InputSid.Text)) && (!string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
+                if ((!string.IsNullOrWhiteSpace(purid.Text)) && (!string.IsNullOrWhiteSpace(InputSid.Text)) && (!string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
                 {
 
                     purchases_new = @"Insert Into purchases (pur_id, s_id, m_id, accept, deliverydate, createdate, update_time) 

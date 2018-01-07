@@ -25,7 +25,7 @@ namespace Invoicing_T
 
             #region 查詢帳號資料
 
-            DataSet ds = tmp.GetMember(p);
+            DataSet ds = tmp.GetMember(p);//取得營地資料
             if (ds != null)
             {
                 lvmemberInfo.DataSource = null;
