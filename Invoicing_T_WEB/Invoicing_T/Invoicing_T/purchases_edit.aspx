@@ -53,18 +53,7 @@
                         <asp:TextBox ID="deliverydate" runat="server" placeholder="click to show datepicker"></asp:TextBox>
                     </div>
                 </div>
-                <!-- Load jQuery and bootstrap datepicker scripts -->
-                <script src="js/jquery-1.9.1.min.js"></script>
-                <script src="js/bootstrap-datepicker.js"></script>
-                <script type="text/javascript">
-                    // When the document is ready
-                    $(document).ready(function () {
-                        $('#deliverydate').datepicker({});
-                    });
-                </script>
-                <div>
-                    <asp:TextBox ID="deliverydate2" runat="server" Visible="false"></asp:TextBox>
-                </div>
+
             </div>
             <div class="form-group row">
                 <div>
