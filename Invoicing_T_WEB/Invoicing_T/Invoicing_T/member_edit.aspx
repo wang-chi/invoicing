@@ -33,6 +33,7 @@
                     </div>
                     <div class="form-group">
                         <asp:Button ID="bt_position" class="btn" runat="server" Text="更改狀態為" OnClick="btn_position_check" />
+                        <asp:Button ID="btn_resetPwd" class="btn btn-info" runat="server" Text="重設密碼" OnClick="btn_resetpwd" />
                     </div>
                 </div>
             </form>

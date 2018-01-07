@@ -6,7 +6,8 @@
                 <h1>Dashboard</h1>
                 <section class="row text-center placeholders">
                     <div class="col-6 col-sm-3 placeholder">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" />
+                        <asp:Label ID="SellOfYear" class="SellNumber" runat="server" Text="100"></asp:Label>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail" style="display:none;"/>
                         <h4>Label</h4>
                         <div class="text-muted">年度銷售額</div>
                     </div>

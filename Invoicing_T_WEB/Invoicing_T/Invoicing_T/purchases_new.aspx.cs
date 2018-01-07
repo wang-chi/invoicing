@@ -214,9 +214,6 @@ namespace Invoicing_T
                     //空值
                     product = p_id;
                 }
-
-                //if (product == "Please select") product = "P0001";
-
                 ddlProduct.ClearSelection();
                 ddlProduct.Items.FindByValue(product).Selected = true;
                 Label lbl_id = e.Row.FindControl("pur_id") as Label;
