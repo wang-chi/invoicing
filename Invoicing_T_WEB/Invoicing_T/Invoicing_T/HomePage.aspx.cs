@@ -14,7 +14,8 @@ namespace Invoicing_T
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.CheckAuth();
+            this.CheckAuth();//取得權限
+            this.ShowSellOfYear();//設定年銷售額
         }
 
         private void CheckAuth() {
@@ -33,6 +34,11 @@ namespace Invoicing_T
                 Response.Redirect("login.aspx");//跳轉到登入頁面
             }
             #endregion
+        }
+
+        private void ShowSellOfYear() {
+            SellOfYear.Text = "0";
+                
         }
 
     }
