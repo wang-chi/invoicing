@@ -767,7 +767,6 @@ namespace Invoicing_T
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
-
             try
             {
                 using (var cn = new SqlConnection(cb.ConnectionString))
@@ -784,17 +783,14 @@ namespace Invoicing_T
             {
                 return null;//如果錯誤  回傳null值
             }
-
-
             return ds;//回傳DataSet的表
-
             #endregion
         }
 
         internal DataSet GetPurchasesinfoInfo(String p)
         {
             #region 執行SQL語法-顯示進貨單單頭資料
-            String tmpSql = "SELECT * FROM purchases_info WHERE pur_id='"+p+"'";
+            String tmpSql = "SELECT purchases_info.*,product.*  FROM purchases_info,product WHERE purchases_info.pur_id='" + p+ "' AND  purchases_info.p_id= product.p_id";
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -881,6 +877,35 @@ namespace Invoicing_T
 
             return ds;//回傳DataSet的表
 
+            #endregion
+        }
+
+        internal DataSet GetPrice(string p_id)
+        {
+            #region 分辨身分是否停權
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                SqlCommand cmd = new SqlCommand();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();
+                    string p = "SELECT p_price FROM product WHERE p_id = '"+p_id+"'";
+                    cmd.CommandText = p;
+                    cmd.Connection = cn;
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);
+                    dr.Fill(ds, "price");
+                    cn.Close();
+                }
+
+            }
+            catch
+            {
+                return null;
+            }
+
+            return ds;
             #endregion
         }
 
@@ -2043,6 +2068,39 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
                     cmd.Parameters.AddWithValue("@deliverydate", tmpViewData["deliverydate"]);
                     #endregion
 
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+
+        internal void UpdatePurchasesInfo(String price,String qty,String purinid)
+        {
+            #region 執行SQL語法-修改進貨單資料
+            string tmp = "Update purchases_info set purin_price='"+price+"',purin_qty='"+qty+"'  WHERE purin_id='"+purinid+"'";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+                    cmd.CommandText = tmp;//新增
+                   
                     cmd.Connection = cn;//指定連線物件
                     cmd.Transaction = tran;//建立SqlConnection交易
                     cmd.ExecuteNonQuery();//執行SQL語法

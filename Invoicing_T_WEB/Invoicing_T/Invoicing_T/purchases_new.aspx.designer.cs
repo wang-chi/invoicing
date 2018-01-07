@@ -31,13 +31,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// InputPurid 控制項。
+        /// purid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox InputPurid;
+        protected global::System.Web.UI.WebControls.Label purid;
         
         /// <summary>
         /// Msg_ExistID 控制項。
@@ -65,6 +65,15 @@ namespace Invoicing_T {
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox InputSid;
+        
+        /// <summary>
+        /// ddlSupplierGroup 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierGroup;
         
         /// <summary>
         /// Label3 控制項。
@@ -139,13 +148,13 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// Label13 控制項。
+        /// Msg_Error 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label13;
+        protected global::System.Web.UI.WebControls.Label Msg_Error;
         
         /// <summary>
         /// btn_insert_purchases 控制項。

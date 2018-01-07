@@ -6,39 +6,63 @@
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <h1>新增進貨單</h1>
         <form id="form1" runat="server">
-            <div>
-                <asp:Label ID="Label1" runat="server" Text="進貨單編號："></asp:Label>
-                <asp:TextBox ID="InputPurid" runat="server"></asp:TextBox>
+            <div class="form-group row">
+                <div>
+                    <asp:Label ID="Label1" runat="server" Text="進貨單編號："></asp:Label>
+                </div>
+                <div>
+                    <asp:Label ID="purid" runat="server" Text="H0001"></asp:Label>
+                </div>
                 <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
             </div>
 
-            <div>
-                <asp:Label ID="Label2" runat="server" Text="廠商編號："></asp:Label>
-                <asp:TextBox ID="InputSid" runat="server"></asp:TextBox>
+            <div class="form-group row">
+                <div>
+                    <asp:Label ID="Label2" runat="server" Text="廠商編號："></asp:Label>
+                </div>
+                <div>
+                    <asp:TextBox ID="InputSid" class="form-control" runat="server" Visible="false"></asp:TextBox>
+                    <asp:DropDownList ID="ddlSupplierGroup" class="form-control" runat="server" ToolTip="群組選項"></asp:DropDownList>
+                </div>
             </div>
 
-            <div>
-                <asp:Label ID="Label3" runat="server" Text="業務員編號："></asp:Label>
-                <asp:TextBox ID="InputMid" runat="server"></asp:TextBox>
+            <div class="form-group row">
+                <div>
+
+                    <asp:Label ID="Label3" runat="server" Text="業務員編號："></asp:Label>
+                </div>
+                <div>
+                    <asp:TextBox ID="InputMid" class="form-control" runat="server"></asp:TextBox>
+                </div>
             </div>
 
-            <div>
-                <asp:Label ID="Label4" runat="server" Text="交貨日日期："></asp:Label>
-                <asp:TextBox ID="InputDeliverydate" runat="server" TextMode="DateTime"></asp:TextBox>
+            <div class="form-group row">
+                <div>
+                    <asp:Label ID="Label4" runat="server" Text="交貨日日期："></asp:Label>
+                </div>
+                <div>
+                    <asp:TextBox ID="InputDeliverydate" class="form-control" runat="server" TextMode="DateTime"></asp:TextBox>
+                </div>
+
+
+
             </div>
 
             <!--單身 -->
             <div>
-
-                <asp:Button ID="btn_add" class="btn btn-success" runat="server" Text="添加商品" OnClick="btn_add_Click" />
-                <asp:Button ID="btn_delete" class="btn btn-danger" runat="server" Text="刪除商品" OnClick="btn_delete_Click" />
-                <asp:Button ID="btn_update" class="btn btn-primary" runat="server" Text="更新商品" OnClick="btn_update_Click" />
-
-                <br />
-                <br />
-
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
-                    DataKeyNames="PurID" HeaderStyle-Height="35" RowStyle-Height="35" Width="80%"
+                <div class="form-group row">
+                    <div>
+                        <asp:Button ID="btn_add" class="btn btn-success" runat="server" Text="添加商品" OnClick="btn_add_Click" />
+                    </div>
+                    <div>
+                        <asp:Button ID="btn_delete" class="btn btn-danger" runat="server" Text="刪除商品" OnClick="btn_delete_Click" />
+                    </div>
+                    <div>
+                        <asp:Button ID="btn_update" class="btn btn-primary" runat="server" Text="更新商品" OnClick="btn_update_Click" />
+                    </div>
+                </div>
+                <asp:GridView ID="GridView1" class="form" runat="server" AutoGenerateColumns="false"
+                    DataKeyNames="PurID" HeaderStyle-Height="35" RowStyle-Height="35" Width="90%"
                     ShowFooter="true" OnRowDataBound="GridView1_RowDataBound">
                     <Columns>
 
@@ -52,34 +76,37 @@
                         <asp:TemplateField>
                             <HeaderTemplate>商品編號</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_id" runat="server" Text='<%# Eval("pid") %>'></asp:TextBox>
+                                <asp:Label ID="pur_id" runat="server" Text='<%# Eval("pid") %>' Visible="true"></asp:Label>
+                                <!--
+                                <asp:DropDownList ID="ddlGroup" class="form-control" AutoPostBack="true" runat="server" ToolTip="群組選項">
+                                </asp:DropDownList>
+                                -->
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
                             <HeaderTemplate>商品名稱</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_name" runat="server" Text='<%# Eval("Name") %>'></asp:TextBox>
+                                <asp:Label ID="p_id" runat="server" Text='<%# Eval("pid") %>' Visible="false"></asp:Label>
+                                <asp:DropDownList ID="ddlNameGroup" class="form-control" runat="server" AutoPostBack="true" ToolTip="群組選項" OnSelectedIndexChanged="NameGroup_SelectIndexChanged">
+                                </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
                             <HeaderTemplate>商品單價</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_price" runat="server" Text='<%# Eval("Price") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_pur_price" runat="server" class="form-control" Text='<%# Eval("Price") %>'></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
                             <HeaderTemplate>商品數量</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_count" runat="server" Text='<%# Eval("Count") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_pur_count" runat="server" class="form-control" Text='<%# Eval("Count") %>'></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
-                            <FooterTemplate>
-                                單身商品總計
-                                   
-                            </FooterTemplate>
+                            <FooterTemplate>單身商品總計</FooterTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
@@ -96,12 +123,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
                 <div>
-                    <asp:Label ID="Label13" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="Msg_Error" runat="server" Text="*有資料未填寫" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                 </div>
-                <div>
-                    <asp:Button ID="btn_insert_purchases" runat="server" Text="新增進貨單" OnClick="btn_insert_purchases_Click" />
+                <div class="form-group">
+                    <asp:Button ID="btn_insert_purchases" CssClass="btn btn-primary" runat="server" Text="新增進貨單" OnClick="btn_insert_purchases_Click" />
                 </div>
             </div>
         </form>

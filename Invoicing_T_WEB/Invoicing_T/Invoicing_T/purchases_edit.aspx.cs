@@ -57,11 +57,11 @@ namespace Invoicing_T
             DataSet ds = tmp.GetPurchasesinfoInfo(p);
             if (ds != null)
             {
-                GridView1.DataSource = null;
-                GridView1.DataSource = ds.Tables["purchases_info_info"];
-                this.GridView1.DataBind();
+                lvauthInfo.DataSource = null;
+                lvauthInfo.DataSource = ds.Tables["purchases_info_info"];
+                lvauthInfo.DataBind();
             }
-
+            
             #endregion
         }
 
@@ -96,6 +96,8 @@ namespace Invoicing_T
             {
                 case "btnUpdate":
                     tmp.UpdatePurchases(tmpViewData);
+                    update_product();
+
 
                     break;
                 case "btnDelete":
@@ -120,8 +122,30 @@ namespace Invoicing_T
             tmpViewData.Add("m_id", m_id.Text);
             tmpViewData.Add("accept", RadioButtonList1.SelectedItem.Value);
             tmpViewData.Add("deliverydate", deliverydate.Text);
+            
             return tmpViewData;
             #endregion
+        }
+
+        private void update_product()
+        {
+            foreach (ListViewItem myItem in lvauthInfo.Items)
+            {
+                TextBox lv_price, lv_qty;
+                Label lv_purin;
+                string p_price, p_qty,p_purin;
+                lv_price = (TextBox)myItem.FindControl("InputPrice");
+                p_price = lv_price.Text;
+
+                lv_qty = (TextBox)myItem.FindControl("InputQty");
+                p_qty = lv_qty.Text;
+
+                lv_purin = (Label)myItem.FindControl("purinid");
+                p_purin = lv_purin.Text;
+
+                tmp.UpdatePurchasesInfo(p_price, p_qty, p_purin);
+
+            }
         }
 
         protected void btn_add_Click(object sender, EventArgs e)
