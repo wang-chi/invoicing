@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/side.Master" AutoEventWireup="true" CodeBehind="group_edit.aspx.cs" Inherits="Invoicing_T.group_edit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -7,13 +8,18 @@
         <form id="form1" runat="server">
             <asp:HiddenField ID="HiddenF_ActionState" runat="server" />
             <asp:HiddenField ID="HiddenF_rid" runat="server" />
-            <div class="form-group">
+            <div class="form-group row">
                 <label>群組ID：</label>
                 <asp:Label ID="r_id" runat="server" Text='<%# Eval("r_id") %>' />
             </div>
-            <div class="form-group">
-                <label>群組名稱：</label>
-                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <div class="form-group row">
+                <div>
+
+                    <label>群組名稱：</label>
+                </div>
+                <div>
+                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                </div>
             </div>
             <div class="form-group">
                 <asp:Button ID="btnUpdate" class="btn btn-success" runat="server" Text="修改" Visible="false" />

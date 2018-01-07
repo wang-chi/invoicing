@@ -101,7 +101,9 @@ namespace Invoicing_T
 
                     break;
                 case "btnDelete":
-                    tmp.DeleteSupplier(tmpViewData);
+                    tmp.DeletePurchasesInfo(tmpViewData);
+                    tmp.DeletePurchases(tmpViewData);
+                    
                     break;
             }
             Server.Transfer("purchases_manage.aspx", true);//導回群組管理

@@ -1578,7 +1578,42 @@ Values(@house_guid,@house_title,@house_city,@house_area,@house_address,
         internal void DeletePurchases(Dictionary<string, object> tmpViewData)
         {
             #region 執行SQL語法-刪除進貨單資料
-            string tmp = @"Delete  FROM purchases WHERE pur_id=@pur_id";//利用參數方式寫SQL語法
+            string tmp = @"Delete FROM purchases WHERE pur_id=@pur_id";//利用參數方式寫SQL語法
+            SqlTransaction tran = null;//產生物件
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+
+
+                    tran = cn.BeginTransaction();//建立SqlConnection交易
+
+                    cmd.CommandText = tmp;//新增
+                    #region 定義參數
+                    cmd.Parameters.AddWithValue("@pur_id", tmpViewData["pur_id"]);
+                    #endregion
+                    cmd.Connection = cn;//指定連線物件
+                    cmd.Transaction = tran;//建立SqlConnection交易
+                    cmd.ExecuteNonQuery();//執行SQL語法
+                    cmd.Transaction.Commit();//確認交易 這時才會在資料庫中產生資料
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                cmd.Transaction.Rollback();
+            }
+
+            #endregion
+        }
+        internal void DeletePurchasesInfo(Dictionary<string, object> tmpViewData)
+        {
+            #region 執行SQL語法-刪除進貨單詳細資料
+            string tmp = @"Delete FROM purchases_info WHERE pur_id=@pur_id";//利用參數方式寫SQL語法
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 

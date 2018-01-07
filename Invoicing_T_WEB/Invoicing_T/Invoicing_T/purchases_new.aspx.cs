@@ -194,7 +194,18 @@ namespace Invoicing_T
 
                 //Select the Country of Customer in DropDownList
                 string product = (e.Row.FindControl("ddlNameGroup") as DropDownList).SelectedValue;
-                if (product == "Please select") product = "P0001";
+                //1.判斷商品編號有沒有東西
+                Label lb_p_id = (Label)e.Row.FindControl("pur_id");
+                string p_id = lb_p_id.Text.ToString();
+                //2.設定下拉選單預設值
+                if (p_id != "")
+                {
+                    //空值
+                    product = p_id;
+                }
+                
+                //if (product == "Please select") product = "P0001";
+
                 ddlProduct.ClearSelection();
                 ddlProduct.Items.FindByValue(product).Selected = true;
                 Label lbl_id = e.Row.FindControl("pur_id") as Label;
