@@ -74,7 +74,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="employee_edit.aspx" />
     <Content Include="employee_manage.aspx" />
-    <Content Include="employee_new.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -220,13 +219,6 @@
     </Compile>
     <Compile Include="employee_manage.aspx.designer.cs">
       <DependentUpon>employee_manage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="employee_new.aspx.cs">
-      <DependentUpon>employee_new.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="employee_new.aspx.designer.cs">
-      <DependentUpon>employee_new.aspx</DependentUpon>
     </Compile>
     <Compile Include="GetValuePurchases.cs" />
     <Compile Include="group_edit.aspx.cs">

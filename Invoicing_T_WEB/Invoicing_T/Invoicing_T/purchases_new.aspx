@@ -6,6 +6,7 @@
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <h1>新增進貨單</h1>
         <form id="form1" runat="server">
+
             <div class="form-group row">
                 <div>
                     <asp:Label ID="Label1" runat="server" Text="進貨單編號："></asp:Label>

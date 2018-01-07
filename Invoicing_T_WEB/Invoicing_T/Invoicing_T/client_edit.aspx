@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label>客戶電話：</label>
-                <asp:TextBox ID="c_phone" runat="server"></asp:TextBox>
+                <asp:TextBox ID="c_phone" runat="server" MaxLength="10"></asp:TextBox>
             </div>
             <div class="form-group">
                 <label>客戶電子信箱：</label>

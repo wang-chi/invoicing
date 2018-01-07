@@ -22,7 +22,7 @@ namespace Invoicing_T
         {
             #region 查詢客戶資料
 
-            DataSet ds = tmp.GetClient();
+            DataSet ds = tmp.GetClient(p);
             if (ds != null)
             {
                 IvClientInfo.DataSource = null;

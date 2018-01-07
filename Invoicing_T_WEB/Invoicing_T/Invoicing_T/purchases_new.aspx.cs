@@ -29,7 +29,8 @@ namespace Invoicing_T
                 Data_Binding();
                 InputMid.Text = m_id;
                 InputMid.ReadOnly = true;
-                
+                NewId();
+
 
             }
             objGVPEntity = TempGVPEntity;
@@ -203,9 +204,6 @@ namespace Invoicing_T
                     //空值
                     product = p_id;
                 }
-                
-                //if (product == "Please select") product = "P0001";
-
                 ddlProduct.ClearSelection();
                 ddlProduct.Items.FindByValue(product).Selected = true;
                 Label lbl_id = e.Row.FindControl("pur_id") as Label;
@@ -214,10 +212,12 @@ namespace Invoicing_T
 
         protected void btn_insert_purchases_Click(object sender, EventArgs e)
         {
+
             ////把畫面中使用者輸入的欄位值都到各個字串中
             pur_id = purid.Text;
             //s_id = InputSid.Text;
             s_id = ddlSupplierGroup.SelectedValue.Trim();
+
             delieverydate = InputDeliverydate.Text;
 
             string purchases_new;
@@ -240,7 +240,9 @@ namespace Invoicing_T
                 }
 
                 //如果有任一欄位未輸入  則顯示「必填」
+
                 if ((string.IsNullOrWhiteSpace(purid.Text)) || (string.IsNullOrWhiteSpace(ddlSupplierGroup.SelectedValue.Trim())) || (string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
+
                 {
                     Msg_Error.Visible = true;
                     Msg_Error.Text = "*必須填入資料";
@@ -248,7 +250,9 @@ namespace Invoicing_T
                 }
 
                 //如果必填欄位都輸入,則新增置資料庫中
+
                 if ((!string.IsNullOrWhiteSpace(purid.Text)) && (!string.IsNullOrWhiteSpace(ddlSupplierGroup.SelectedValue.Trim())) && (!string.IsNullOrWhiteSpace(InputDeliverydate.Text)))
+
                 {
 
                     purchases_new = @"Insert Into purchases (pur_id, s_id, m_id, accept, deliverydate, createdate, update_time) 
