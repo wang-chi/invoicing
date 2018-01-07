@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Web;
 
 namespace Invoicing_T
 {
     public class GetValuePurchases
     {
+        DBHandle tmp = new DBHandle();
         private string pur_id;
         private string p_id;
         private string pur_name;
@@ -27,7 +29,12 @@ namespace Invoicing_T
         }
         public string Name
         {
-            get { return pur_name; }
+            get {
+                //DataSet ds = tmp.GetProductInfo(" WHERE p_id = '"+pid+"'");
+                //DataRow dr = ds.Tables["product_info"].Rows[0];
+                //pur_name = dr["p_name"].ToString();
+                return pur_name;
+            }
             set { pur_name = value; }
         }
         public decimal Price
