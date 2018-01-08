@@ -888,6 +888,61 @@ namespace Invoicing_T
             #endregion
         }
 
+        internal DataSet GetPurchasesReturnsManage(String p)
+        {
+            #region 執行SQL語法-顯示退貨單單頭資料
+            String tmpSql = "SELECT * FROM purchases_returns" + p;
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "purchases_returns");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+
+        internal DataSet GetPurchasesReturns(String p)
+        {
+            #region 執行SQL語法-顯示進貨單單頭資料
+            String tmpSql = @"SELECT purchases.*,product.*,purchases_info.* FROM purchases,product,purchases_info 
+                    WHERE purchases.pur_id='"+p+"'  AND purchases_info.p_id = product.p_id AND purchases_info.pur_id = purchases.pur_id";
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "purchasesreturns");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+
         internal DataSet GetOrders(String p)
         {
             #region 執行SQL語法-顯示進貨單單頭資料
@@ -931,6 +986,44 @@ namespace Invoicing_T
                     cmd.Connection = cn;//指定連線物件
                     SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
                     dr.Fill(ds, "purchases_info_info");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+
+
+            return ds;//回傳DataSet的表
+
+            #endregion
+        }
+
+        internal DataSet GetPurchasesreturnsInfo(String p)
+        {
+            #region 執行SQL語法-顯示進貨單單頭資料
+            String tmpSql = @"SELECT * FROM(
+SELECT B.pr_id,B.pur_id,s_id,B.m_id, purin_qty,p.p_id,p.p_name,B.prin_qty
+FROM (SELECT pur.pur_id,pur.s_id, pur.m_id, puri.purin_id, puri.p_id,  puri.purin_price,puri.purin_qty FROM purchases pur, purchases_info puri WHERE pur.pur_id = puri.pur_id) AS A,
+(SELECT pr.pr_id, pr.pur_id, pr.m_id, pri.pri_id, pri.p_id,pri.prin_qty FROM purchases_returns pr, purchases_returns_info pri WHERE pr.pr_id = pri.pr_id)AS B,
+product p
+WHERE A.pur_id = B.pur_id AND p.p_id = A.p_id AND p.p_id = B.p_id
+GROUP BY B.pr_id,B.pur_id,s_id,B.m_id, purin_qty,p.p_id,p.p_name,B.prin_qty) AS D
+WHERE D.pr_id='"+p+"'";
+            SqlConnectionStringBuilder cb = ConnectionAzure();
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "purchases_returns_info");//在DataSet中查詢,為DataSet中的資料表重新命名
                     cn.Close();
                 }
             }
@@ -2413,10 +2506,10 @@ namespace Invoicing_T
 
             #endregion
         }
-        internal void UpdatePurchasesInfo(String price, String qty, String purinid)
+        internal void UpdatePurchasesInfo(String price, String qty, String purinid,int checkqty)
         {
             #region 執行SQL語法-修改進貨單資料
-            string tmp = "Update purchases_info set purin_price='" + price + "',purin_qty='" + qty + "'  WHERE purin_id='" + purinid + "'";//利用參數方式寫SQL語法
+            string tmp = "Update purchases_info set purin_price='" + price + "',purin_qty='" + qty + "',purin_check_qty='"+checkqty+"'  WHERE purin_id='" + purinid + "'";//利用參數方式寫SQL語法
             SqlTransaction tran = null;//產生物件
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
 

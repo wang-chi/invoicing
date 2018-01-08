@@ -63,7 +63,7 @@
                         <a id="auth_purchases_manage" class="nav-link" href="purchases_manage.aspx" runat="server" style="display: block;">進貨單管理</a>
                     </li>
                     <li class="nav-item">
-                        <a id="auth_purchases_return" class="nav-link" href="purchases_return_manage.aspx" runat="server" style="display: block;">退貨單管理</a>
+                        <a id="auth_purchases_return" class="nav-link" href="purchases_returns_manage.aspx" runat="server" style="display: block;">退貨單管理</a>
                     </li>
                     <li class="nav-item">
                         <a id="auth_supplier_price_manage" class="nav-link" href="supplier_price_manage.aspx" runat="server" style="display: block;">進貨價格</a>

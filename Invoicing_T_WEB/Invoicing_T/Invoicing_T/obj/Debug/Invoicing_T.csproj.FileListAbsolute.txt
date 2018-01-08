@@ -16,10 +16,10 @@ D:/進銷存系統/Invoicing_T/Invoicing_T_WEB/Invoicing_T/Invoicing_T/bin/Invoi
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.csproj.CoreCompileInputs.cache
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.dll
 /Users/wangchi/NUTC/invoicing/Invoicing_T_WEB/Invoicing_T/Invoicing_T/obj/Debug/Invoicing_T.pdb
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.dll.config
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.dll
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.pdb
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csproj.CoreCompileInputs.cache
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.dll
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.pdb
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csprojResolveAssemblyReference.cache
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.dll.config
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.dll
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.pdb
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csproj.CoreCompileInputs.cache
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.dll
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.pdb
+D:\Invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csprojResolveAssemblyReference.cache

@@ -35,7 +35,7 @@
             </div>
             <div class="form-group row">
                 <div>
-                    <label>是否驗收：</label>
+                    <label>是否驗收完成：</label>
                 </div>
                 <div>
                     <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" AutoPostBack="True">
@@ -126,14 +126,16 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr class="success">
-                                    <th width="25%">
+                                    <th width="20%">
                                         <asp:Label ID="Label8" runat="server" Text="商品編號"></asp:Label></th>
-                                    <th width="25%">
+                                    <th width="20%">
                                         <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label></th>
-                                    <th width="25%">
+                                    <th width="20%">
                                         <asp:Label ID="Label10" runat="server" Text="商品單價"></asp:Label></th>
-                                    <th width="25%">
+                                    <th width="20%">
                                         <asp:Label ID="Label14" runat="server" Text="商品數量"></asp:Label></th>
+                                     <th width="20%">
+                                        <asp:Label ID="Label2" runat="server" Text="驗收數量"></asp:Label></th>
 
                                 </tr>
                             </thead>
@@ -157,6 +159,10 @@
                             </td>
                             <td>
                                 <asp:TextBox ID="InputQty" runat="server" Text='<%# Eval("purin_qty") %>'></asp:TextBox>
+                            </td>
+                             <td>
+                                <asp:TextBox ID="InputCheckQty" runat="server" Text='<%# Eval("purin_check_qty") %>'></asp:TextBox>
+                                 <asp:Label ID="check_id" runat="server" Text="驗收數量不可大於進貨數量" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
                             </td>
 
                         </tr>

@@ -12,20 +12,14 @@
                 <label>群組ID：</label>
                 <asp:Label ID="r_id" runat="server" Text='<%# Eval("r_id") %>' />
             </div>
-<<<<<<< HEAD
             <div class="form-group row">
                 <div>
 
                     <label>群組名稱：</label>
                 </div>
                 <div>
-                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="GroupName" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
-=======
-            <div class="form-group">
-                <label>群組名稱：</label>
-                <asp:TextBox ID="GroupName" runat="server"></asp:TextBox>
->>>>>>> origin/CJT
             </div>
 
 
@@ -52,9 +46,9 @@
                         <tr>
                             <td>
                                 <asp:Label ID="auth_name" runat="server" Text=' <%# Eval("a_name") %> '></asp:Label>
-                                
-                                <asp:Label ID="raid" runat="server" Text=' <%# Eval("ra_id") %> ' Visible="false" ></asp:Label>
-                                
+
+                                <asp:Label ID="raid" runat="server" Text=' <%# Eval("ra_id") %> ' Visible="false"></asp:Label>
+
                             </td>
                             <td>
                                 <asp:RadioButtonList ID="viewmode" runat="server" RepeatDirection="Horizontal" AutoPostBack="True" Width="100%" SelectedValue='<%# Eval("viewmode") %>'>
@@ -70,7 +64,7 @@
 
             <div class="form-group">
                 <asp:Button ID="btnUpdate" class="btn btn-success" runat="server" Text="修改" Visible="false" OnClick="btn_Click" />
-                <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" Visible="false" OnClick="btn_Click"/>
+                <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" Visible="false" OnClick="btn_Click" />
             </div>
 
 

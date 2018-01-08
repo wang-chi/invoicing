@@ -229,6 +229,7 @@ namespace Invoicing_T
             s_id = ddlSupplierGroup.SelectedValue.Trim();
 
             delieverydate = InputDeliverydate.Text;
+            int purin_check_qty=0;
 
             string purchases_new;
             string select_id = "SELECT pur_id FROM purchases ";//查詢supplier_id是否有重複
@@ -284,8 +285,8 @@ namespace Invoicing_T
                     purin_price = Convert.ToDecimal(((TextBox)gvr.FindControl("Input_pur_price")).Text.Trim());
                     purin_qty = Convert.ToDecimal(((TextBox)gvr.FindControl("Input_pur_count")).Text.Trim());
                     //新增進貨單內容
-                    purchases_info_new = @"Insert Into purchases_info (purin_id,pur_id, p_id, m_id, purin_price, purin_qty, createdate, update_time) 
-                    Values('" + pur_id + c + "','" + pur_id + "','" + p_id + "','" + m_id + "','" + purin_price + "','" + purin_qty + "', GETDATE(), GETDATE())";//新增
+                    purchases_info_new = @"Insert Into purchases_info (purin_id,pur_id, p_id, m_id, purin_price, purin_qty,purin_check_qty, createdate, update_time) 
+                    Values('" + pur_id + c + "','" + pur_id + "','" + p_id + "','" + m_id + "','" + purin_price + "','" + purin_qty + "','"+purin_check_qty+"', GETDATE(), GETDATE())";//新增
                     tmp.Insert(purchases_info_new);//用Insert方法
                     //回寫進貨價格表
                     supplier_price_new = @"Insert Into supplier_price (sp_id, p_id, s_id, price, createdate) 

@@ -194,6 +194,7 @@ FOREIGN KEY (pt_id) REFERENCES product_type(pt_id)
 INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0001','PT002',N'原物料', '30');
 INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0002','PT004',N'水杯','20');
 INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0003','PT004',N'紙杯','5');
+
 --進貨價格表
 DROP TABLE supplier_price;
 CREATE TABLE supplier_price
@@ -212,7 +213,7 @@ FOREIGN KEY (s_id) REFERENCES supplier(s_id)
 DROP TABLE client_price;
 CREATE TABLE client_price
 (
-cp_id nchar(5)  NOT NULL,
+cp_id nchar(7)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
 c_id nchar(5) NOT NULL,
 price float NOT NULL,
@@ -223,12 +224,13 @@ FOREIGN KEY (p_id) REFERENCES product(p_id),
 FOREIGN KEY (c_id) REFERENCES client(c_id)
 );
 --進貨單資料表
+DROP TABLE purchases
 CREATE TABLE purchases
 (
 pur_id nchar(5)  NOT NULL,
 s_id  nchar(5)  NOT NULL,
-m_id nchar(6) NOT NULL,
-accept bit NOT NULL,
+m_id nchar(6) NOT NULL,--員工編號
+accept bit NOT NULL,--驗收
 deliverydate datetime NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
@@ -244,9 +246,10 @@ CREATE TABLE purchases_info
 purin_id nchar(7)  NOT NULL,
 pur_id nchar(5)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
-m_id nchar(6)  NOT NULL,
-purin_price float NOT NULL,
-purin_qty int NOT NULL,
+m_id nchar(6)  NOT NULL,--員工
+purin_price float NOT NULL,--進貨單價
+purin_qty int NOT NULL,--進貨數量
+purin_check_qty int NOT NULL, --已驗收數量
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 
@@ -255,43 +258,63 @@ FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
 FOREIGN KEY (p_id) REFERENCES product(p_id)
 );
 --進貨退貨單資料表
-CREATE TABLE sup_returns
+DROP TABLE purchases_returns;
+CREATE TABLE purchases_returns
 (
-supre_id nchar(5)  NOT NULL,
-pur_id nchar(5)  NOT NULL,
-purin_id nchar(7)  NOT NULL,
-m_number nchar(5)  NOT NULL,
-supre_qty int NOT NULL,
-createdate datetime NOT NULL
-
-primary key(supre_id),
-FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
-FOREIGN KEY (purin_id) REFERENCES purchases_info(purin_id)
+pr_id nchar(5)  NOT NULL,--退貨單編號
+pur_id nchar(5)  NOT NULL,--進貨單編號
+m_id nchar(5)  NOT NULL,
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(pr_id),
+FOREIGN KEY (pur_id) REFERENCES purchases(pur_id)
 );
+--退貨單內容資料表
+DROP TABLE purcharse_returns_info;
+CREATE TABLE purcharse_returns_info
+(
+pri_id nchar(7)  NOT NULL,--退貨內容編號
+pr_id nchar(5)  NOT NULL,--退貨單編號
+p_id  nchar(5)  NOT NULL,--商品編號
+m_id nchar(6)  NOT NULL,--員工
+purin_qty int NOT NULL,--退貨數量
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(pri_id),
+FOREIGN KEY (pr_id) REFERENCES purchases_returns(pr_id),
+FOREIGN KEY (p_id) REFERENCES product(p_id)
+);
+
+
 --訂貨單資料表
 CREATE TABLE orders
 (
 or_id nchar(5)  NOT NULL,
 c_id  nchar(5)  NOT NULL,
+m_id nchar(6) NOT NULL,
+accept bit NOT NULL,
+deliverydate datetime NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 
 primary key(or_id),
-FOREIGN KEY (c_id) REFERENCES client(c_id)
+FOREIGN KEY (c_id) REFERENCES client(c_id),
+FOREIGN KEY (m_id) REFERENCES member(m_id)
 );
 --訂貨單資料表
 DROP TABLE orders_info;
 CREATE TABLE orders_info
 (
-in_id nchar(5)  NOT NULL,
+orin_id nchar(7)  NOT NULL,
 or_id nchar(5)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
-in_price float NOT NULL,
-in_qty int NOT NULL,
+m_id nchar(6)  NOT NULL,
+orin_price float NOT NULL,
+orin_qty int NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 
-primary key(in_id),
+primary key(orin_id),
 FOREIGN KEY (or_id) REFERENCES orders(or_id),
 FOREIGN KEY (p_id) REFERENCES product(p_id)
 );
