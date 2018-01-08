@@ -2586,31 +2586,6 @@ namespace Invoicing_T
             #endregion
         }
 
-        internal DataSet GetSellOfMounth()
-        {
-            #region 執行SQL語法-顯示資料
-            String tmpSql = "SELECT * FROM orders_info";
-            SqlCommand cmd = new SqlCommand();//新增cmd的物件
-            DataSet ds = new DataSet();
-            try
-            {
-                SqlConnectionStringBuilder cb = ConnectionAzure();
-                using (var cn = new SqlConnection(cb.ConnectionString))
-                {
-                    cn.Open();//開啟資料庫
-                    cmd.CommandText = tmpSql;
-                    cmd.Connection = cn;//指定連線物件
-                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
-                    dr.Fill(ds, "SellOfMounth");//在DataSet中查詢,為DataSet中的資料表重新命名
-                    cn.Close();
-                }
-            }
-            catch (Exception)
-            {
-                return null;//如果錯誤  回傳null值
-            }
-            return ds;//回傳DataSet的表
-            #endregion
-        }
+      
     }
 }

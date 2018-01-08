@@ -12,7 +12,6 @@
                 <label>群組ID：</label>
                 <asp:Label ID="r_id" runat="server" Text='<%# Eval("r_id") %>' />
             </div>
-<<<<<<< HEAD
             <div class="form-group row">
                 <div>
 
@@ -21,11 +20,6 @@
                 <div>
                     <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
-=======
-            <div class="form-group">
-                <label>群組名稱：</label>
-                <asp:TextBox ID="GroupName" runat="server"></asp:TextBox>
->>>>>>> origin/CJT
             </div>
 
 
@@ -70,7 +64,7 @@
 
             <div class="form-group">
                 <asp:Button ID="btnUpdate" class="btn btn-success" runat="server" Text="修改" Visible="false" OnClick="btn_Click" />
-                <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" Visible="false" OnClick="btn_Click"/>
+                <asp:Button ID="btnDelete" class="btn btn-danger" runat="server" Text="刪除" Visible="false" />
             </div>
 
 

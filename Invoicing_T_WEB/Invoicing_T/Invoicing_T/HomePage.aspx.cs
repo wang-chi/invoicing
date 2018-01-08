@@ -81,29 +81,6 @@ namespace Invoicing_T
             #endregion
 
         }
-        private void ShowSellOfMounth()
-        {
-            #region 顯示月銷售額
-            SellOfMounth.Text = "78";
-
-            DataSet ds = tmp.GetSellOfYear();
-            decimal amount = 0, total = 0;
-            if (ds != null)
-            {
-                DataTable dt = ds.Tables["SellOfYear"];
-                foreach (DataRow dr in dt.Rows)
-                {
-                    total = 0;
-                    total = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
-                    amount = amount + total;
-                }
-                SellOfMounth.Text = exchange(amount);
-                SellOfMounthDetail.Text = Convert.ToString(amount);
-            }
-            #endregion
-
-
-        }
         private void ShowStockOfAll()
         {
             #region 顯示庫存總額
