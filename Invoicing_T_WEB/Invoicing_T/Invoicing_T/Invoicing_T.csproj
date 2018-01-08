@@ -89,6 +89,9 @@
     <Content Include="header.html" />
     <Content Include="ManagePage.aspx" />
     <Content Include="member_new.aspx" />
+    <Content Include="orders_edit.aspx" />
+    <Content Include="orders_manage.aspx" />
+    <Content Include="orders_new.aspx" />
     <Content Include="ProductPage.aspx" />
     <Content Include="product_edit.aspx" />
     <Content Include="product_manage.aspx" />
@@ -284,6 +287,27 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orders_edit.aspx.cs">
+      <DependentUpon>orders_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orders_edit.aspx.designer.cs">
+      <DependentUpon>orders_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orders_manage.aspx.cs">
+      <DependentUpon>orders_manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orders_manage.aspx.designer.cs">
+      <DependentUpon>orders_manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orders_new.aspx.cs">
+      <DependentUpon>orders_new.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orders_new.aspx.designer.cs">
+      <DependentUpon>orders_new.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductPage.aspx.cs">
       <DependentUpon>ProductPage.aspx</DependentUpon>

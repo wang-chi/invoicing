@@ -18,12 +18,14 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr class="success">
-                                    <th width="20%">
+                                    <th width="10%">
                                         <asp:Label ID="Label10" runat="server" Text="進貨價格編號"></asp:Label></th>
-                                    <th width="20%">
+                                    <th width="10%">
                                         <asp:Label ID="Label14" runat="server" Text="商品編號"></asp:Label></th>
+                                     <th width="20%">
+                                        <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label></th>
                                     <th width="20%">
-                                        <asp:Label ID="Label4" runat="server" Text="廠商編號"></asp:Label></th>
+                                        <asp:Label ID="Label4" runat="server" Text="廠商名稱"></asp:Label></th>
                                     <th width="20%">
                                         <asp:Label ID="Label5" runat="server" Text="進貨價格"></asp:Label></th>
                                     <th width="20%">
@@ -39,7 +41,8 @@
                         <tr>
                             <td><%# Eval("sp_id") %></td>
                             <td><%# Eval("p_id") %></td>
-                            <td><%# Eval("s_id") %></td>
+                            <td><%# Eval("p_name") %></td>
+                            <td><%# Eval("s_name") %></td>
                             <td><%# Eval("price") %></td>
                             <td><%# Eval("createdate") %></td>
 

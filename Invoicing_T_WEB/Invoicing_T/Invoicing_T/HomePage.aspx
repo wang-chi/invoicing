@@ -7,34 +7,34 @@
         <h1>Dashboard</h1>
         <section class="row text-center placeholders">
             <div class="col-6 col-sm-3 placeholder">
-                <div style="width: 20vw; height: 40vh;">
+                <div style="width: 10vw; height: 20vh;">
                     <asp:Label ID="SellOfYear" class="SellNumber" runat="server" Text="0"></asp:Label>
                 </div>
                 <asp:Label ID="SellOfYearDetail" class="SellNumberDetail" runat="server" Text="0"></asp:Label>
-                <div class="text-muted">年度銷售額</div>
+                <div class="text-muted"><label>年度銷售額</label></div>
             </div>
             <div class="col-6 col-sm-3 placeholder">
-                <div style="width: 20vw; height: 40vh;">
+                <div style="width: 10vw; height: 20vh;">
                     <asp:Label ID="SellOfMounth" class="SellNumber" runat="server" Text="0"></asp:Label>
                 </div>
                 <asp:Label ID="SellOfMounthDetail" class="SellNumberDetail" runat="server" Text="0"></asp:Label>
-                <span class="text-muted">本月銷售額</span>
+                <div class="text-muted"><label>本月銷售額</label></div>
             </div>
             <div class="col-6 col-sm-3 placeholder">
-                <div style="width: 20vw; height: 40vh;">
+                <div style="width: 10vw; height: 20vh;">
                     <asp:Label ID="StockOfAll" class="SellNumber" runat="server" Text="0"></asp:Label>
                 </div>
                 <asp:Label ID="StockOfAllDetail" class="SellNumberDetail" runat="server" Text="0"></asp:Label>
-                <span class="text-muted">目前存貨金額</span>
+                <div class="text-muted"><label>目前存貨金額</label></div>
             </div>
             <div class="col-6 col-sm-3 placeholder">
-                <div style="width: 20vw; height: 40vh;">
+                <div style="width: 10vw; height: 20vh;">
                     <asp:Label ID="AccountOfMoney" class="SellNumber" runat="server" Text="0"></asp:Label>
                 </div>
                 <asp:Label ID="AccountOfMoneyDetail" class="SellNumberDetail" runat="server" Text="0"></asp:Label>
-                <span class="text-muted">應收帳款金額</span>
+                <div class="text-muted"><label>應收帳款金額</label></div>
             </div>
         </section>
-        <h1>Dashboard</h1>
+  
     </main>
 </asp:Content>

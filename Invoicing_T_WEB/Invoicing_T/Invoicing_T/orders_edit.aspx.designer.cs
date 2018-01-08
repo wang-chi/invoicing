@@ -10,186 +10,141 @@
 namespace Invoicing_T {
     
     
-    public partial class side {
+    public partial class order_edit {
         
         /// <summary>
-        /// head 控制項。
+        /// form1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// auth_HomePage 控制項。
+        /// HiddenF_ActionState 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_HomePage;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenF_ActionState;
         
         /// <summary>
-        /// auth_member_manage 控制項。
+        /// HiddenF_rid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_member_manage;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenF_rid;
         
         /// <summary>
-        /// auth_group_manage 控制項。
+        /// or_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_group_manage;
+        protected global::System.Web.UI.WebControls.Label or_id;
         
         /// <summary>
-        /// auth_auth_manage 控制項。
+        /// c_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_auth_manage;
+        protected global::System.Web.UI.WebControls.Label c_id;
         
         /// <summary>
-        /// auth_ManagePage 控制項。
+        /// m_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_ManagePage;
+        protected global::System.Web.UI.WebControls.Label m_id;
         
         /// <summary>
-        /// auth_employee_manage 控制項。
+        /// RadioButtonList1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_employee_manage;
+        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
         
         /// <summary>
-        /// auth_company_manage 控制項。
+        /// deliverydate 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_company_manage;
+        protected global::System.Web.UI.WebControls.TextBox deliverydate;
         
         /// <summary>
-        /// auth_supplier_manage 控制項。
+        /// update_time 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_supplier_manage;
+        protected global::System.Web.UI.WebControls.Label update_time;
         
         /// <summary>
-        /// auth_client_manage 控制項。
+        /// btn_add 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_client_manage;
+        protected global::System.Web.UI.WebControls.Button btn_add;
         
         /// <summary>
-        /// auth_ProductPage 控制項。
+        /// btn_update 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_ProductPage;
+        protected global::System.Web.UI.WebControls.Button btn_update;
         
         /// <summary>
-        /// auth_product_manage 控制項。
+        /// GridView1 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_product_manage;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// auth_product_type_manage 控制項。
+        /// lvordersInfo 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_product_type_manage;
+        protected global::System.Web.UI.WebControls.ListView lvordersInfo;
         
         /// <summary>
-        /// auth_purchases_manage 控制項。
+        /// btnUpdate 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_manage;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// auth_purchases_return 控制項。
+        /// btnDelete 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_return;
-        
-        /// <summary>
-        /// auth_supplier_price_manage 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_supplier_price_manage;
-        
-        /// <summary>
-        /// auth_order_manage 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_order_manage;
-        
-        /// <summary>
-        /// auth_client_price_manage 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_client_price_manage;
-        
-        /// <summary>
-        /// logout 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor logout;
-        
-        /// <summary>
-        /// ContentPlaceHolder1 控制項。
-        /// </summary>
-        /// <remarks>
-        /// 自動產生的欄位。
-        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
     }
 }

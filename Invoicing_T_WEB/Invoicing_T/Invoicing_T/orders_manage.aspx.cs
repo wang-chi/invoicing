@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Invoicing_T
 {
-    public partial class client_price_manage : System.Web.UI.Page
+    public partial class order_manage : System.Web.UI.Page
     {
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
@@ -23,14 +23,14 @@ namespace Invoicing_T
         protected void all(object sender, EventArgs e, String p)
         {
 
-            #region 查詢進貨資料
+            #region 查詢銷貨單資料
 
-            DataSet ds = tmp.GetClientPriceInfo(p);
+            DataSet ds = tmp.GetOrders(p);
             if (ds != null)
             {
-                IvClientPriceInfo.DataSource = null;
-                IvClientPriceInfo.DataSource = ds.Tables["client_price_info"];
-                IvClientPriceInfo.DataBind();
+                IvOrdersInfo.DataSource = null;
+                IvOrdersInfo.DataSource = ds.Tables["orders"];
+                IvOrdersInfo.DataBind();
             }
 
             #endregion
@@ -38,10 +38,13 @@ namespace Invoicing_T
 
         protected void btn_search(object sender, EventArgs e)
         {
-            // 根據商品編號
-            String selection = "  WHERE p_id LIKE '%" + InputClientPrice.Text + "%'";
+            String selection = " WHERE or_id LIKE '%" + InputOrders.Text + "%'";
             all(null, null, selection);
         }
 
+        protected void btn_insert_orders_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("orders_new.aspx");//跳轉到登入畫面
+        }
     }
 }

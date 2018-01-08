@@ -6,7 +6,7 @@
     <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <form runat="server">
             <h1>銷貨價格查詢</h1>
-            <asp:Label ID="Label3" runat="server" Text="請以銷貨單編號查詢："></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="請以商品編號查詢："></asp:Label>
             <asp:TextBox ID="InputClientPrice" runat="server"></asp:TextBox>
             <asp:Button ID="btn_search_2" class="btn btn-success" runat="server" Text="查詢" OnClick="btn_search" />
             <h1>總覽</h1>

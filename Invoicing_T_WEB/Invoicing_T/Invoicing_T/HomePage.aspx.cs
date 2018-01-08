@@ -20,7 +20,8 @@ namespace Invoicing_T
             this.ShowAccountOfMoney();//應收帳款金額
         }
 
-        private void CheckAuth() {
+        private void CheckAuth()
+        {
             #region 確認可到訪頁面權限
             if (Session["UserID"] != null)
             {
@@ -31,14 +32,16 @@ namespace Invoicing_T
                     DataTable dt = ds.Tables["CheckAuth"];
 
                 }
-            }else
+            }
+            else
             {
                 Response.Redirect("login.aspx");//跳轉到登入頁面
             }
             #endregion
         }
 
-        private void ShowSellOfYear() {
+        private void ShowSellOfYear()
+        {
             #region 顯示年銷售額
             SellOfYear.Text = "0";
             DataSet ds = tmp.GetSellOfYear();
@@ -72,6 +75,28 @@ namespace Invoicing_T
                     total = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
                     amount = amount + total;
                 }
+                SellOfYear.Text = exchange(amount);
+                SellOfYearDetail.Text = Convert.ToString(amount);
+            }
+            #endregion
+
+        }
+        private void ShowSellOfMounth()
+        {
+            #region 顯示月銷售額
+            SellOfMounth.Text = "78";
+
+            DataSet ds = tmp.GetSellOfYear();
+            decimal amount = 0, total = 0;
+            if (ds != null)
+            {
+                DataTable dt = ds.Tables["SellOfYear"];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    total = 0;
+                    total = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
+                    amount = amount + total;
+                }
                 SellOfMounth.Text = exchange(amount);
                 SellOfMounthDetail.Text = Convert.ToString(amount);
             }
@@ -83,26 +108,58 @@ namespace Invoicing_T
         {
             #region 顯示庫存總額
             StockOfAll.Text = "88";
+            DataSet ds = tmp.GetStockOfAll();
+            decimal amount = 0, total = 0;
+            if (ds != null)
+            {
+                DataTable dt = ds.Tables["StockOfAll"];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    total = 0;
+                    total = Convert.ToDecimal(dr["purin_price"].ToString().Trim()) * Convert.ToDecimal(dr["purin_qty"].ToString().Trim());
+                    amount = amount + total;
+                }
+                StockOfAll.Text = exchange(amount);
+                StockOfAllDetail.Text = Convert.ToString(amount);
+            }
             #endregion
-
-
         }
+
         private void ShowAccountOfMoney()
         {
             #region 顯示應受帳款
             AccountOfMoney.Text = "64";
+            DataSet ds = tmp.GetAccountOfMoney();
+            decimal amount = 0, total = 0;
+            if (ds != null)
+            {
+                DataTable dt = ds.Tables["AccountOfMoney"];
+                foreach (DataRow dr in dt.Rows)
+                {
+                    total = 0;
+                    total = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
+                    amount = amount + total;
+                }
+                AccountOfMoney.Text = exchange(amount);
+                AccountOfMoneyDetail.Text = Convert.ToString(amount);
+            }
             #endregion
-            
+
         }
 
-        private String exchange(decimal amount) {
-            string result="";
+        private String exchange(decimal amount)
+        {
+            string result = "";
             if (amount > 1000)
             {
-                result = Convert.ToString(amount / 1000) + "K+";
+                result = Convert.ToString(Math.Truncate(amount / 1000)) + "K+";
             }
-            else if (amount > 10000) {
-                result = Convert.ToString(amount / 10000) + "M+";
+            else if (amount > 10000)
+            {
+                result = Convert.ToString(Math.Truncate(amount / 10000)) + "M+";
+            }
+            else {
+                result = Convert.ToString(amount);
             }
             return result;
         }

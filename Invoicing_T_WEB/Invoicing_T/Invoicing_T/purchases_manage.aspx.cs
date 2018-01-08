@@ -23,7 +23,7 @@ namespace Invoicing_T
         protected void all(object sender, EventArgs e, String p)
         {
 
-            #region 查詢帳號資料
+            #region 查詢銷貨單資料
 
             DataSet ds = tmp.GetPurchases(p);
             if (ds != null)
