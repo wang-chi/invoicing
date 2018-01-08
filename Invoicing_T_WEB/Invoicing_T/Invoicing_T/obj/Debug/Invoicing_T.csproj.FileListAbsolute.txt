@@ -22,4 +22,3 @@ D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\bin\Invoicing_T.pdb
 D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csproj.CoreCompileInputs.cache
 D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.dll
 D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.pdb
-D:\invoicing\Invoicing_T_WEB\Invoicing_T\Invoicing_T\obj\Debug\Invoicing_T.csprojResolveAssemblyReference.cache
