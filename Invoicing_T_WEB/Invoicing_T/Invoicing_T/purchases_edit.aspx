@@ -53,12 +53,6 @@
                         <asp:TextBox ID="deliverydate" runat="server" placeholder="click to show datepicker"></asp:TextBox>
                     </div>
                 </div>
-<<<<<<< HEAD
-               
-             
-=======
-
->>>>>>> origin/ckklab
             </div>
             <div class="form-group row">
                 <div>

@@ -73,7 +73,14 @@ a, p, h1, h2, h3, h4, tr, td, th, ul, li, ol, label, span {
 }
 
 .SellNumber {
-    font-size: 100pt;
+    font-size: 6rem;
     font-family: 'Microsoft JhengHei UI';
+    margin:0 auto;
+    padding-left: 5rem;
     
+}
+
+.SellNumberDetail {
+    font-size: 2rem;
+    font-family: 'Microsoft JhengHei UI';
 }

@@ -1267,7 +1267,7 @@ namespace Invoicing_T
             #region 查詢client_price資料
 
 
-            string tmp = "SELECT * FROM client_price "+p;
+            string tmp = "SELECT * FROM client_price " + p;
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try
@@ -2479,6 +2479,112 @@ namespace Invoicing_T
             #endregion
         }
 
+        internal DataSet GetSellOfYear()
+        {
+            #region 執行SQL語法-顯示資料
+            String tmpSql = "SELECT * FROM orders_info";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "SellOfYear");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+
+        internal DataSet GetSellOfMounth()
+        {
+            #region 執行SQL語法-顯示資料
+            String tmpSql = "SELECT * FROM orders_info";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "SellOfMounth");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+        internal DataSet GetStockOfAll()
+        {
+            #region 執行SQL語法-顯示資料
+            String tmpSql = "Select pur.pur_id, pur.accept, puri.purin_price, puri.purin_qty from purchases pur, purchases_info puri where pur.pur_id = puri.pur_id AND pur.accept = '1'";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "StockOfAll");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+
+        internal DataSet GetAccountOfMoney()
+        {
+            #region 執行SQL語法-顯示資料
+            String tmpSql = "SELECT o.or_id, o.accept, oi.orin_price, oi.orin_qty FROM orders o, orders_info oi WHERE o.or_id = oi.or_id AND o.accept = '0'";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "AccountOfMoney");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
 
     }
 }
