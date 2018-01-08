@@ -14,7 +14,39 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.NewId();//新增編號
+        }
 
+        private void NewId()
+        {
+            #region 商品類別編號
+            String select_all_id = "select top 1 pt_id from product_type order by pt_id desc ";
+            DataSet ds = tmp.GetNewId(select_all_id);
+            if (ds != null)
+            {
+                foreach (DataRow dr in ds.Tables["selectnewid"].Rows)
+                {
+                    string all_id;
+                    all_id = dr["pt_id"].ToString();
+                    int all_id_new = int.Parse(all_id.Substring(2, 3));
+                    if (all_id_new < 9)
+                    {
+                        all_id = "PT00" + (all_id_new + 1);
+                    }
+                    if (all_id_new < 99 && all_id_new >= 9)
+                    {
+                        all_id = "PT0" + (all_id_new + 1);
+                    }
+                    if (all_id_new < 999 && all_id_new >= 99)
+                    {
+                        all_id = "PT" + (all_id_new + 1);
+                    }
+
+                    InputID.Text = all_id;
+
+                }
+            }
+            #endregion
         }
 
         protected void btn_insert_product_type_Click(object sender, EventArgs e)
@@ -30,18 +62,7 @@ namespace Invoicing_T
 
             if (ds != null)
             {
-                //檢測帳號是否有重複
-                foreach (DataRow dr in ds.Tables["ProductTypeInfo"].Rows)
-                {
-                    string all_id;
-                    all_id = dr["pt_id"].ToString();
-                    if (all_id == pt_id)
-                    {
-                        Msg_ExistID.Visible = true;//帳號已存在隱藏
-                    }
-
-                }
-
+               
                 //如果有任一欄位未輸入  則顯示「必填」
                 if ((string.IsNullOrWhiteSpace(InputID.Text)) || (string.IsNullOrWhiteSpace(InputName.Text)))
                 {
