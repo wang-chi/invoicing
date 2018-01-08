@@ -96,14 +96,14 @@
                         <asp:TemplateField>
                             <HeaderTemplate>商品單價</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_or_price" runat="server" class="form-control" Text='<%# Eval("Price") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_or_price" runat="server" class="form-control" Text='<%# Eval("Price") %>' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
                             <HeaderTemplate>商品數量</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_or_count" runat="server" class="form-control" Text='<%# Eval("Count") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_or_count" runat="server" class="form-control" Text='<%# Eval("Count") %>' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>單身商品總計</FooterTemplate>

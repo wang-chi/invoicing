@@ -1010,7 +1010,36 @@ namespace Invoicing_T
         internal DataSet GetProduct(String p)
         {
             #region 執行SQL語法-顯示商品資料
-            String tmpSql = "SELECT * FROM product" + p;
+            String tmpSql = @"SELECT D.p_id, D.pt_id, D.p_name, D.p_price, (D.pqty-D.oqty) as qty, D.pv, D.ov
+FROM (
+SELECT p.*, 
+COALESCE(C.pqty, '0') AS pqty,
+COALESCE(C.oqty, '0') AS oqty,
+COALESCE(C.pvalue, '0') AS pv,
+COALESCE(C.ovalue, '0') AS ov
+FROM product p
+ FULL JOIN(
+SELECT A.p_id as p1, B.p_id as p2, A.pvalue,A.pprice,A.pqty, B.ovalue,B.oprice, B.oqty
+FROM
+(
+Select  puri.p_id, SUM(puri.purin_price) as pprice, 
+SUM(puri.purin_qty) as pqty,
+			SUM(puri.purin_price * puri.purin_qty) as pvalue
+from purchases pur, purchases_info puri
+where pur.pur_id = puri.pur_id AND pur.accept = '1'
+GROUP BY(puri.p_id)
+) AS A
+FULL JOIN(
+SELECT oi.p_id,SUM(oi.orin_price) as oprice,SUM(oi.orin_qty) as oqty,
+SUM(oi.orin_price* oi.orin_qty) as ovalue
+FROM orders o, orders_info oi, product p
+WHERE o.or_id = oi.or_id AND o.accept = '1'
+GROUP BY(oi.p_id)
+) AS B
+ON A.p_id = B.p_id
+) AS C
+ON C.p1 = p.p_id OR C.p2 = p.p_id
+) AS D" + p;
             SqlConnectionStringBuilder cb = ConnectionAzure();
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
@@ -2482,7 +2511,7 @@ namespace Invoicing_T
         internal DataSet GetSellOfYear()
         {
             #region 執行SQL語法-顯示資料
-            String tmpSql = "SELECT * FROM orders_info";
+            String tmpSql = "SELECT * FROM orders_info WHERE createdate > DATEADD(dd, -1, DATEADD(mm, DATEDIFF(mm, 0, getdate()), 0)) AND createdate <  dateadd(yy,datediff(yy,-1,getdate()),-1)";
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try
@@ -2509,7 +2538,7 @@ namespace Invoicing_T
         internal DataSet GetSellOfMounth()
         {
             #region 執行SQL語法-顯示資料
-            String tmpSql = "SELECT * FROM orders_info";
+            String tmpSql = "SELECT * FROM orders_info WHERE createdate > DATEADD(dd, -1, DATEADD(mm, DATEDIFF(mm, 0, getdate()), 0)) AND createdate < DATEADD(mm,  1, DATEADD(dd, -1, DATEADD(mm, DATEDIFF(mm,0,getdate()), 0)))";
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try
@@ -2532,10 +2561,37 @@ namespace Invoicing_T
             return ds;//回傳DataSet的表
             #endregion
         }
-        internal DataSet GetStockOfAll()
+        internal DataSet GetStockOfAllByPurchases()
         {
             #region 執行SQL語法-顯示資料
             String tmpSql = "Select pur.pur_id, pur.accept, puri.purin_price, puri.purin_qty from purchases pur, purchases_info puri where pur.pur_id = puri.pur_id AND pur.accept = '1'";
+            SqlCommand cmd = new SqlCommand();//新增cmd的物件
+            DataSet ds = new DataSet();
+            try
+            {
+                SqlConnectionStringBuilder cb = ConnectionAzure();
+                using (var cn = new SqlConnection(cb.ConnectionString))
+                {
+                    cn.Open();//開啟資料庫
+                    cmd.CommandText = tmpSql;
+                    cmd.Connection = cn;//指定連線物件
+                    SqlDataAdapter dr = new SqlDataAdapter(cmd);//DataAdapter中有Fill的方法可以查詢資料表
+                    dr.Fill(ds, "StockOfAll");//在DataSet中查詢,為DataSet中的資料表重新命名
+                    cn.Close();
+                }
+            }
+            catch (Exception)
+            {
+                return null;//如果錯誤  回傳null值
+            }
+            return ds;//回傳DataSet的表
+            #endregion
+        }
+
+        internal DataSet GetStockOfAllByOrders()
+        {
+            #region 執行SQL語法-顯示資料
+            String tmpSql = "SELECT o.or_id, o.accept, oi.orin_qty, oi.orin_price from orders o, orders_info oi WHERE o.or_id = oi.or_id AND o.accept = '1'";
             SqlCommand cmd = new SqlCommand();//新增cmd的物件
             DataSet ds = new DataSet();
             try

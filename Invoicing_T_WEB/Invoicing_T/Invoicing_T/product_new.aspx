@@ -8,19 +8,27 @@
         <h1>商品資料新增</h1>
         <div>
             <form id="form1" runat="server">
-                <div class="form-group">
+                <div class="form-group row">
                     <asp:Label ID="Label6" runat="server" Text="商品編號"></asp:Label>
-                    <asp:TextBox ID="InputID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
-                    <asp:Label ID="Msg_ExistID" runat="server" Text="編號已存在" Visible="False" Font-Size="9pt" ForeColor="Red"></asp:Label>
+                    <asp:Label ID="InputID" runat="server" Text="P0001"></asp:Label>
                 </div>
-                <div class="form-group">
-                    <asp:Label ID="Label2" runat="server" Text="商品類別編號"></asp:Label>
-                    <asp:TextBox ID="InputTypeID" runat="server" Width="150px" MaxLength="5"></asp:TextBox>
+                <div class="form-group row">
+                    <div>
+                        <asp:Label ID="Label2" runat="server" Text="商品類別"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:TextBox ID="InputTypeID" runat="server" Width="150px" MaxLength="5" Visible="false"></asp:TextBox>
+                        <asp:DropDownList ID="ddlProductTypeGroup" class="form-control" runat="server" ToolTip="群組選項"></asp:DropDownList>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label>
-                    <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
+                <div class="form-group row">
+                    <div>
+                        <asp:Label ID="Label1" runat="server" Text="商品名稱"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
+                    </div>
                 </div>
 
                 <div>

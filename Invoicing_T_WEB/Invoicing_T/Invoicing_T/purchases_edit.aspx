@@ -86,14 +86,14 @@
                         <asp:TemplateField>
                             <HeaderTemplate>商品單價</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_price" runat="server" Text='<%# Eval("purin_price") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_pur_price" runat="server" Text='<%# Eval("purin_price") %>' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
 
                         <asp:TemplateField>
                             <HeaderTemplate>商品數量</HeaderTemplate>
                             <ItemTemplate>
-                                <asp:TextBox ID="Input_pur_count" runat="server" Text='<%# Eval("purin_qty") %>'></asp:TextBox>
+                                <asp:TextBox ID="Input_pur_count" runat="server" Text='<%# Eval("purin_qty") %>' onkeypress='return event.charCode >= 48 && event.charCode <= 57'>></asp:TextBox>
                             </ItemTemplate>
                             <FooterStyle HorizontalAlign="Right" />
                             <FooterTemplate>

@@ -62,21 +62,20 @@ namespace Invoicing_T
         private void ShowSellOfMounth()
         {
             #region 顯示月銷售額
-            SellOfMounth.Text = "78";
             
-            DataSet ds = tmp.GetSellOfYear();
+            DataSet ds = tmp.GetSellOfMounth();
             decimal amount = 0, total = 0;
             if (ds != null)
             {
-                DataTable dt = ds.Tables["SellOfYear"];
+                DataTable dt = ds.Tables["SellOfMounth"];
                 foreach (DataRow dr in dt.Rows)
                 {
                     total = 0;
                     total = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
                     amount = amount + total;
                 }
-                SellOfYear.Text = exchange(amount);
-                SellOfYearDetail.Text = Convert.ToString(amount);
+                SellOfMounth.Text = exchange(amount);
+                SellOfMounthDetail.Text = Convert.ToString(amount);
             }
             #endregion
 
@@ -85,8 +84,10 @@ namespace Invoicing_T
         {
             #region 顯示庫存總額
             StockOfAll.Text = "88";
-            DataSet ds = tmp.GetStockOfAll();
+            DataSet ds = tmp.GetStockOfAllByPurchases();
+            DataSet ds2 = tmp.GetStockOfAllByOrders();
             decimal amount = 0, total = 0;
+            decimal amount2 = 0, total2 = 0;
             if (ds != null)
             {
                 DataTable dt = ds.Tables["StockOfAll"];
@@ -96,8 +97,17 @@ namespace Invoicing_T
                     total = Convert.ToDecimal(dr["purin_price"].ToString().Trim()) * Convert.ToDecimal(dr["purin_qty"].ToString().Trim());
                     amount = amount + total;
                 }
-                StockOfAll.Text = exchange(amount);
-                StockOfAllDetail.Text = Convert.ToString(amount);
+                if (ds2 != null) {
+                    DataTable dt2 = ds2.Tables["StockOfAll"];
+                    foreach (DataRow dr in dt2.Rows)
+                    {
+                        total2 = 0;
+                        total2 = Convert.ToDecimal(dr["orin_price"].ToString().Trim()) * Convert.ToDecimal(dr["orin_qty"].ToString().Trim());
+                        amount2 = amount2 + total2;
+                    }                    
+                }
+                StockOfAll.Text = exchange(amount-amount2);
+                StockOfAllDetail.Text = Convert.ToString(amount-amount2);
             }
             #endregion
         }

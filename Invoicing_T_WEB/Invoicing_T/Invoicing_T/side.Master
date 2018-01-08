@@ -70,7 +70,10 @@
                     </li>
                     <!--銷貨-->
                     <li class="nav-item">
-                        <a id="auth_order_manage" class="nav-link" href="orders_manage.aspx" runat="server" style="display: block;">訂單管理</a>
+                        <a id="auth_orders_manage" class="nav-link" href="orders_manage.aspx" runat="server" style="display: block;">訂單管理</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="auth_orders_return_manage" class="nav-link" href="orders_manage.aspx" runat="server" style="display: block;">訂單退貨管理</a>
                     </li>
                     <li class="nav-item">
                         <a id="auth_client_price_manage" class="nav-link" href="client_price_manage.aspx" runat="server" style="display: block;">銷貨價格</a>
