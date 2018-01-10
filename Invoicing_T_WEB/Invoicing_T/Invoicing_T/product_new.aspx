@@ -17,7 +17,7 @@
                         <asp:Label ID="Label2" runat="server" Text="商品類別"></asp:Label>
                     </div>
                     <div>
-                        <asp:TextBox ID="InputTypeID" runat="server" Width="150px" MaxLength="5" Visible="false"></asp:TextBox>
+                        
                         <asp:DropDownList ID="ddlProductTypeGroup" class="form-control" runat="server" ToolTip="群組選項"></asp:DropDownList>
                     </div>
                 </div>
@@ -28,6 +28,14 @@
                     </div>
                     <div>
                         <asp:TextBox ID="InputName" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div>
+                        <asp:Label ID="Label3" runat="server" Text="商品價格"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:TextBox ID="InputPrice" runat="server" Width="150px" MaxLength="20"></asp:TextBox>
                     </div>
                 </div>
 

@@ -58,6 +58,8 @@
                     <li class="nav-item">
                         <a id="auth_product_type_manage" class="nav-link" href="product_type_manage.aspx" runat="server" style="display: block;">類別管理</a>
                     </li>
+                    </ul>
+                <ul class="nav nav-pills flex-column">
                     <!--進貨-->
                     <li class="nav-item">
                         <a id="auth_purchases_manage" class="nav-link" href="purchases_manage.aspx" runat="server" style="display: block;">進貨單管理</a>
@@ -68,12 +70,12 @@
                     <li class="nav-item">
                         <a id="auth_supplier_price_manage" class="nav-link" href="supplier_price_manage.aspx" runat="server" style="display: block;">進貨價格</a>
                     </li>
-                    <!--銷貨-->
+                   
+                </ul>
+                <ul class="nav nav-pills flex-column">
+                     <!--銷貨-->
                     <li class="nav-item">
                         <a id="auth_orders_manage" class="nav-link" href="orders_manage.aspx" runat="server" style="display: block;">訂單管理</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="auth_orders_return_manage" class="nav-link" href="orders_manage.aspx" runat="server" style="display: block;">訂單退貨管理</a>
                     </li>
                     <li class="nav-item">
                         <a id="auth_client_price_manage" class="nav-link" href="client_price_manage.aspx" runat="server" style="display: block;">銷貨價格</a>
@@ -81,7 +83,7 @@
                     <li class="nav-item">
                         <a id="logout" class="nav-link" href="login.aspx" runat="server" style="display: block;">登出</a>
                     </li>
-                </ul>
+                    </ul>
             </nav>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 <!--Page內容-->
