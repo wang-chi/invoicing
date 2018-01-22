@@ -64,6 +64,23 @@ h1 {
 }
 
 /*font*/
-a, p, h1, h2, h3, h4, tr, td, th,ul,li,ol,label,span {
-    font-family:'Microsoft JhengHei UI';
+a, p, h1, h2, h3, h4, tr, td, th, ul, li, ol, label, span {
+    font-family: 'Microsoft JhengHei UI';
+}
+
+.form-group {
+    padding: 0.5rem;
+}
+
+.SellNumber {
+    font-size: 5rem;
+    font-family: 'Microsoft JhengHei UI';
+    margin:0 auto;
+    padding-left: 6rem;
+    
+}
+
+.SellNumberDetail {
+    font-size: 2rem;
+    font-family: 'Microsoft JhengHei UI';
 }

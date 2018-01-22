@@ -178,24 +178,28 @@ INSERT INTO product_type(pt_id, pt_name) VALUES('PT002',N'生產料件');
 INSERT INTO product_type(pt_id, pt_name) VALUES('PT003',N'製造料件');
 INSERT INTO product_type(pt_id, pt_name) VALUES('PT004',N'生活用品');
 
+USE invoicing
+
 --商品資料表
 DROP TABLE product;
 CREATE TABLE product
 (
 p_id nchar(5) NOT NULL,
 pt_id nchar(5) NOT NULL,
-p_name nvarchar(20) NOT NULL
-
+p_name nvarchar(20) NOT NULL,
+p_price int NOT NULL,
 primary key(p_id),
 FOREIGN KEY (pt_id) REFERENCES product_type(pt_id)
 );
-INSERT INTO product(p_id, pt_id, p_name) VALUES('P0001','PT002',N'原物料');
-INSERT INTO product(p_id, pt_id, p_name) VALUES('P0002','PT004',N'水杯');
-INSERT INTO product(p_id, pt_id, p_name) VALUES('P0003','PT004',N'紙杯');
+INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0001','PT002',N'原物料', '30');
+INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0002','PT004',N'水杯','20');
+INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0003','PT004',N'紙杯','5');
+
 --進貨價格表
+DROP TABLE supplier_price;
 CREATE TABLE supplier_price
 (
-sp_id nchar(5)  NOT NULL,
+sp_id nchar(7)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
 s_id nchar(5) NOT NULL,
 price float NOT NULL,
@@ -206,9 +210,10 @@ FOREIGN KEY (p_id) REFERENCES product(p_id),
 FOREIGN KEY (s_id) REFERENCES supplier(s_id)
 );
 --銷貨價格表
+DROP TABLE client_price;
 CREATE TABLE client_price
 (
-cp_id nchar(5)  NOT NULL,
+cp_id nchar(7)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
 c_id nchar(5) NOT NULL,
 price float NOT NULL,
@@ -219,73 +224,95 @@ FOREIGN KEY (p_id) REFERENCES product(p_id),
 FOREIGN KEY (c_id) REFERENCES client(c_id)
 );
 --進貨單資料表
+DROP TABLE purchases
 CREATE TABLE purchases
 (
 pur_id nchar(5)  NOT NULL,
-s_id  nchar(5)  NOT NULL,
+s_id  nchar(5)  NOT NULL,--供應商編號
+m_id nchar(6) NOT NULL,--員工編號
+accept bit NOT NULL,--驗收
+deliverydate datetime NOT NULL,
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(pur_id),
+FOREIGN KEY (s_id) REFERENCES supplier(s_id),
+FOREIGN KEY (m_id) REFERENCES member(m_id)
+);
+--進貨單內容資料表
+DROP TABLE purchases_info;
+CREATE TABLE purchases_info
+(
+purin_id nchar(7)  NOT NULL,
+pur_id nchar(5)  NOT NULL,
+p_id  nchar(5)  NOT NULL,
+m_id nchar(6)  NOT NULL,--員工
+purin_price float NOT NULL,--進貨單價
+purin_qty int NOT NULL,--進貨數量
+purin_check_qty int NOT NULL, --已驗收數量
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(purin_id),
+FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
+FOREIGN KEY (p_id) REFERENCES product(p_id)
+);
+--進貨退貨單資料表
+DROP TABLE purchases_returns;
+CREATE TABLE purchases_returns
+(
+pr_id nchar(5)  NOT NULL,--退貨單編號
+pur_id nchar(5)  NOT NULL,--進貨單編號
+m_id nchar(6)  NOT NULL,
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(pr_id),
+FOREIGN KEY (pur_id) REFERENCES purchases(pur_id)
+);
+--退貨單內容資料表
+DROP TABLE purchases_returns_info;
+CREATE TABLE purchases_returns_info
+(
+pri_id nchar(7)  NOT NULL,--退貨內容編號
+pr_id nchar(5)  NOT NULL,--退貨單編號
+p_id  nchar(5)  NOT NULL,--商品編號
+m_id nchar(6)  NOT NULL,--員工
+prin_qty int NOT NULL,--退貨數量
+createdate datetime NOT NULL,
+update_time datetime NOT NULL
+primary key(pri_id),
+FOREIGN KEY (pr_id) REFERENCES purchases_returns(pr_id),
+FOREIGN KEY (p_id) REFERENCES product(p_id)
+);
+
+
+--訂貨單資料表
+CREATE TABLE orders
+(
+or_id nchar(5)  NOT NULL,
+c_id  nchar(5)  NOT NULL,
 m_id nchar(6) NOT NULL,
 accept bit NOT NULL,
 deliverydate datetime NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 
-primary key(pur_id),
-FOREIGN KEY (s_id) REFERENCES supplier(s_id),
+primary key(or_id),
+FOREIGN KEY (c_id) REFERENCES client(c_id),
 FOREIGN KEY (m_id) REFERENCES member(m_id)
 );
---進貨單內容資料表
-CREATE TABLE purchases_info
-(
-purin_id nchar(7)  NOT NULL,
-pur_id nchar(5)  NOT NULL,
-p_id  nchar(5)  NOT NULL,
-m_number nchar(5)  NOT NULL,
-purin_price float NOT NULL,
-purin_qty int NOT NULL,
-createdate datetime NOT NULL,
-update_time datetime NOT NULL
-
-primary key(purin_id),
-FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
-FOREIGN KEY (p_id) REFERENCES product(p_id)
-);
---退貨單資料表
-CREATE TABLE sup_returns
-(
-supre_id nchar(5)  NOT NULL,
-pur_id nchar(5)  NOT NULL,
-purin_id nchar(7)  NOT NULL,
-m_number nchar(5)  NOT NULL,
-supre_qty int NOT NULL,
-createdate datetime NOT NULL
-
-primary key(supre_id),
-FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
-FOREIGN KEY (purin_id) REFERENCES purchases_info(purin_id)
-);
 --訂貨單資料表
-CREATE TABLE orders
-(
-or_id nchar(5)  NOT NULL,
-c_id  nchar(5)  NOT NULL,
-createdate datetime NOT NULL,
-update_time datetime NOT NULL
-
-primary key(or_id),
-FOREIGN KEY (c_id) REFERENCES client(c_id)
-);
---訂貨單資料表
+DROP TABLE orders_info;
 CREATE TABLE orders_info
 (
-in_id nchar(5)  NOT NULL,
+orin_id nchar(7)  NOT NULL,
 or_id nchar(5)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
-in_price float NOT NULL,
-in_qty int NOT NULL,
+m_id nchar(6)  NOT NULL,
+orin_price float NOT NULL,
+orin_qty int NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 
-primary key(in_id),
+primary key(orin_id),
 FOREIGN KEY (or_id) REFERENCES orders(or_id),
 FOREIGN KEY (p_id) REFERENCES product(p_id)
 );
@@ -314,3 +341,62 @@ primary key(in_id),
 FOREIGN KEY (or_id) REFERENCES orders(or_id),
 FOREIGN KEY (in_id) REFERENCES orders_info(in_id)
 );
+
+select * 
+from roles_auth ra , auth a
+where ra.r_id='R0001' and
+ ra.a_id = a.a_id
+
+ select * from roles_auth
+
+update roles_auth set viewmode=''
+
+
+--BOM
+ CREATE TABLE  PARTLIST 
+     ( PART     VARCHAR(8),
+       SUBPART  VARCHAR(8),
+       QUANTITY INTEGER )
+--Single level explosion
+   
+   WITH RPL (PART, SUBPART, QUANTITY) AS
+        (  SELECT ROOT.PART, ROOT.SUBPART, ROOT.QUANTITY
+              FROM PARTLIST ROOT
+              WHERE ROOT.PART = '01'
+          UNION ALL
+           SELECT CHILD.PART, CHILD.SUBPART, CHILD.QUANTITY
+              FROM RPL PARENT, PARTLIST CHILD
+              WHERE PARENT.SUBPART = CHILD.PART
+         )
+   SELECT DISTINCT PART, SUBPART, QUANTITY
+     FROM RPL
+     ORDER BY PART, SUBPART, QUANTITY
+
+--Summarized explosion
+   WITH RPL (PART, SUBPART, QUANTITY) AS
+        (  SELECT ROOT.PART, ROOT.SUBPART, ROOT.QUANTITY
+              FROM PARTLIST ROOT
+              WHERE ROOT.PART = '01'
+          UNION ALL
+           SELECT PARENT.PART, CHILD.SUBPART, PARENT.QUANTITY*CHILD.QUANTITY
+              FROM RPL PARENT, PARTLIST CHILD
+              WHERE PARENT.SUBPART = CHILD.PART
+         )
+   SELECT PART, SUBPART, SUM(QUANTITY) AS "Total QTY Used"
+     FROM RPL
+     GROUP BY PART, SUBPART
+     ORDER BY PART, SUBPART
+
+	 --Controlling depth
+	    WITH RPL ( LEVEL, PART, SUBPART, QUANTITY)
+     AS ( SELECT 1, ROOT.PART, ROOT.SUBPART, ROOT.QUANTITY
+             FROM PARTLIST ROOT
+             WHERE ROOT.PART = '01'
+           UNION ALL
+          SELECT PARENT.LEVEL+1, CHILD.PART, CHILD.SUBPART, CHILD.QUANTITY
+             FROM RPL PARENT, PARTLIST CHILD
+             WHERE PARENT.SUBPART = CHILD.PART
+             AND PARENT.LEVEL < 2
+         )
+   SELECT PART, LEVEL, SUBPART, QUANTITY
+     FROM RPL

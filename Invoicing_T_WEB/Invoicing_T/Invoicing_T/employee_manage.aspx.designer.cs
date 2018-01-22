@@ -22,75 +22,75 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// com_id 控制項。
+        /// HiddenF_mid 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_id;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenF_mid;
         
         /// <summary>
-        /// com_name 控制項。
+        /// m_id 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_name;
+        protected global::System.Web.UI.WebControls.Label m_id;
         
         /// <summary>
-        /// com_address 控制項。
+        /// m_name 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_address;
+        protected global::System.Web.UI.WebControls.Label m_name;
         
         /// <summary>
-        /// com_un 控制項。
+        /// m_sex 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_un;
+        protected global::System.Web.UI.WebControls.Label m_sex;
         
         /// <summary>
-        /// com_agent 控制項。
+        /// r_name 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_agent;
+        protected global::System.Web.UI.WebControls.Label r_name;
         
         /// <summary>
-        /// com_tel 控制項。
+        /// m_phone 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_tel;
+        protected global::System.Web.UI.WebControls.Label m_phone;
         
         /// <summary>
-        /// com_fax 控制項。
+        /// m_email 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label com_fax;
+        protected global::System.Web.UI.WebControls.Label m_email;
         
         /// <summary>
-        /// btn_employee_edit 控制項。
+        /// btn_company_edit 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_employee_edit;
+        protected global::System.Web.UI.WebControls.Button btn_company_edit;
     }
 }

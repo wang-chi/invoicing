@@ -38,7 +38,7 @@ namespace Invoicing_T
         
         protected void btn_search(object sender, EventArgs e)
         {
-            String selection = " WHERE sp_id LIKE '%" + InputSupplier.Text + "%'";
+            String selection = " AND sp_id LIKE '%" + InputSupplier.Text + "%'";
             all(null, null, selection);
         }
     }

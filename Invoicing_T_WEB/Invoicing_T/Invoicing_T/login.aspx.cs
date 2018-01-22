@@ -16,6 +16,7 @@ namespace Invoicing_T
         DBHandle tmp = new DBHandle();
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Clear();
             //string Encrypt_nutc01 = AESEncrypt(EncodeString("nutc01".ToString().Trim()), "NUTC106");//加密方式
             //string Decrypt_nutc01 = DecodeString(AESDecrypt(Encrypt_nutc01, "NUTC106"));//解密方式
             //string Encrypt_nutc02 = AESEncrypt(EncodeString("nutc02".ToString().Trim()), "NUTC106");//加密方式

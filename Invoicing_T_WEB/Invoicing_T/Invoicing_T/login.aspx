@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="Invoicing_T.login" %>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -18,10 +17,16 @@
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputAccount" Text="帳　號" />
                 <div class="col-sm-8">
+<<<<<<< HEAD
                     <asp:TextBox ID="InputAccount" class="form-control" runat="server"  aria-label="Default" MinLength="5" MaxLength="10" placeholder="請輸入員工帳號"  />
+=======
+                    <asp:TextBox ID="InputAccount" class="form-control" runat="server"  aria-label="Default" 
+                        onkeyup="value=value.replace(/[\W]/g,'') " 
+                        onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" 
+                        MinLength="5" MaxLength="10" placeholder="請輸入員工帳號"  />
+>>>>>>> CJT
                 </div>
             </div>
-
             <div class="form-group row">
                 <asp:Label class="col-sm-4 col-form-label" runat="server" For="InputPassword" Text="密　碼" />
                 <div class="col-sm-8">
@@ -31,7 +36,7 @@
             </div>
             <div>
                 <div class="form-action">
-                    <asp:Button ID="Button1" type="submit" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click" Text="登　入" />
+                    <asp:Button ID="Button1" type="submit" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click" Text="登入" />
                 </div>
                 <div id="alert_error" class="alert alert-danger" role="alert" runat="server" visible="false">
                     <asp:Label ID="msg_error" runat="server" Text="登錄失敗請重新嘗試" />

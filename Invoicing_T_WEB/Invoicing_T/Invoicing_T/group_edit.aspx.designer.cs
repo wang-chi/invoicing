@@ -49,13 +49,22 @@ namespace Invoicing_T {
         protected global::System.Web.UI.WebControls.Label r_id;
         
         /// <summary>
-        /// TextBox1 控制項。
+        /// GroupName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox GroupName;
+        
+        /// <summary>
+        /// lvgroupInfo 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvgroupInfo;
         
         /// <summary>
         /// btnUpdate 控制項。

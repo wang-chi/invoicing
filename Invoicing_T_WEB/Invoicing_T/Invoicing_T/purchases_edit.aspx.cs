@@ -57,11 +57,11 @@ namespace Invoicing_T
             DataSet ds = tmp.GetPurchasesinfoInfo(p);
             if (ds != null)
             {
-                GridView1.DataSource = null;
-                GridView1.DataSource = ds.Tables["purchases_info_info"];
-                this.GridView1.DataBind();
+                lvauthInfo.DataSource = null;
+                lvauthInfo.DataSource = ds.Tables["purchases_info_info"];
+                lvauthInfo.DataBind();
             }
-
+            
             #endregion
         }
 
@@ -95,14 +95,25 @@ namespace Invoicing_T
             switch (tmpID)//使用者按下哪一個按鈕
             {
                 case "btnUpdate":
-                    tmp.UpdatePurchases(tmpViewData);
 
+                    if (update_purchases())
+                    {
+                      tmp.UpdatePurchases(tmpViewData);
+                        update_product();
+                    }
+                    
+                    
                     break;
                 case "btnDelete":
-                    tmp.DeleteSupplier(tmpViewData);
+                    delete_product();
+                    tmp.DeletePurchases(tmpViewData);
                     break;
             }
-            Server.Transfer("purchases_manage.aspx", true);//導回群組管理
+            if (update_purchases())
+            {
+                Server.Transfer("purchases_manage.aspx", true);//導回群組管理
+            }
+                
             #endregion
         }
 
@@ -120,8 +131,74 @@ namespace Invoicing_T
             tmpViewData.Add("m_id", m_id.Text);
             tmpViewData.Add("accept", RadioButtonList1.SelectedItem.Value);
             tmpViewData.Add("deliverydate", deliverydate.Text);
+            
             return tmpViewData;
             #endregion
+        }
+
+        private void update_product()
+        {
+            foreach (ListViewItem myItem in lvauthInfo.Items)
+            {
+                TextBox lv_price, lv_qty,lv_check_qty;
+                Label lv_purin;
+                string p_price, p_qty,p_purin;
+                int p_check_qty;
+                lv_price = (TextBox)myItem.FindControl("InputPrice");
+                p_price = lv_price.Text;
+
+                lv_qty = (TextBox)myItem.FindControl("InputQty");
+                p_qty = lv_qty.Text;
+
+                lv_check_qty = (TextBox)myItem.FindControl("InputCheckQty");
+                p_check_qty = int.Parse(lv_check_qty.Text);
+
+                lv_purin = (Label)myItem.FindControl("purinid");
+                p_purin = lv_purin.Text;
+
+                tmp.UpdatePurchasesInfo(p_price, p_qty, p_purin, p_check_qty);
+
+            }
+        }
+
+        private bool update_purchases()
+        {
+            foreach (ListViewItem myItem in lvauthInfo.Items)
+            {
+                TextBox lv_qty, lv_check_qty;
+                Label check_id;
+                int p_qty,p_check_qty;
+              
+                lv_qty = (TextBox)myItem.FindControl("InputQty");
+                p_qty = int.Parse(lv_qty.Text);
+
+                lv_check_qty = (TextBox)myItem.FindControl("InputCheckQty");
+                p_check_qty = int.Parse(lv_check_qty.Text);
+                
+                if(p_check_qty>p_qty || p_check_qty < 0)
+                {
+                    check_id = (Label)myItem.FindControl("check_id");
+                    check_id.Visible = true;
+                    return false;
+                }
+               
+            }
+            return true;
+        }
+
+        private void delete_product()
+        {
+            foreach (ListViewItem myItem in lvauthInfo.Items)
+            {
+                Label lv_purin;
+                string  p_purin;
+                
+                lv_purin = (Label)myItem.FindControl("purinid");
+                p_purin = lv_purin.Text;
+
+                tmp.DeletePurchasesInfo(p_purin);
+
+            }
         }
 
         protected void btn_add_Click(object sender, EventArgs e)

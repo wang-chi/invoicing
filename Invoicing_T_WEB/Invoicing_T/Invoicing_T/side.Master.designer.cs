@@ -67,6 +67,18 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_ManagePage;
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// auth_employee_manage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_employee_manage;
+        
+        /// <summary>
+>>>>>>> CJT
         /// auth_company_manage 控制項。
         /// </summary>
         /// <remarks>
@@ -130,6 +142,18 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_manage;
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// auth_purchases_return 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_purchases_return;
+        
+        /// <summary>
+>>>>>>> CJT
         /// auth_supplier_price_manage 控制項。
         /// </summary>
         /// <remarks>
@@ -139,6 +163,18 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_supplier_price_manage;
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// auth_orders_manage 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_orders_manage;
+        
+        /// <summary>
+>>>>>>> CJT
         /// auth_client_price_manage 控制項。
         /// </summary>
         /// <remarks>
@@ -148,6 +184,18 @@ namespace Invoicing_T {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor auth_client_price_manage;
         
         /// <summary>
+<<<<<<< HEAD
+=======
+        /// logout 控制項。
+        /// </summary>
+        /// <remarks>
+        /// 自動產生的欄位。
+        /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logout;
+        
+        /// <summary>
+>>>>>>> CJT
         /// ContentPlaceHolder1 控制項。
         /// </summary>
         /// <remarks>
