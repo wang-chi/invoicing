@@ -199,7 +199,7 @@ INSERT INTO product(p_id, pt_id, p_name, p_price) VALUES('P0003','PT004',N'紙杯'
 DROP TABLE supplier_price;
 CREATE TABLE supplier_price
 (
-sp_id nchar(5)  NOT NULL,
+sp_id nchar(7)  NOT NULL,
 p_id  nchar(5)  NOT NULL,
 s_id nchar(5) NOT NULL,
 price float NOT NULL,
@@ -228,13 +228,12 @@ DROP TABLE purchases
 CREATE TABLE purchases
 (
 pur_id nchar(5)  NOT NULL,
-s_id  nchar(5)  NOT NULL,
+s_id  nchar(5)  NOT NULL,--供應商編號
 m_id nchar(6) NOT NULL,--員工編號
 accept bit NOT NULL,--驗收
 deliverydate datetime NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
-
 primary key(pur_id),
 FOREIGN KEY (s_id) REFERENCES supplier(s_id),
 FOREIGN KEY (m_id) REFERENCES member(m_id)
@@ -252,7 +251,6 @@ purin_qty int NOT NULL,--進貨數量
 purin_check_qty int NOT NULL, --已驗收數量
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
-
 primary key(purin_id),
 FOREIGN KEY (pur_id) REFERENCES purchases(pur_id),
 FOREIGN KEY (p_id) REFERENCES product(p_id)
@@ -263,21 +261,21 @@ CREATE TABLE purchases_returns
 (
 pr_id nchar(5)  NOT NULL,--退貨單編號
 pur_id nchar(5)  NOT NULL,--進貨單編號
-m_id nchar(5)  NOT NULL,
+m_id nchar(6)  NOT NULL,
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 primary key(pr_id),
 FOREIGN KEY (pur_id) REFERENCES purchases(pur_id)
 );
 --退貨單內容資料表
-DROP TABLE purcharse_returns_info;
-CREATE TABLE purcharse_returns_info
+DROP TABLE purchases_returns_info;
+CREATE TABLE purchases_returns_info
 (
 pri_id nchar(7)  NOT NULL,--退貨內容編號
 pr_id nchar(5)  NOT NULL,--退貨單編號
 p_id  nchar(5)  NOT NULL,--商品編號
 m_id nchar(6)  NOT NULL,--員工
-purin_qty int NOT NULL,--退貨數量
+prin_qty int NOT NULL,--退貨數量
 createdate datetime NOT NULL,
 update_time datetime NOT NULL
 primary key(pri_id),
